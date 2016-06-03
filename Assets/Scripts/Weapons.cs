@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Weapons { HK416, AK47, Minimi, TankCannon }
+public enum Weapons { None, HK416, AK47, Minimi, TankCannon }
 public enum DamageType { Kinetic, Explosive }
 
 public class Weapon

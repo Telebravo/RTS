@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   selectionCanvas: {fileID: 22435096}
+  CallComponent: 
+  CallFunction: 
 --- !u!114 &11428340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,7 +352,7 @@ MonoBehaviour:
   armor: 1
   movementSpeed: 5
   rotationSpeed: 120
-  _weapon: 0
+  _weapon: 1
   collidersInRange: []
   enemiesInRange: []
   closestEnemy: {fileID: 0}
