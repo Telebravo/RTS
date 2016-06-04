@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Weapons { None, HK416, AK47, Minimi, TankCannon }
+public enum Weapons { Unarmed, HK416, AK47, Minimi, TankCannon }
 public enum DamageType { Kinetic, Explosive }
 
 public class Weapon
@@ -17,6 +17,8 @@ public class Weapon
     {
         switch (weapon)
         {
+            case Weapons.Unarmed:
+                return new Unarmed();
             case Weapons.HK416:
                 return new HK416N();
             case Weapons.AK47:
@@ -29,7 +31,18 @@ public class Weapon
         return null;
     }
 }
-
+public class Unarmed : Weapon
+{
+    public Unarmed()
+    {
+        displayName = "Unarmed";
+        damage = 0; ;
+        firerate = 1;
+        range = 1;
+        burstLength = 0;
+        damageType = DamageType.Kinetic;
+    }
+}
 public class HK416N : Weapon
 {
     public HK416N()
