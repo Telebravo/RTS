@@ -16,7 +16,6 @@ public class CMoveable : MonoBehaviour
 	
 	void SetTarget (Vector3 point)
     {
-        Debug.Log("Cube: New target");
         agent.SetDestination(point);
 	}
 }
