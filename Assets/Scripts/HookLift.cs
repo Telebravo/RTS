@@ -24,9 +24,9 @@ public class HookLift : MonoBehaviour
         }
         if (selected && !carrynig)
         {
-            if (CameraControlls.holdOverObject != null && Input.GetKey(KeyCode.LeftControl))
+            if (GameManager.controlls.holdOverObject != null && Input.GetKey(KeyCode.LeftControl))
             {
-                CHookliftable hookliftable = CameraControlls.holdOverObject.GetComponent<CHookliftable>();
+                CHookliftable hookliftable = GameManager.controlls.holdOverObject.GetComponent<CHookliftable>();
                 if (hookliftable != null)
                 {
                     if (!hookliftable.onTruck)
@@ -37,7 +37,7 @@ public class HookLift : MonoBehaviour
                         if(Input.GetMouseButtonDown(1))
                         {
                             target = hookliftable;
-                            unit.cMoveable.SendMessage("SetTarget", target.transform.position);
+                            unit.cMoveable.SetTarget(target.transform.position);
                         }
                     }
                 }
@@ -54,8 +54,8 @@ public class HookLift : MonoBehaviour
                     if (Input.GetMouseButtonDown(1))
                     {
                         unloading = true;
-                        unloadPoint = CameraControlls.mouseWorldPosition;
-                        unit.cMoveable.SendMessage("SetTarget", unloadPoint);
+                        unloadPoint = GameManager.controlls.mouseWorldPosition;
+                        unit.cMoveable.SetTarget(unloadPoint);
                     }
                 }
                 if(unloading)

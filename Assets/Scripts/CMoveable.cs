@@ -14,7 +14,7 @@ public class CMoveable : MonoBehaviour
         agent.angularSpeed = unit.rotationSpeed;
 	}
 	
-	void SetTarget (Vector3 point)
+	public void SetTarget (Vector3 point)
     {
         agent.SetDestination(point);
 	}

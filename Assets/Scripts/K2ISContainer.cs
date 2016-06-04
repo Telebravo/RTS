@@ -5,17 +5,24 @@ public class K2ISContainer : MonoBehaviour
 {
     public GameObject box1, box2;
 
+    CHookliftable hookliftable;
+
     public bool selected = false;
     public bool deployed = false;
     bool cursorControll = false;
     
 	void Start ()
     {
-        Pack();
-	}
+        hookliftable = GetComponent<CHookliftable>();
+
+        if (deployed)
+            Unpack();
+        else
+            Pack();
+    }
 	void Update ()
     {
-	    if(selected && Input.GetKey(KeyCode.LeftControl) && CameraControlls.holdOverObject == transform)
+	    if(selected && Input.GetKey(KeyCode.LeftControl) && GameManager.controlls.holdOverObject == transform && !hookliftable.onTruck)
         {
             cursorControll = true;
             if (deployed)
@@ -33,6 +40,7 @@ public class K2ISContainer : MonoBehaviour
         }
         else if(cursorControll)
         {
+            cursorControll = false;
             GameManager.controlls.SetCursor(Cursors.Arrow);
         }
 	}

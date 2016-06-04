@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEngine.UI; 
 
-public class InformationScript : MonoBehaviour {
-
+public class InformationScript : MonoBehaviour
+{
     public Text hitPoints;
     public Text unitName;
     public Text generalInfo;
@@ -14,9 +14,9 @@ public class InformationScript : MonoBehaviour {
 	void Update ()
     {
         timer.text = tid.ToString();
-        if (CameraControlls.selectedObjects.Count > 0)
+        if (GameManager.controlls.selectedObjects.Count > 0)
         {
-            Unit unit = CameraControlls.selectedObjects[0].GetComponent<Unit>();
+            Unit unit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
             if (unit != null)
             {
                 hitPoints.text = "HP: " + unit.cHealth.currentHealth.ToString();//unit Health
