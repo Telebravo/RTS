@@ -6,7 +6,7 @@ public class HookLift : MonoBehaviour
     bool selected = false;
     bool cursorControll = false;
     Unit unit;
-    cHookliftable target;
+    CHookliftable target;
     bool carrynig = false;
     Vector3 unloadPoint;
     bool unloading = false;
@@ -19,19 +19,19 @@ public class HookLift : MonoBehaviour
     {
         if (cursorControll)
         {
-            GameManager.cameraControlls.SetCursor(Cursors.Select);
+            GameManager.controlls.SetCursor(Cursors.Select);
             cursorControll = false;
         }
         if (selected && !carrynig)
         {
             if (CameraControlls.holdOverObject != null && Input.GetKey(KeyCode.LeftControl))
             {
-                cHookliftable hookliftable = CameraControlls.holdOverObject.GetComponent<cHookliftable>();
+                CHookliftable hookliftable = CameraControlls.holdOverObject.GetComponent<CHookliftable>();
                 if (hookliftable != null)
                 {
                     if (!hookliftable.onTruck)
                     {
-                        GameManager.cameraControlls.SetCursor(Cursors.Load);
+                        GameManager.controlls.SetCursor(Cursors.Load);
                         cursorControll = true;
 
                         if(Input.GetMouseButtonDown(1))
@@ -49,7 +49,7 @@ public class HookLift : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    GameManager.cameraControlls.SetCursor(Cursors.Unload);
+                    GameManager.controlls.SetCursor(Cursors.Unload);
                     cursorControll = true;
                     if (Input.GetMouseButtonDown(1))
                     {

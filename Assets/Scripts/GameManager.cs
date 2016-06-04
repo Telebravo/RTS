@@ -3,5 +3,5 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public static CameraControlls cameraControlls;
+    public static CameraControlls controlls;
 }

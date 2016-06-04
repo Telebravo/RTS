@@ -36,11 +36,13 @@ public class CSelectable : MonoBehaviour
 
     void OnBecameVisible()
     {
-        CameraControlls.visibleObjects.Add(this.transform);
+        if (!CameraControlls.visibleObjects.Contains(transform))
+            CameraControlls.visibleObjects.Add(this.transform);
     }
     void OnBecameInvisible()
     {
-        CameraControlls.visibleObjects.Remove(this.transform);
+        if (CameraControlls.visibleObjects.Contains(transform))
+            CameraControlls.visibleObjects.Remove(this.transform);
     }
     void Update()
     {

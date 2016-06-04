@@ -45,7 +45,7 @@ public class CameraControlls : MonoBehaviour
         layermask = 1 << layer;
         visibleObjects = new List<Transform>();
         selectedObjects = new List<Transform>();
-        GameManager.cameraControlls = this;
+        GameManager.controlls = this;
     }
     void Start ()
     {
@@ -59,7 +59,6 @@ public class CameraControlls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
-           // Cursor.SetCursor
         }
 
         //Finner objektet man paker på
@@ -73,6 +72,7 @@ public class CameraControlls : MonoBehaviour
             if (cSelectable != null) ;
 
         }
+
         //Musepekeren sin posison i verden
         ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 10000, 1, QueryTriggerInteraction.Ignore))
@@ -225,27 +225,6 @@ public class CameraControlls : MonoBehaviour
         }
     }
 
-    public void SetCursor(Cursors cursor)
-    {
-        switch(cursor)
-        {
-            case Cursors.Arrow:
-                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
-                break;
-            case Cursors.Select:
-                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
-                break;
-            case Cursors.Attack:
-                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
-                break;
-            case Cursors.Load:
-                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
-                break;
-            case Cursors.Unload:
-                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
-                break;
-        }
-    }
     public static Rect GUIRectWithObject(GameObject go)
     {
         Vector3 cen = go.GetComponent<Renderer>().bounds.center;
@@ -275,5 +254,33 @@ public class CameraControlls : MonoBehaviour
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(world);
         return screenPoint;
     }
+
+    public void SetCursor(Cursors cursor)
+    {
+        switch (cursor)
+        {
+            case Cursors.Arrow:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
+                break;
+            case Cursors.Select:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
+                break;
+            case Cursors.Attack:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(0, 0), CursorMode.Auto);
+                break;
+            case Cursors.Load:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
+                break;
+            case Cursors.Unload:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
+                break;
+            case Cursors.Pack:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 16), CursorMode.Auto);
+                break;
+            case Cursors.Unpack:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 16), CursorMode.Auto);
+                break;
+        }
+    }
 }
-public enum Cursors { Arrow, Select, Attack, Load, Unload}
+public enum Cursors { Arrow, Select, Attack, Load, Unload, Pack, Unpack}
