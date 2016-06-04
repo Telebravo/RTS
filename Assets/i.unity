@@ -3485,6 +3485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   selectionCanvas: {fileID: 1412656814}
+  CallComponent: 
+  CallFunction: 
 --- !u!1 &1985510853
 GameObject:
   m_ObjectHideFlags: 0
