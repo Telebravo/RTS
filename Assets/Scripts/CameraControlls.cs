@@ -225,12 +225,12 @@ public class CameraControlls : MonoBehaviour
         if (visible)
         {
             if (!GameManager.controlls.visibleObjects.Contains(transform))
-                GameManager.controlls.visibleObjects.Add(this.transform);
+                GameManager.controlls.visibleObjects.Add(transform);
         }
         else
         {
         if (GameManager.controlls.visibleObjects.Contains(transform))
-            GameManager.controlls.visibleObjects.Remove(this.transform);
+            GameManager.controlls.visibleObjects.Remove(transform);
         }
     }
     public static Rect GUIRectWithObject(GameObject go)
