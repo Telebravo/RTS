@@ -65,8 +65,8 @@ GameObject:
   - 65: {fileID: 6592928}
   - 23: {fileID: 2373464}
   - 114: {fileID: 11487940}
-  - 114: {fileID: 11499834}
   - 114: {fileID: 11404352}
+  - 114: {fileID: 11472350}
   m_Layer: 8
   m_Name: K2IS Container
   m_TagString: Team 1
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.74, y: 1, z: 31.32}
+  m_LocalPosition: {x: 11.5, y: 2.2, z: 7.72}
   m_LocalScale: {x: 2.5, y: 2, z: 6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -332,6 +332,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11472350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8420cb1f08e44e94f97c716d4ae3be7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockPossition: {x: 0, y: 2.2, z: -1.18}
+  onGroundY: 1
+  onTruck: 0
 --- !u!114 &11487940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,20 +377,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11499834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8420cb1f08e44e94f97c716d4ae3be7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockPossition: {x: 0, y: 2.2, z: -1.18}
-  onGroundY: 1
-  onTruck: 0
 --- !u!222 &22273424
 CanvasRenderer:
   m_ObjectHideFlags: 1
