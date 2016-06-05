@@ -33,7 +33,7 @@ public class CHealth : MonoBehaviour
     {
         currentHealth = 0;
         isDead = true;
-        CameraControlls.Deselect(transform);
+        GameManager.controlls.Deselect(transform);
         this.gameObject.SetActive(false);
     }
 }

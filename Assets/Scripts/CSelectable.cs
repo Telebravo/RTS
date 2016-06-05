@@ -33,14 +33,13 @@ public class CSelectable : MonoBehaviour
             component.SendMessage(CallFunction, selected);
         }
     }
-
     void OnBecameVisible()
     {
-        CameraControlls.visibleObjects.Add(this.transform);
+        GameManager.controlls.SetVisible(this.transform, true);
     }
     void OnBecameInvisible()
     {
-        CameraControlls.visibleObjects.Remove(this.transform);
+        GameManager.controlls.SetVisible(this.transform, false);
     }
     void Update()
     {
