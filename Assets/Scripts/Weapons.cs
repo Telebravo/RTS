@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Weapons { Unarmed, HK416, AK47, Minimi, TankCannon }
+public enum Weapons { Unarmed, HK416, AK47, Minimi, TankCannon, ArtCannon }
 public enum DamageType { Kinetic, Explosive }
 
 public class Weapon
@@ -27,6 +27,8 @@ public class Weapon
                 return new Minimi();
             case Weapons.TankCannon:
                 return new TankCannon();
+            case Weapons.ArtCannon:
+                return new ArtCannon();
         }
         return null;
     }
@@ -98,7 +100,7 @@ public class ArtCannon : Weapon
         displayName = "Artilery Cannon";
         damage = 5000;
         firerate = 4; //Skudd i minuttet
-        range = 5000;
+        range = 500;
         burstLength = 0;
         damageType = DamageType.Explosive;
     }
