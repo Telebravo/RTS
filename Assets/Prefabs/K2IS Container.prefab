@@ -30,7 +30,7 @@ GameObject:
   - 65: {fileID: 6569518}
   - 23: {fileID: 2305610}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +67,7 @@ GameObject:
   - 114: {fileID: 11487940}
   - 114: {fileID: 11404352}
   - 114: {fileID: 11472350}
+  - 111: {fileID: 11178476}
   m_Layer: 8
   m_Name: K2IS Container
   m_TagString: Team 1
@@ -86,7 +87,7 @@ GameObject:
   - 65: {fileID: 6559962}
   - 23: {fileID: 2316132}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,6 +270,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &11178476
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171292}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 2ecd6734ca5757d45a58de4af5a09ef0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &11402422
 MonoBehaviour:
   m_ObjectHideFlags: 1

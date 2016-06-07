@@ -6,6 +6,7 @@ public class CHookliftable : MonoBehaviour
     public Vector3 lockPossition;
     public float onGroundY;
     public bool onTruck = false;
+    public bool liftable = true;
 
     void OnBecameVisible()
     {

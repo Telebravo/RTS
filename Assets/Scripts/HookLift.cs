@@ -29,7 +29,7 @@ public class HookLift : MonoBehaviour
                 CHookliftable hookliftable = GameManager.controlls.holdOverObject.GetComponent<CHookliftable>();
                 if (hookliftable != null)
                 {
-                    if (!hookliftable.onTruck)
+                    if (!hookliftable.onTruck && hookliftable.liftable)
                     {
                         GameManager.controlls.SetCursor(Cursors.Load);
                         cursorControll = true;
