@@ -25,28 +25,33 @@ public class CMoveable : MonoBehaviour
     }
 	void Update()
     {
-        GetPath();
         if (!veichle)
             return;
 
         float maxRotation = 45f;
 
-        Vector3 target = agent.steeringTarget;
+        Vector3 target = agent.nextPosition;
         target.y = transform.position.y;
 
         Vector3 vDir = target - transform.position;
 
-        float angle = Mathf.Atan2(vDir.z, vDir.x)*-Mathf.Rad2Deg+90;
+        float angle = Mathf.Atan2(vDir.z, vDir.x)*-Mathf.Rad2Deg -90;
+        angle = Vector3.Angle(transform.position, target);
         angle -= transform.rotation.y;
+        
+        Debug.Log("Angle n: " + angle.ToString());
         angle = Mathf.Clamp(angle, -maxRotation, maxRotation);
-
-        Debug.Log("Angle: " + angle.ToString());
+        Debug.Log("Angle c: " + angle.ToString());
+        
+        Debug.DrawRay(wheels[0].transform.position, vDir.normalized * 5);
+        Debug.DrawRay(wheels[1].transform.position, vDir.normalized * 5);
+        Debug.DrawLine(transform.position, target);
 
         wheels[0].steerAngle = angle;
         wheels[1].steerAngle = angle;
 
-        wheels[0].motorTorque = 0;
-        wheels[1].motorTorque = 0;
+        wheels[2].motorTorque = 0;
+        wheels[3].motorTorque = 0;
 
         for (int i = 0; i < wheels.Length; i++)
         {
@@ -54,13 +59,13 @@ public class CMoveable : MonoBehaviour
         }
         if (vDir.magnitude > 10)
         {
-            wheels[0].motorTorque = 200;
-            wheels[1].motorTorque = 200;
+            wheels[2].motorTorque = 200;
+            wheels[3].motorTorque = 200;
         }
         else if (vDir.magnitude > 2)
         {
-            wheels[0].motorTorque = 50;
-            wheels[1].motorTorque = 50;
+            wheels[2].motorTorque = 50;
+            wheels[3].motorTorque = 50;
         }
         else
         {
