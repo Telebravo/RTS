@@ -279,8 +279,14 @@ public class CameraControlls : MonoBehaviour
             case Cursors.Load:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
                 break;
-            case Cursors.Unload:
+            case Cursors.LoadBlocked:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
+                break;
+            case Cursors.Unload:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
+                break;
+            case Cursors.UnloadBlocked:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
                 break;
             case Cursors.Pack:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 16), CursorMode.Auto);
@@ -291,4 +297,4 @@ public class CameraControlls : MonoBehaviour
         }
     }
 }
-public enum Cursors { Arrow, Select, Attack, Load, Unload, Pack, Unpack}
+public enum Cursors { Arrow, Select, Attack, Load, LoadBlocked, Unload, UnloadBlocked, Pack, Unpack}

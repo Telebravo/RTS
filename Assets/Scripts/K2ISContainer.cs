@@ -43,15 +43,6 @@ public class K2ISContainer : MonoBehaviour
     {
         this.selected = selected;
     }
-    void Pack()
-    {
-        anim.SetTrigger("Pack");
-    }
-    void PackComplete()
-    {
-        deployed = false;
-        hookliftable.liftable = true;
-    }
     void Unpack()
     {
         hookliftable.liftable = false;
@@ -60,5 +51,14 @@ public class K2ISContainer : MonoBehaviour
     void UnpackComplete()
     {
         deployed = true;
+    }
+    void Pack()
+    {
+        anim.SetTrigger("Pack");
+    }
+    void PackComplete()
+    {
+        deployed = false;
+        hookliftable.liftable = true;
     }
 }

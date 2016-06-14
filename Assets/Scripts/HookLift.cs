@@ -40,6 +40,11 @@ public class HookLift : MonoBehaviour
                             unit.cMoveable.SetTarget(target.transform.position);
                         }
                     }
+                    else
+                    {
+                        GameManager.controlls.SetCursor(Cursors.LoadBlocked);
+                        cursorControll = true;
+                    }
                 }
             }
         }
