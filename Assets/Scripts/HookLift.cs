@@ -3,6 +3,13 @@ using System.Collections;
 
 public class HookLift : MonoBehaviour
 {
+    public Transform cargoTransform;
+    public Transform hookPoint;
+    Vector3 parkPos;
+    Quaternion parkDir;
+    float targetYDiff;
+
+    Animator anim;
     bool selected = false;
     bool cursorControll = false;
     Unit unit;
@@ -10,10 +17,12 @@ public class HookLift : MonoBehaviour
     bool carrynig = false;
     Vector3 unloadPoint;
     bool unloading = false;
+    bool loading = false;
 
     void Start ()
     {
         unit = GetComponent<Unit>();
+        anim = GetComponent<Animator>();
     }
 	void Update ()
     {
@@ -37,7 +46,14 @@ public class HookLift : MonoBehaviour
                         if(Input.GetMouseButtonDown(1))
                         {
                             target = hookliftable;
-                            unit.cMoveable.SetTarget(target.transform.position);
+                            Vector3 targetDir = target.hookPoint.position - target.transform.position;
+                            targetDir.y = 0;
+                            parkDir = Quaternion.LookRotation(targetDir, Vector3.up);
+                            float hookPointDist = hookPoint.localPosition.z;
+                            parkPos = target.hookPoint.position - targetDir.normalized * hookPointDist;
+                            parkPos.y = target.hookPoint.position.y - hookPoint.position.y;
+                            Debug.Log("parkPos: " + parkPos.ToString());
+                            unit.cMoveable.SetTarget(parkPos);
                         }
                     }
                     else
@@ -70,19 +86,34 @@ public class HookLift : MonoBehaviour
                         target.transform.parent = transform.parent;
                         target.transform.Translate(Vector3.down * (target.lockPossition.y - target.onGroundY));
                         target.onTruck = false;
-                        unloading = false;
+                        target.navMeshObstacle.enabled = true;
                         target = null;
                         carrynig = false;
+                        unloading = false;
                     }
                 }
             }
-            else if (Vector3.Distance(transform.position, target.transform.position) < 1)
+            else if (loading)
             {
-                target.transform.parent = transform;
-                target.transform.localPosition = target.lockPossition;
-                target.transform.localRotation = new Quaternion();
-                target.onTruck = true;
-                carrynig = true;
+                target.transform.position = cargoTransform.position;
+                Vector3 euler = cargoTransform.rotation.eulerAngles;
+                euler.y += targetYDiff;
+                if((targetYDiff < 185 && targetYDiff > 175) || (targetYDiff > -185 && targetYDiff < -175))
+                {
+                    euler.x *= -1;
+                }
+                target.transform.rotation = Quaternion.Euler(euler);
+            }
+            else if (Vector3.Distance(transform.position, parkPos) < 0.5)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, parkDir, 45f * Time.deltaTime);
+                if(Quaternion.Angle(transform.rotation, parkDir) < 1)
+                {
+                    loading = true;
+                    target.navMeshObstacle.enabled = false;
+                    targetYDiff = parkDir.eulerAngles.y - target.transform.rotation.eulerAngles.y;
+                    anim.SetTrigger("Hook");
+                }
             }
         }
     }
@@ -91,5 +122,15 @@ public class HookLift : MonoBehaviour
     {
         this.selected = selected;
         Debug.Log(selected);
+    }
+    public void LoadingComplete()
+    {
+        loading = false;
+        Debug.Log("Park");
+        target.transform.parent = transform;
+        //target.transform.localPosition = target.lockPossition;
+        //target.transform.localRotation = new Quaternion();
+        target.onTruck = true;
+        carrynig = true;
     }
 }
