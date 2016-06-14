@@ -398,6 +398,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11492818, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: veichle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 12086436, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475746, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: rotationSpeed
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 153968, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14638994, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14610646, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14645326, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14658434, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14662666, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 14690488, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e942c73a1cffc814b9fb7ac3d7c5926a, type: 2}
   m_IsPrefabParent: 0
@@ -498,7 +538,7 @@ NavMeshObstacle:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1383229399}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
