@@ -51,6 +51,7 @@ public class K2ISContainer : MonoBehaviour
     void UnpackComplete()
     {
         deployed = true;
+        ResetTriggers();
     }
     void Pack()
     {
@@ -60,5 +61,11 @@ public class K2ISContainer : MonoBehaviour
     {
         deployed = false;
         hookliftable.liftable = true;
+        ResetTriggers();
+    }
+    void ResetTriggers()
+    {
+        anim.ResetTrigger("Pack");
+        anim.ResetTrigger("Unpack");
     }
 }

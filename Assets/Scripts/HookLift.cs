@@ -30,8 +30,9 @@ public class HookLift : MonoBehaviour
     Vector3 unloadPoint;
     //Om vi dirver og laster av eller på noe
     bool loading = false;
+    bool travetToUnload = false;
     bool unloading = false;
-
+    bool unloadMove = false;
     //Ved start
     void Start ()
     {
@@ -42,6 +43,13 @@ public class HookLift : MonoBehaviour
     //Hver frame
 	void Update ()
     {
+        if(unloadMove)
+        {
+            //Time 4,833333333333333
+            //Dist 5,3053
+            //1,097648275862069
+            transform.Translate(0, 0, 1.097648275862069f * Time.deltaTime, Space.Self);
+        }
         //Om vi har satt en spesiell cursor
         if (cursorControll)
         {
@@ -122,7 +130,7 @@ public class HookLift : MonoBehaviour
                     if (Input.GetMouseButtonDown(1))
                     {
                         //Ja, vi skal laste av shit
-                        unloading = true;
+                        travetToUnload = true;
                         //Husker puntet vi skal sette lasten på
                         unloadPoint = GameManager.controlls.mouseWorldPosition;
                         //Turer dit
@@ -130,24 +138,23 @@ public class HookLift : MonoBehaviour
                     }
                 }
                 //Om vi har planer om å laste av noe
-                if(unloading)
+                if(travetToUnload)
                 {
                     //Ser om vi er der driten skal
-                    if(Vector3.Distance(transform.position, unloadPoint) < 1)
+                    if(Vector3.Distance(transform.position, unloadPoint) < 0.5)
                     {
-                        //Score!
+                        anim.SetTrigger("Unhook");
                         target.transform.parent = transform.parent;
-                        target.transform.Translate(Vector3.down * (target.lockPossition.y - target.onGroundY));
-                        target.onTruck = false;
-                        target.navMeshObstacle.enabled = true;
-                        target = null;
                         carrynig = false;
-                        unloading = false;
+                        travetToUnload = false;
+                        unloading = true;
+                        target.onTruck = false;
+                        unit.cMoveable.ClearTarget();
                     }
                 }
             }
             //Hvis vi holder på å løfte det 
-            else if (loading)
+            else if (loading || unloading)
             {
                 //Setter posisjonen til det vi løfter i henhold til animasjonen
                 target.transform.position = cargoTransform.position;
@@ -204,5 +211,22 @@ public class HookLift : MonoBehaviour
         target.onTruck = true;
         //Vurderer å huske på at vi faktisk bærer på noe
         carrynig = true;
+    }
+    public void UnloadComplete()
+    {
+        unloading = false;
+        target.navMeshObstacle.enabled = true;
+        target = null;
+    }
+    public void UnloadStartMove()
+    {
+        unloadMove = true;
+        unit.cMoveable.DisableUpdate();
+    }
+    public void UnloadStopMove()
+    {
+        unloadMove = false;
+        unit.cMoveable.EnableUpdate();
+        unit.cMoveable.Warp(transform.position);
     }
 }

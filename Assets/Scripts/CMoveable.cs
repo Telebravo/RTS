@@ -30,4 +30,18 @@ public class CMoveable : MonoBehaviour
         //Så får vi vel nøye oss med det også
         agent.ResetPath();
     }
+    public void Warp(Vector3 position)
+    {
+        agent.Warp(position);
+    }
+    public void DisableUpdate()
+    {
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+    }
+    public void EnableUpdate()
+    {
+        agent.updatePosition = true;
+        agent.updateRotation = true;
+    }
 }
