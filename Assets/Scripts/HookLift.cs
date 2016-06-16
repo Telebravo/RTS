@@ -33,6 +33,10 @@ public class HookLift : MonoBehaviour
     bool travetToUnload = false;
     bool unloading = false;
     bool unloadMove = false;
+
+    //
+    Vector2 mouse1, mouse2;
+
     //Ved start
     void Start ()
     {
@@ -129,12 +133,45 @@ public class HookLift : MonoBehaviour
                     //Om vi så tryker på venstre museknapp
                     if (Input.GetMouseButtonDown(1))
                     {
-                        //Ja, vi skal laste av shit
-                        travetToUnload = true;
-                        //Husker puntet vi skal sette lasten på
-                        unloadPoint = GameManager.controlls.mouseWorldPosition;
-                        //Turer dit
-                        unit.cMoveable.SetTarget(unloadPoint);
+                        //Setter posisjonen til pilen lik musens posisjon i verden
+                        GameManager.controlls.directionArrow.position = GameManager.controlls.mouseWorldPosition;
+                        //Setter den like lang som collideren til lasten
+                        GameManager.controlls.directionArrow.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, target.GetComponent<Collider>().bounds.size.z*100);
+                        //Gjør pilen synelig
+                        GameManager.controlls.directionArrow.gameObject.SetActive(true);
+                    }
+                    //Så lenge vi holder den inne
+                    else if (Input.GetMouseButton(1))
+                    {
+                        //Henter posisjonen til musen da museknappen ble trykket inn 
+                        Vector3 pos1 = GameManager.controlls.directionArrow.position;
+                        //Posisjonen nå
+                        Vector3 pos2 = GameManager.controlls.mouseWorldPosition;
+                        //Lager en vektor fra den første posisjonen til den andre
+                        Vector3 dir = pos2 - pos1;
+                        //Driter i høyde
+                        dir.y = 0;
+
+                        //Vinkelen i fohold til rett frem på z-aksen (blå pil i editoren)
+                        float angle = Vector3.Angle(Vector3.forward, dir);
+                        if (dir.x < 0)
+                            angle *= -1;
+
+                        //Setter rotasjonen til objektet
+                        GameManager.controlls.directionArrow.rotation = Quaternion.Euler(90, angle, 0);
+                    }
+                    //Når den slippes
+                    else if (Input.GetMouseButtonUp(1))
+                    {
+                        //Skjuler pilen
+                        GameManager.controlls.directionArrow.gameObject.SetActive(false);
+
+                        /* //Ja, vi skal laste av shit
+                         travetToUnload = true;
+                         //Husker puntet vi skal sette lasten på
+                         unloadPoint = GameManager.controlls.mouseWorldPosition;
+                         //Turer dit
+                         unit.cMoveable.SetTarget(unloadPoint);*/
                     }
                 }
                 //Om vi har planer om å laste av noe

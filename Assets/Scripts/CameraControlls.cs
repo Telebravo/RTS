@@ -23,6 +23,8 @@ public class CameraControlls : MonoBehaviour
     //Det forrige objektet
     Transform lastSelected;
 
+    public RectTransform directionArrow;
+
     //Selectable komponenten til objektet (ser om det er noe som skal kunne bli valgt)
     CSelectable cSelectable;
     //Moveable komponenten til objektet (ser om et er noe som kan beordres til å flytte)
