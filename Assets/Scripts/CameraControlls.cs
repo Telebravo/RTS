@@ -23,6 +23,8 @@ public class CameraControlls : MonoBehaviour
     //Det forrige objektet
     Transform lastSelected;
 
+    public RectTransform directionArrow;
+
     //Selectable komponenten til objektet (ser om det er noe som skal kunne bli valgt)
     CSelectable cSelectable;
     //Moveable komponenten til objektet (ser om et er noe som kan beordres til å flytte)
@@ -39,13 +41,18 @@ public class CameraControlls : MonoBehaviour
     int layer = 8;
     int layermask;
 
+    //Ved start, liksom litt før den andre start greien
     void Awake()
     {
+        //Layermask for unit-layeret
         layermask = 1 << layer;
+
+        //Initsierer stuff
         visibleObjects = new List<Transform>();
         selectedObjects = new List<Transform>();
         GameManager.controlls = this;
     }
+    //Ved start
     void Start()
     {
         //Henter kamera koponenten
@@ -55,18 +62,25 @@ public class CameraControlls : MonoBehaviour
     }
     void Update()
     {
+        //Om vi trykker på escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //Frigjør musepekeren
             Cursor.lockState = CursorLockMode.None;
         }
 
         //Finner objektet man paker på
         holdOverObject = null;
+        //Lager er ray fra kamera til posisjonen i verdenen man peker på med musen
         ray = camera.ScreenPointToRay(Input.mousePosition);
+        //Ser om vi treffer noen units
         if (Physics.Raycast(ray, out hit, 10000, layermask, QueryTriggerInteraction.Ignore))
         {
+            //Lagrer treffpunket
             mouseWorldPositionUnitLayer = hit.point;
+            //Lagrer hvilken unit vi peker på
             holdOverObject = hit.transform;
+            //Ser om det kan velges
             cSelectable = holdOverObject.GetComponent<CSelectable>();
             if (cSelectable != null) ;
 
@@ -74,12 +88,14 @@ public class CameraControlls : MonoBehaviour
 
         //Musepekeren sin posison i verden
         ray = camera.ScreenPointToRay(Input.mousePosition);
+        //Ser om vi treffer noe, gjelder også andre ting enn units
         if (Physics.Raycast(ray, out hit, 10000, 1, QueryTriggerInteraction.Ignore))
         {
+            //Lagrer treffpunktet
             mouseWorldPosition = hit.point;
         }
 
-        //Kan ikke velge og flytte ting om man holder inne control
+        //Kan ikke velge og flytte ting om man holder inne control, da den brukes for å utføre handlinger med units
         if (Input.GetKey(KeyCode.LeftControl))
             return;
 
@@ -147,6 +163,7 @@ public class CameraControlls : MonoBehaviour
                         if (previouslySelectedObjects.Contains(obj))
                         {
                             selectedObjects.Add(obj);
+                            //Om vi har nådd selectionlimiten
                             if (selectedObjects.Count >= selectionLimit)
                                 break;
                             else
@@ -160,14 +177,18 @@ public class CameraControlls : MonoBehaviour
                         cSelectable = obj.GetComponent<CSelectable>();
                         cSelectable.SendMessage("Selected");
 
+                        //Ser om vi har nådd selectionlimiten
                         if (selectedObjects.Count >= selectionLimit)
                             break;
                     }
                 }
             }
+            //For hvert objekt av de vi hadde velgt forrige frame
             foreach (Transform obj in previouslySelectedObjects)
             {
+                //Om det ikke er valgt lenger
                 if (!selectedObjects.Contains(obj))
+                    //Sier ifra til objektet at det ikke er valgt lenger
                     obj.GetComponent<CSelectable>().SendMessage("Deselected");
             }
             Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
@@ -183,11 +204,17 @@ public class CameraControlls : MonoBehaviour
                 ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 10000, 1, QueryTriggerInteraction.Ignore))
                 {
+                    //For hvert av de valgte unitsene
                     foreach (Transform obj in selectedObjects)
                     {
+                        //Får tak i move-komponenten
                         cMoveable = obj.GetComponent<CMoveable>();
+                        //Om uniten kan flytte på seg
                         if (cMoveable != null)
+                        {
+                            //Sier at den skal ture 
                             cMoveable.SendMessage("SetTarget", hit.point);
+                        }
                     }
                 }
             }
@@ -279,8 +306,14 @@ public class CameraControlls : MonoBehaviour
             case Cursors.Load:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
                 break;
-            case Cursors.Unload:
+            case Cursors.LoadBlocked:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
+                break;
+            case Cursors.Unload:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
+                break;
+            case Cursors.UnloadBlocked:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
                 break;
             case Cursors.Pack:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 16), CursorMode.Auto);
@@ -291,4 +324,4 @@ public class CameraControlls : MonoBehaviour
         }
     }
 }
-public enum Cursors { Arrow, Select, Attack, Load, Unload, Pack, Unpack}
+public enum Cursors { Arrow, Select, Attack, Load, LoadBlocked, Unload, UnloadBlocked, Pack, Unpack}

@@ -3,9 +3,8 @@ using System.Collections;
 
 public class K2ISContainer : MonoBehaviour
 {
-    public GameObject box1, box2;
-
     CHookliftable hookliftable;
+    Animator anim;
 
     public bool selected = false;
     public bool deployed = false;
@@ -13,12 +12,8 @@ public class K2ISContainer : MonoBehaviour
     
 	void Start ()
     {
+        anim = GetComponent<Animator>();
         hookliftable = GetComponent<CHookliftable>();
-
-        if (deployed)
-            Unpack();
-        else
-            Pack();
     }
 	void Update ()
     {
@@ -48,18 +43,29 @@ public class K2ISContainer : MonoBehaviour
     {
         this.selected = selected;
     }
-    void Pack()
-    {
-        deployed = false;
-
-        box1.SetActive(false);
-        box2.SetActive(false);
-    }
     void Unpack()
     {
+        hookliftable.liftable = false;
+        anim.SetTrigger("Unpack");
+    }
+    void UnpackComplete()
+    {
         deployed = true;
-
-        box1.SetActive(true);
-        box2.SetActive(true);
+        ResetTriggers();
+    }
+    void Pack()
+    {
+        anim.SetTrigger("Pack");
+    }
+    void PackComplete()
+    {
+        deployed = false;
+        hookliftable.liftable = true;
+        ResetTriggers();
+    }
+    void ResetTriggers()
+    {
+        anim.ResetTrigger("Pack");
+        anim.ResetTrigger("Unpack");
     }
 }
