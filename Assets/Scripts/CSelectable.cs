@@ -7,6 +7,7 @@ public class CSelectable : MonoBehaviour
     public Transform selectionCanvas;
     public string CallComponent;
     public string CallFunction;
+
     void Selected()
     {
         Debug.Log(gameObject.name + " selected");
@@ -20,6 +21,7 @@ public class CSelectable : MonoBehaviour
             component.SendMessage(CallFunction, selected);
         }
     }
+
     void Deselected()
     {
         Debug.Log(gameObject.name + " deselected");
@@ -33,14 +35,17 @@ public class CSelectable : MonoBehaviour
             component.SendMessage(CallFunction, selected);
         }
     }
+
     void OnBecameVisible()
     {
         GameManager.controlls.SetVisible(this.transform, true);
     }
+
     void OnBecameInvisible()
     {
         GameManager.controlls.SetVisible(this.transform, false);
     }
+
     void Update()
     {
         Vector3 directionToCamera = Camera.main.transform.position - transform.position;

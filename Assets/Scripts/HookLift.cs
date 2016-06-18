@@ -26,11 +26,9 @@ public class HookLift : MonoBehaviour
     CHookliftable target;
     //Om vi for øyeblikket har noen last
     bool carrynig = false;
-    //Punktet lasten skal slippes ned på
-    Vector3 unloadPoint;
     //Om vi dirver og laster av eller på noe
     bool loading = false;
-    bool travetToUnload = false;
+    bool travelToUnload = false;
     bool unloading = false;
     bool unloadMove = false;
 
@@ -47,13 +45,6 @@ public class HookLift : MonoBehaviour
     //Hver frame
 	void Update ()
     {
-        if(unloadMove)
-        {
-            //Time 4,833333333333333
-            //Dist 5,3053
-            //1,097648275862069
-            transform.Translate(0, 0, 1.097648275862069f * Time.deltaTime, Space.Self);
-        }
         //Om vi har satt en spesiell cursor
         if (cursorControll)
         {
@@ -133,10 +124,10 @@ public class HookLift : MonoBehaviour
                     //Om vi så tryker på venstre museknapp
                     if (Input.GetMouseButtonDown(1))
                     {
-                        //Setter posisjonen til pilen lik musens posisjon i verden
-                        GameManager.controlls.directionArrow.position = GameManager.controlls.mouseWorldPosition;
+                        //Setter posisjonen til pilen lik musens posisjon i verden+ litt opp
+                        GameManager.controlls.directionArrow.position = GameManager.controlls.mouseWorldPosition + Vector3.up/10;
                         //Setter den like lang som collideren til lasten
-                        GameManager.controlls.directionArrow.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, target.GetComponent<Collider>().bounds.size.z*100);
+                        GameManager.controlls.directionArrow.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, target.GetComponent<Collider>().bounds.size.z * 100);
                         //Gjør pilen synelig
                         GameManager.controlls.directionArrow.gameObject.SetActive(true);
                     }
@@ -153,8 +144,8 @@ public class HookLift : MonoBehaviour
                         dir.y = 0;
 
                         //Vinkelen i fohold til rett frem på z-aksen (blå pil i editoren)
-                        float angle = Vector3.Angle(Vector3.forward, dir);
-                        if (dir.x < 0)
+                        float angle = Vector3.Angle(Vector3.back, dir);
+                        if (dir.x > 0)
                             angle *= -1;
 
                         //Setter rotasjonen til objektet
@@ -166,27 +157,54 @@ public class HookLift : MonoBehaviour
                         //Skjuler pilen
                         GameManager.controlls.directionArrow.gameObject.SetActive(false);
 
-                        /* //Ja, vi skal laste av shit
-                         travetToUnload = true;
-                         //Husker puntet vi skal sette lasten på
-                         unloadPoint = GameManager.controlls.mouseWorldPosition;
-                         //Turer dit
-                         unit.cMoveable.SetTarget(unloadPoint);*/
+                        //Henter rorasjonen til pilen
+                        parkDir = GameManager.controlls.directionArrow.rotation;
+                        //Trenger bare rotasjonen rundt y-aksen
+                        Vector3 targetDir = new Vector3(0, parkDir.eulerAngles.y, 0);
+                        parkDir = Quaternion.Euler(targetDir);
+
+                        // Parkpos = (posisjonen til pilen) + retning * ((9.2 - 4.2 = 4.5) - (distansen fra senteret av kontaineren til krokfestet))
+                        // 9.2 = (distansen fra krokløfteren til kontaineren når den er satt ned)
+                        // 4.2 = (distensen den kjører frem når den setter ned kontaineren)
+                        parkPos = GameManager.controlls.directionArrow.position + (parkDir * Vector3.forward).normalized * (4.5f - target.GetComponent<Collider>().bounds.extents.z);
+                        //Trekker fra distansen pilen står over bakken
+                        parkPos.y -= 0.1f;
+                        //Husker at vi er på vei
+                        travelToUnload = true;
+                        //Turer dit
+                        unit.cMoveable.SetTarget(parkPos);
+
+                        Debug.Log("Parkpos: " + parkPos.ToString());
+                        Debug.Log("Parkdir: " + parkDir.eulerAngles.ToString());
                     }
                 }
                 //Om vi har planer om å laste av noe
-                if(travetToUnload)
+                if(travelToUnload)
                 {
                     //Ser om vi er der driten skal
-                    if(Vector3.Distance(transform.position, unloadPoint) < 0.5)
+                    if(Vector3.Distance(transform.position, parkPos) < 0.2)
                     {
-                        anim.SetTrigger("Unhook");
-                        target.transform.parent = transform.parent;
-                        carrynig = false;
-                        travetToUnload = false;
-                        unloading = true;
-                        target.onTruck = false;
-                        unit.cMoveable.ClearTarget();
+                        //Roterer til den veien vi skal stå
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, parkDir, 45f * Time.deltaTime);
+                        //Om det er innafor
+                        if (Quaternion.Angle(transform.rotation, parkDir) < 1)
+                        {
+                            //Vi er fremme
+                            travelToUnload = false;
+                            //Gjør at lasten ikke lengre er et child av krokløfteren
+                            target.transform.parent = transform.parent;
+                            //Vi bærer ikke noe lengre
+                            carrynig = false;
+                            //Driver å laster av
+                            unloading = true;
+                            //Skal ikke flytte oss men vi laster av
+                            unit.cMoveable.ClearTarget();
+                            unit.cMoveable.canMove = false;
+                            //Sier til lasten at den ikke lenger sitter på en bil
+                            target.onTruck = false;
+                            //Starter animajonen
+                            anim.SetTrigger("Unhook");
+                        }
                     }
                 }
             }
@@ -210,7 +228,7 @@ public class HookLift : MonoBehaviour
                 target.transform.rotation = Quaternion.Euler(euler);
             }
             //Hvis vi er i posisjon til å kroke
-            else if (Vector3.Distance(transform.position, parkPos) < 0.5)
+            else if (Vector3.Distance(transform.position, parkPos) < 0.2)
             {
                 //Roterer til den veien vi skal stå
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, parkDir, 45f * Time.deltaTime);
@@ -227,8 +245,22 @@ public class HookLift : MonoBehaviour
                     anim.SetTrigger("Hook");
                     //Står her vi
                     unit.cMoveable.ClearTarget();
+                    unit.cMoveable.canMove = false;
+                    //Sier at ingen andre kan løfte den nå;
+                    target.liftable = false;
                 }
             }
+        }
+    }
+    //Hvert physics step
+    void FixedUpdate()
+    {
+        if (unloadMove)
+        {
+            // Time: 4,8333 (Animation duration)
+            // Dist: 5,3 (Distance)
+            // Dist / Time = 1,09655 m/s
+            transform.Translate(0, 0, 1.09655f * Time.fixedDeltaTime, Space.Self);
         }
     }
 	//Om uniten blir selected eller deselected 
@@ -237,7 +269,7 @@ public class HookLift : MonoBehaviour
         //Husker på det, greit å vite liksom
         this.selected = selected;
     }
-    //Når løfte animasjonen er ferdig
+    //Når løfte-animasjonen er ferdig
     public void LoadingComplete()
     {
         //Nei, vi driver utrolig nok ikke å løfter noe lenger
@@ -248,22 +280,41 @@ public class HookLift : MonoBehaviour
         target.onTruck = true;
         //Vurderer å huske på at vi faktisk bærer på noe
         carrynig = true;
+        //Får lov til å kjøre igjen
+        unit.cMoveable.canMove = true;
     }
+    //når senke-animasjonen er ferdig
     public void UnloadComplete()
     {
+        //Laster ikke av lengre
         unloading = false;
+        //Skrur på collideren til lasten
         target.navMeshObstacle.enabled = true;
+        //Sier at andre an løfte den igjen
+        target.liftable = true;
+        //Har ikke noe last/target lenger
         target = null;
+        //Vi kan ture rundt igjen
+        unit.cMoveable.canMove = true;
     }
+    //Når vi skal begynne å kjøre litt fremmover under senke-animasjonen
     public void UnloadStartMove()
     {
+        //Debug.Log("Pos1:" + transform.position.ToString());
+        //Vi skal kjøre fremover
         unloadMove = true;
+        //Skrur av navmeshagenten
         unit.cMoveable.DisableUpdate();
     }
+    //Når vi skal stoppe å kjøre fremmover under senke-animasjonen
     public void UnloadStopMove()
     {
+        //Skal ikke flytte oss lenger
         unloadMove = false;
+        //Skrur på navmeshagenten igjen
         unit.cMoveable.EnableUpdate();
-        unit.cMoveable.Warp(transform.position);
+        //Flytter navmeshagenten til den nye posisjonen
+        unit.cMoveable.Warp(transform.position, true);
+        //Debug.Log("Pos12" + transform.position.ToString());
     }
 }
