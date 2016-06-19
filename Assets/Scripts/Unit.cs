@@ -22,14 +22,17 @@ public class Unit : MonoBehaviour
     public List<Transform> enemiesInRange;
     public Transform closestEnemy;
 
+    void Awake()
+    {
+        weapon = Weapon.Get(_weapon);
+        Debug.Log(gameObject.name + ": " + weapon.displayName);
+    }
     void Start()
     {
         cSelectable = GetComponent<CSelectable>();
         cMoveable = GetComponent<CMoveable>();
         cHealth = GetComponent<CHealth>();
 
-        weapon = Weapon.Get(_weapon);
-        Debug.Log(gameObject.name + ": " + weapon.displayName);
         StartCoroutine(UpdateEnemies());
     }
     IEnumerator UpdateEnemies()
