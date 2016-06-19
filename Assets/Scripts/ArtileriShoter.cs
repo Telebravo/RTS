@@ -40,7 +40,7 @@ public class ArtileriShoter : MonoBehaviour {
             {
                 print("Fire2");
                 Dist = (hit.point - transform.position).magnitude;
-                Dist1 = Mathf.Pow( Dist , 2 ) + Mathf.Pow( BarrelEnd.position.y , 2);
+                //Dist1 = Mathf.Pow( Dist , 2 ) + Mathf.Pow( BarrelEnd.position.y , 2);
                 Debug.Log("Distanse: " + Dist);
                 if(Dist <= unit.weapon.range)
                 {
@@ -48,15 +48,24 @@ public class ArtileriShoter : MonoBehaviour {
                     Debug.Log("Gravitasjon: " + Physics.gravity.y);
                     Debug.Log("stuff: " + (float)(Dist * -Physics.gravity.y) / Mathf.Pow(Utgangshatighet, 2));
 
-                    SkuddVinkel =  (Mathf.Asin(((float)(Dist * -Physics.gravity.y) / Mathf.Pow(Utgangshatighet, 2))))/2;
+                    SkuddVinkel =  (Mathf.Asin((float)(Dist * -Physics.gravity.y) / Mathf.Pow(Utgangshatighet, 2)));//Ikke hele formelen
 
-                    Vector3 retning = hit.point - transform.position;
+                    if(SkuddVinkel < Mathf.PI / 2)//For å få riktig sinusverdi
+                    {
+                        SkuddVinkel = (Mathf.PI - SkuddVinkel);
+                    }
+                    SkuddVinkel = SkuddVinkel / 2;//Resten av formelen
+                    //SkuddVinkel = Mathf.Deg2Rad * 45;
+                    Vector3 retning = hit.point - BarrelEnd.position;
+                    //float retningLengde = retning.magnitude;
                     retning.y = 0;
                     transform.rotation = Quaternion.LookRotation(retning, Vector3.up);
-                    retning.y = Mathf.Sin(SkuddVinkel) * retning.magnitude;
 
+                    retning = retning.normalized * Mathf.Cos(SkuddVinkel);
+                    retning.y = Mathf.Sin(SkuddVinkel);
 
                     Debug.Log("Skudd vektor: " + retning);
+                    Debug.Log("SkuddVektorlengde: " + retning.magnitude);
                     Debug.Log("Skuddvinkel: "+SkuddVinkel * Mathf.Rad2Deg);
 
                     GameObject Kjell = Instantiate(Shell);
@@ -71,6 +80,7 @@ public class ArtileriShoter : MonoBehaviour {
                     Debug.Log("Fart: " + rgbd.velocity.ToString());
                     Debug.Log("Fartu: " + Utgangshatighet);
                     Debug.Log("Fartr: " + rgbd.velocity.magnitude);
+                    Debug.Log("Farty" + rgbd.velocity.y + ",  Fartxz" + Mathf.Sqrt(Mathf.Pow(rgbd.velocity.x, 2) + Mathf.Pow(rgbd.velocity.z, 2)));
                     //Kjell.GetComponent<ShotHandler>().AirTime  = Dist / new Vector2(rgbd.velocity.x, rgbd.velocity.z).magnitude;
 
                 }    
