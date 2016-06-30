@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Weapons { Unarmed, HK416, AK47, Minimi, TankCannon, ArtCannon }
+public enum Weapons { Unarmed, HK416, Minimi, AK47, RheinmetallL44, ArtCannon }
 public enum DamageType { Kinetic, Explosive }
 
 public class Weapon
@@ -10,7 +10,9 @@ public class Weapon
     public int damage;
     public int firerate;
     public int range;
-    public int burstLength;
+    public int burstLength = 0;
+    public Ammunition ammo;
+    public AmmunitionSize ammoSize;
     public DamageType damageType;
 
     public static Weapon Get(Weapons weapon)
@@ -21,16 +23,28 @@ public class Weapon
                 return new Unarmed();
             case Weapons.HK416:
                 return new HK416N();
-            case Weapons.AK47:
-                return new AK47();
             case Weapons.Minimi:
                 return new Minimi();
-            case Weapons.TankCannon:
-                return new TankCannon();
+            case Weapons.AK47:
+                return new AK47();
+            case Weapons.RheinmetallL44:
+                return new RheinmetallL44();
             case Weapons.ArtCannon:
                 return new ArtCannon();
         }
         return null;
+    }
+    public bool SetAmmo(Ammunition ammo)
+    {
+        if (ammoSize == ammo.size)
+        {
+            this.ammo = ammo;
+            return true;
+        }
+        else
+        {
+            return false;
+        }    
     }
 }
 public class Unarmed : Weapon
@@ -38,13 +52,14 @@ public class Unarmed : Weapon
     public Unarmed()
     {
         displayName = "Unarmed";
-        damage = 0; ;
+        damage = 0;
         firerate = 1;
         range = 1;
-        burstLength = 0;
-        damageType = DamageType.Kinetic;
     }
 }
+
+//////////////////// HÅNDVÅPEN ////////////////////
+
 public class HK416N : Weapon
 {
     public HK416N()
@@ -53,20 +68,8 @@ public class HK416N : Weapon
         damage = 50;;
         firerate = 30;
         range = 30;
-        burstLength = 0;
-        damageType = DamageType.Kinetic;
-    }
-}
-public class AK47 : Weapon
-{
-    public AK47()
-    {
-        displayName = "AK-47";
-        damage = 60;
-        firerate = 30;
-        range = 350;
-        burstLength = 0;
-        damageType = DamageType.Kinetic;
+        ammoSize = AmmunitionSize.NATO556x45;
+        ammo = new NATO556();
     }
 }
 public class Minimi : Weapon
@@ -77,20 +80,35 @@ public class Minimi : Weapon
         damage = 60;
         firerate = 300;
         range = 800;
-        burstLength = 0;
-        damageType = DamageType.Kinetic;
+        ammoSize = AmmunitionSize.NATO556x45;
+        ammo = new NATO556();
     }
 }
-public class TankCannon : Weapon
+public class AK47 : Weapon
 {
-    public TankCannon()
+    public AK47()
     {
-        displayName = "Tank Cannon";
+        displayName = "AK-47";
+        damage = 60;
+        firerate = 30;
+        range = 350;
+        ammoSize = AmmunitionSize.NATO762x51;
+        ammo = new NATO762();
+    }
+}
+
+//////////////////// KANONER ////////////////////
+
+public class RheinmetallL44 : Weapon
+{
+    public RheinmetallL44()
+    {
+        displayName = "Rheinmetall L/44 120mm";
         damage = 1000;
-        firerate = 6; //Skudd i minuttet
+        firerate = 6;
         range = 60;
-        burstLength = 0;
-        damageType = DamageType.Explosive;
+        ammoSize = AmmunitionSize.Tank120;
+        ammo = new DM63();
     }
 }
 public class ArtCannon : Weapon
@@ -99,9 +117,9 @@ public class ArtCannon : Weapon
     {
         displayName = "Artilery Cannon";
         damage = 5000;
-        firerate = 4; //Skudd i minuttet
+        firerate = 4;
         range = 500;
-        burstLength = 0;
-        damageType = DamageType.Explosive;
+        ammoSize = AmmunitionSize.Tank120;
+        ammo = new DM63();
     }
 }
