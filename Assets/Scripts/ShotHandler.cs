@@ -42,7 +42,7 @@ public class ShotHandler : MonoBehaviour
             CHealth health = hitColliders[i].GetComponent<CHealth>();
             if(health != null)
             {
-                health.Damage(Damage, DamageType.Explosive, (hitColliders[i].transform.position - transform.position).magnitude);
+                health.Damage(Damage, DamageType.Explosive, (hitColliders[i].GetComponent<Collider>().bounds.ClosestPoint(transform.position)-transform.position).magnitude);
                 print((hitColliders[i].transform.position - transform.position).magnitude);
             }
         }

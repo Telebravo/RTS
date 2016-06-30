@@ -10,6 +10,7 @@ public class Weapon
     public int damage;
     public int firerate;
     public int range;
+    public int minRange = 0;
     public int burstLength;
     public DamageType damageType;
 
@@ -101,6 +102,7 @@ public class ArtCannon : Weapon
         damage = 5000;
         firerate = 4; //Skudd i minuttet
         range = 500;
+        minRange = 20;
         burstLength = 0;
         damageType = DamageType.Explosive;
     }
