@@ -52,7 +52,7 @@ GameObject:
   - 65: {fileID: 6568822}
   - 23: {fileID: 2365302}
   m_Layer: 8
-  m_Name: Leoperd 2
+  m_Name: Leopard 2A4
   m_TagString: Team 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 105.4}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f51363b4d84ce744a9c56124a7f9aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
 --- !u!114 &11432274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714cc38f4ece90548b786faaf4ac3e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shot: {fileID: 100002, guid: 18cd0b8fc94a1f74e90e11f38b8fff7a, type: 2}
+  shell: {fileID: 100002, guid: 18cd0b8fc94a1f74e90e11f38b8fff7a, type: 2}
   target: {fileID: 0}
   turret: {fileID: 481708}
   barrelEnd: {fileID: 430756}
@@ -433,7 +434,7 @@ MonoBehaviour:
   startHealth: 1000
   size: 0
   optics: 0
-  armor: 20
+  armor: 90
   movementSpeed: 5
   rotationSpeed: 120
   _weapon: 4

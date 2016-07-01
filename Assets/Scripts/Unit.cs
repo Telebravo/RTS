@@ -16,16 +16,21 @@ public class Unit : MonoBehaviour
     public int movementSpeed = 5;
     public int rotationSpeed = 120;
     public Weapons _weapon = Weapons.HK416;
+    [HideInInspector]
     public Weapon weapon;
 
     public Collider[] collidersInRange;
     public List<Transform> enemiesInRange;
     public Transform closestEnemy;
 
+    //Unit layeret
+    int layer = 8;
+    int layermask;
+
     void Awake()
     {
         weapon = Weapon.Get(_weapon);
-        Debug.Log(gameObject.name + ": " + weapon.displayName);
+        layermask = 1 << layer;
     }
     void Start()
     {
@@ -39,7 +44,7 @@ public class Unit : MonoBehaviour
     {
         while (true)
         {
-            collidersInRange = Physics.OverlapSphere(transform.position, weapon.range);
+            collidersInRange = Physics.OverlapSphere(transform.position, weapon.range, layermask);
             enemiesInRange.Clear();
 
             closestEnemy = null;
