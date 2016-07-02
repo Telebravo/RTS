@@ -6,7 +6,6 @@ public class ArtileriShoter : MonoBehaviour
 {
     public float range = 1;
     public GameObject Shell;
-    public Transform BarrelEnd;
     public Transform BarrelRotation;
     public float barrelRotationSpeed;
 
@@ -67,7 +66,7 @@ public class ArtileriShoter : MonoBehaviour
                     }
                     SkuddVinkel = SkuddVinkel / 2;//Resten av formelen
                     //SkuddVinkel = Mathf.Deg2Rad * 45;
-                    retning = hit.point - BarrelEnd.position;
+                    retning = hit.point - unit.weapon.barrelEnd.position;
                     //float retningLengde = retning.magnitude;
                     retning.y = 0;
                     //transform.rotation = Quaternion.LookRotation(retning, Vector3.up);
@@ -114,7 +113,8 @@ public class ArtileriShoter : MonoBehaviour
 
                     GameObject Kjell = Instantiate(Shell);
                     Kjell.GetComponent<ShotHandler>().AirTime = 99999;
-                    Kjell.transform.position = BarrelEnd.position;
+                    Kjell.GetComponent<ShotHandler>().ammo = unit.weapon.ammo;
+                    Kjell.transform.position = unit.weapon.barrelEnd.position;
 
                     Rigidbody rgbd = Kjell.GetComponent<Rigidbody>();
                     rgbd.useGravity = true;

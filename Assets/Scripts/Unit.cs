@@ -15,17 +15,19 @@ public class Unit : MonoBehaviour
     public int armor = 1;
     public int movementSpeed = 5;
     public int rotationSpeed = 120;
-    public Weapons _weapon = Weapons.HK416;
     public Weapon weapon;
-
+    public GameObject weaponObject;
     public Collider[] collidersInRange;
     public List<Transform> enemiesInRange;
     public Transform closestEnemy;
 
+    //Unit layeret
+    int unitLayer = 8;
+    int layermask;
+
     void Awake()
     {
-        weapon = Weapon.Get(_weapon);
-        Debug.Log(gameObject.name + ": " + weapon.displayName);
+        layermask = 1 << unitLayer;
     }
     void Start()
     {
@@ -34,12 +36,18 @@ public class Unit : MonoBehaviour
         cHealth = GetComponent<CHealth>();
 
         StartCoroutine(UpdateEnemies());
+
+        SetWeapon(weapon);
     }
     IEnumerator UpdateEnemies()
     {
         while (true)
         {
-            collidersInRange = Physics.OverlapSphere(transform.position, weapon.range);
+            yield return new WaitForSeconds(0.5f);
+            if (weapon == null)
+                continue;
+
+            collidersInRange = Physics.OverlapSphere(transform.position, weapon.range, layermask);
             enemiesInRange.Clear();
 
             closestEnemy = null;
@@ -60,7 +68,24 @@ public class Unit : MonoBehaviour
                     }
                 }
             }
-            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void SetWeapon(Weapon newWeapon)
+    {
+        if (newWeapon == null)
+            return;
+        if (newWeapon.loadModel)
+        { 
+            GameObject newWeaponObject = GameObject.Instantiate(newWeapon.gameObject);
+            newWeaponObject.transform.position = weaponObject.transform.position;
+            newWeaponObject.transform.parent = weaponObject.transform.parent;
+            weaponObject = newWeaponObject;
+            weapon = newWeaponObject.GetComponent<Weapon>();
+        }
+        else
+        {
+            weapon = newWeapon;
         }
     }
 }

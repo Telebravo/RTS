@@ -14,15 +14,15 @@ public class CHealth : MonoBehaviour
         currentHealth = unit.startHealth;
     }
 
-    public void Damage(float amount, DamageType type, float distance = 1)
+    public void Damage(Ammunition ammo, float distance = 1)
     {
         if (isDead)
             return;
 
-        if (type == DamageType.Kinetic)
-            currentHealth -= amount / unit.armor;
-        if (type == DamageType.Explosive)
-            currentHealth -= amount / (unit.armor*Mathf.Pow(distance, 1.5f));
+        if (ammo.damageType == DamageType.Kinetic)
+            currentHealth -= ammo.damage * Mathf.Min(ammo.armorPenetration / unit.armor, 1);
+        if (ammo.damageType == DamageType.Explosive)
+            currentHealth -= ammo.damage / (unit.armor*Mathf.Max(Mathf.Pow(distance, 2)/10, 1));
 
         if (currentHealth <= 0)
         {

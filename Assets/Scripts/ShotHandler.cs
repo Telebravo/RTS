@@ -6,7 +6,7 @@ public class ShotHandler : MonoBehaviour
     public float Speed;
     public GameObject Explosion;
     public float Range;
-    public float Damage;
+    public Ammunition ammo;
     public float ExplosionRadius;
     public float AirTime;
     
@@ -30,20 +30,32 @@ public class ShotHandler : MonoBehaviour
     {
         if(!other.isTrigger)
         {
-            Explode();
+            if (ammo.damageType == DamageType.Kinetic)
+            {
+                CHealth health = other.GetComponent<CHealth>();
+                if (health != null)
+                {
+                    health.Damage(ammo);
+                    Destroy(gameObject);
+                }
+            }
+            else if (ammo.damageType == DamageType.Explosive)
+            {
+                Explode();
+            }
         }
     }
     void Explode()
     {
-        Instantiate(Explosion, transform.position, transform.rotation);
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+        GameObject explotionObject = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
+        explotionObject.transform.localScale = Vector3.one * ammo.explosionRadius * 2;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ammo.explosionRadius);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             CHealth health = hitColliders[i].GetComponent<CHealth>();
             if(health != null)
             {
-                health.Damage(Damage, DamageType.Explosive, (hitColliders[i].GetComponent<Collider>().bounds.ClosestPoint(transform.position)-transform.position).magnitude);
-                print((hitColliders[i].transform.position - transform.position).magnitude);
+                health.Damage(ammo, (hitColliders[i].bounds.ClosestPoint(transform.position) - transform.position).magnitude);
             }
         }
         Destroy(gameObject);

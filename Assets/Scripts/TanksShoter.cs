@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class TanksShoter : MonoBehaviour
 {
-    public GameObject Shot;
     Unit unit;
+
+    public GameObject shell;
     public Transform target;
     public Transform turret;
     public Transform barrelEnd;
-    float lastShootTime;
 
+    private float lastShootTime;
     private float range;
 
     void Start()
@@ -22,31 +23,45 @@ public class TanksShoter : MonoBehaviour
     void Update()
     {
         target = unit.closestEnemy;
+
         if (target != null)
         {
             Vector3 targetDirection = target.position - barrelEnd.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            if (turret.rotation.eulerAngles.y < targetRotation.eulerAngles.y + 3 && turret.rotation.eulerAngles.y > targetRotation.eulerAngles.y - 3)
+
+            if (turret.rotation.eulerAngles.y < targetRotation.eulerAngles.y + 1 && turret.rotation.eulerAngles.y > targetRotation.eulerAngles.y - 1)
             {
                 if (Time.time >= lastShootTime + (60 / unit.weapon.firerate))
                 {
-                    lastShootTime = Time.time;
-                    GameObject Shell = Instantiate<GameObject>(Shot);
-                    Shell.layer = 0;
-                    ShotHandler shotHandlerShell = Shell.GetComponent<ShotHandler>();
-                    Shell.GetComponent<Rigidbody>().velocity = ((target.position - barrelEnd.position).normalized) * shotHandlerShell.Speed;
-                    Shell.transform.position =  barrelEnd.position;
-                    Shell.transform.rotation = barrelEnd.rotation;
+                    RaycastHit hit;
 
-                    if ((target.position - barrelEnd.position).magnitude < unit.weapon.range)
+                    if (Physics.Raycast(barrelEnd.position, targetDirection, out hit, unit.weapon.range))
                     {
-                        range = (target.position - barrelEnd.position).magnitude;
+                        if (hit.transform == target)
+                        {
+                            lastShootTime = Time.time;
+
+                            GameObject newShell = Instantiate<GameObject>(shell);
+                            newShell.layer = 0;
+                            newShell.transform.position = barrelEnd.position;
+                            newShell.transform.rotation = barrelEnd.rotation;
+
+                            ShotHandler shotHandlerShell = newShell.GetComponent<ShotHandler>();
+                            newShell.GetComponent<Rigidbody>().velocity = ((target.position - barrelEnd.position).normalized) * shotHandlerShell.Speed;
+
+                            if ((target.position - barrelEnd.position).magnitude < unit.weapon.range)
+                            {
+                                range = (target.position - barrelEnd.position).magnitude;
+                            }
+                            else
+                            {
+                                range = unit.weapon.range;
+                            }
+
+                            shotHandlerShell.AirTime = unit.weapon.ammo.damageType == DamageType.Explosive ? range / shotHandlerShell.Speed : 99999;
+                            shotHandlerShell.ammo = unit.weapon.ammo;
+                        }
                     }
-                    else
-                    {
-                        range = unit.weapon.range;
-                    }
-                    shotHandlerShell.AirTime = range / shotHandlerShell.Speed;
                 }
             }
             else
