@@ -8,7 +8,6 @@ public class CMoveable : MonoBehaviour
     //Den magiske NavMeshAgenten
     NavMeshAgent agent;
     //Om den skal ha lov til å flytte
-    [HideInInspector]
     public bool canMove = true;
 
     //Ved start
