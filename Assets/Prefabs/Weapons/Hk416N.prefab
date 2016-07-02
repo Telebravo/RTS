@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: HK416N
+  name: HK416
   firerate: 30
   range: 100
   accuracy: 100

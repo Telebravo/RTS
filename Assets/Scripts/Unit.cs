@@ -23,12 +23,12 @@ public class Unit : MonoBehaviour
     public Transform closestEnemy;
 
     //Unit layeret
-    int layer = 8;
+    int unitLayer = 8;
     int layermask;
 
     void Awake()
     {
-        layermask = 1 << layer;
+        layermask = 1 << unitLayer;
     }
     void Start()
     {
@@ -44,6 +44,10 @@ public class Unit : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(0.5f);
+            if (weapon == null)
+                continue;
+
             collidersInRange = Physics.OverlapSphere(transform.position, weapon.range, layermask);
             enemiesInRange.Clear();
 
@@ -65,7 +69,6 @@ public class Unit : MonoBehaviour
                     }
                 }
             }
-            yield return new WaitForSeconds(0.5f);
         }
     }
 

@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: AK47
+  name: Ak47
   firerate: 30
   range: 100
   accuracy: 90

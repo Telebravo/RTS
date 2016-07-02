@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0d29c1f19de9b49b645e30e88a99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dispayName: 7.62 NATO
-  size: 2
+  name: 7.62 NATO
+  size: 1
   damageType: 0
   damage: 76
   armorPenetration: 2

@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0d29c1f19de9b49b645e30e88a99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dispayName: Test HE
-  size: 4
+  name: Test HE
+  size: 3
   damageType: 1
   damage: 2000
   armorPenetration: 1
