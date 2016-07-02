@@ -20,8 +20,8 @@ public class ArtileriShoter : MonoBehaviour
     RaycastHit hit;
     new Camera camera;
     Vector3 retning;
-
-
+    Vector3 retningS;
+    bool aligned = false;
     // Use this for initialization
     void Start()
     {
@@ -35,6 +35,7 @@ public class ArtileriShoter : MonoBehaviour
 
         camera = Camera.main;
         retning = Vector3.down;
+        
     }
     // Update is called once per frame
     void Update()
@@ -70,26 +71,45 @@ public class ArtileriShoter : MonoBehaviour
                     //float retningLengde = retning.magnitude;
                     retning.y = 0;
                     //transform.rotation = Quaternion.LookRotation(retning, Vector3.up);
+                    aligned = false;
+                    retningS = retning.normalized * Mathf.Cos(SkuddVinkel);
+                    retningS.y = Mathf.Sin(SkuddVinkel);
+                    retningS = new Vector3(retningS.x - transform.rotation.x,/* retningS.y - transform.rotation.y*/0,/* retningS.z - transform.rotation.z*/0);
                 }
             }
         }
         if (retning != Vector3.down)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(retning, Vector3.up), 45f * Time.deltaTime);
 
-            //Om det er innafor
-            if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(retning, Vector3.up)) < 1)
+            if (!aligned)
             {
-                Quaternion towerRotation = Quaternion.Euler(BarrelRotation.rotation.eulerAngles.x -90+SkuddVinkel * Mathf.Rad2Deg,BarrelRotation.rotation.eulerAngles.y,BarrelRotation.rotation.eulerAngles.z);
-                BarrelRotation.rotation = Quaternion.RotateTowards(BarrelRotation.rotation, towerRotation, barrelRotationSpeed * Time.deltaTime);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(retning, Vector3.up), 45f * Time.deltaTime);
+                Quaternion towerRotation = Quaternion.Euler(-180 + SkuddVinkel * Mathf.Rad2Deg, 90, 0);
+            }
+            //Om det er innafor
+            if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(retning, Vector3.up)) < 1 || aligned)
+            {
+                aligned = true;
+                Debug.Log("retningS og BarrelRotation: " + retningS + " og " + BarrelRotation.rotation.eulerAngles);
+                //BarrelRotation.rotation = Quaternion.LookRotation(retningS, Vector3.up) * Quaternion.Inverse(transform.rotation);
+                BarrelRotation.localRotation = Quaternion.Euler( new Vector3(- SkuddVinkel * Mathf.Rad2Deg, 0, 0));//It works, eller i hvertfall nærme nok tror jeg
 
-                if (Quaternion.Angle(BarrelRotation.rotation, towerRotation) < 5)
+                //BarrelRotation.rotation = Quaternion.RotateTowards(BarrelRotation.rotation, Quaternion.LookRotation(retningS,Vector3.up) * Quaternion.Inverse(transform.rotation), 45f * Time.deltaTime);
+                //Quaternion towerRotation = Quaternion.Euler(-180 + SkuddVinkel * Mathf.Rad2Deg, 90, 0);
+                /*
+                Debug.Log("Barrel Rotation før:" + BarrelRotation.rotation);
+                BarrelRotation.Rotate(Vector3.right, 45f, Space.Self);
+                BarrelRotation.rotation.lo
+                //BarrelRotation.rotation = Quaternion.RotateTowards(BarrelRotation.rotation, towerRotation, barrelRotationSpeed * Time.deltaTime);
+                Debug.Log("Barrel Rotation etter:" + BarrelRotation.rotation);*/
+
+                if (Quaternion.Angle(BarrelRotation.rotation, Quaternion.LookRotation(retningS, Vector3.up) * Quaternion.Inverse(transform.rotation)) < 5)
                 {
                     retning = retning.normalized * Mathf.Cos(SkuddVinkel);
                     retning.y = Mathf.Sin(SkuddVinkel);
 
-                    Debug.Log("Skudd vektor: " + retning);
-                    Debug.Log("SkuddVektorlengde: " + retning.magnitude);
+                    //Debug.Log("Skudd vektor: " + retning);
+                    //Debug.Log("SkuddVektorlengde: " + retning.magnitude);
                     Debug.Log("Skuddvinkel: " + SkuddVinkel * Mathf.Rad2Deg);
 
                     GameObject Kjell = Instantiate(Shell);
@@ -108,6 +128,7 @@ public class ArtileriShoter : MonoBehaviour
                     //Kjell.GetComponent<ShotHandler>().AirTime  = Dist / new Vector2(rgbd.velocity.x, rgbd.velocity.z).magnitude;
 
                     retning = Vector3.down;
+                    //aligned = false;
                 }
             }
         }
