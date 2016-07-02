@@ -54,7 +54,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185452}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,17 +130,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 185452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3972086d172ba48a8488f06fa52b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: M72 Law
-  firerate: 2
-  range: 600
+  firerate: 6
+  range: 800
   accuracy: 100
   burstLength: 0
   ammo: {fileID: 11487422, guid: b9533264acd58394f97a1abb449fcedd, type: 2}
   ammoSize: 3
   barrelEnd: {fileID: 435552}
+  minRange: 20
+  loadModel: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

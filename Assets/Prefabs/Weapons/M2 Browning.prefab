@@ -1604,17 +1604,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 180848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3972086d172ba48a8488f06fa52b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: M2 Browning
-  firerate: 90
+  firerate: 120
   range: 1000
-  accuracy: 70
+  accuracy: 80
   burstLength: 5
   ammo: {fileID: 11403876, guid: 7f8baf0f1e9a8f24cb01147a87905feb, type: 2}
-  ammoSize: 3
+  ammoSize: 2
   barrelEnd: {fileID: 471842}
+  minRange: 0
+  loadModel: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
