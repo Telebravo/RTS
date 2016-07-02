@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum AmmunitionSize { None, NATO556x45, NATO762x51, NATO127x99, Tank120 }
+public enum AmmunitionSize { NATO556x45, NATO762x51, NATO127x99, Tank120 }
 public enum DamageType { Kinetic, Explosive }
 
-public class Ammunition
+public class Ammunition : MonoBehaviour
 {
     public string dispayName;
     public AmmunitionSize size;
@@ -12,14 +12,6 @@ public class Ammunition
     public float damage = 0;
     public float armorPenetration = 1;
     public float explosionRadius = 0;
-}
-public class NoAmmo :Ammunition
-{
-    public NoAmmo()
-    {
-        dispayName = "None";
-        size = AmmunitionSize.None;
-    }
 }
 public class NATO556 : Ammunition
 {

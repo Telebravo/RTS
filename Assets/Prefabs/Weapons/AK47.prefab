@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421832}
+  - 114: {fileID: 11492504}
   m_Layer: 0
   m_Name: AK47
   m_TagString: Untagged
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 1, z: 50}
+  m_LocalPosition: {x: 37.582287, y: 0, z: 35.62654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -185,6 +186,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161006}
   m_Mesh: {fileID: 4300000, guid: 83ad25840f0793046afb951386cceaf4, type: 3}
+--- !u!114 &11492504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: AK47
+  firerate: 30
+  range: 100
+  accuracy: 90
+  burstLength: 0
+  ammo: {fileID: 11403876, guid: ad1ea0b9191eb514ebea9b9c70b15e4d, type: 2}
+  ammoSize: 2
+  barrelEnd: {fileID: 474058}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

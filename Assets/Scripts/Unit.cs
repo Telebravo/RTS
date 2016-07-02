@@ -15,9 +15,8 @@ public class Unit : MonoBehaviour
     public int armor = 1;
     public int movementSpeed = 5;
     public int rotationSpeed = 120;
-    public Weapons _weapon = Weapons.HK416;
-    [HideInInspector]
     public Weapon weapon;
+    public GameObject weaponObject;
 
     public Collider[] collidersInRange;
     public List<Transform> enemiesInRange;
@@ -29,7 +28,6 @@ public class Unit : MonoBehaviour
 
     void Awake()
     {
-        weapon = Weapon.Get(_weapon);
         layermask = 1 << layer;
     }
     void Start()
@@ -39,6 +37,8 @@ public class Unit : MonoBehaviour
         cHealth = GetComponent<CHealth>();
 
         StartCoroutine(UpdateEnemies());
+
+        SetWeapon(weapon);
     }
     IEnumerator UpdateEnemies()
     {
@@ -67,5 +67,19 @@ public class Unit : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void SetWeapon(Weapon newWeapon)
+    {
+        if (newWeapon == null)
+            return;
+
+        GameObject newWeaponObject = GameObject.Instantiate(newWeapon.gameObject);
+        newWeaponObject.transform.position = weaponObject.transform.position;
+        newWeaponObject.transform.parent = weaponObject.transform.parent;
+        weaponObject = newWeaponObject;
+
+        weapon = newWeaponObject.GetComponent<Weapon>();
+        GetComponent<InfantryShooting>().barrelEnd = weapon.barrelEnd;
     }
 }

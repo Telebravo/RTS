@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum Weapons { Unarmed, HK416, Minimi, M2Browning, RheinmetallL44, ArtCannon }
-
-public class Weapon
+public class Weapon : MonoBehaviour
 {
     public string displayName;
     public int firerate;
@@ -12,26 +10,8 @@ public class Weapon
     public int burstLength = 0;
     public Ammunition ammo;
     public AmmunitionSize ammoSize;
+    public Transform barrelEnd;
 
-    public static Weapon Get(Weapons weapon)
-    {
-        switch (weapon)
-        {
-            case Weapons.Unarmed:
-                return new Unarmed();
-            case Weapons.HK416:
-                return new HK416N();
-            case Weapons.Minimi:
-                return new Minimi();
-            case Weapons.M2Browning:
-                return new M2Browning();
-            case Weapons.RheinmetallL44:
-                return new RheinmetallL44();
-            case Weapons.ArtCannon:
-                return new ArtCannon();
-        }
-        return null;
-    }
     public bool SetAmmo(Ammunition ammo)
     {
         if (ammo.size == ammoSize)
@@ -45,7 +25,8 @@ public class Weapon
         }    
     }
 }
-public class Unarmed : Weapon
+
+/*public class Unarmed : Weapon
 {
     public Unarmed()
     {
@@ -121,4 +102,4 @@ public class ArtCannon : Weapon
         ammoSize = AmmunitionSize.Tank120;
         ammo = new TestHE();
     }
-}
+}*/

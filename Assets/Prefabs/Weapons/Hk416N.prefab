@@ -8,8 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400136}
+  - 114: {fileID: 11450856}
   m_Layer: 0
-  m_Name: Hk416N
+  m_Name: HK416N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.5, y: 1, z: 50}
+  m_LocalPosition: {x: 42.552505, y: 0, z: 31.820965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -249,6 +250,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151410}
   m_Mesh: {fileID: 4300004, guid: cb7f4bab9b0a7be47b3172d4586da90f, type: 3}
+--- !u!114 &11450856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: HK416N
+  firerate: 30
+  range: 100
+  accuracy: 100
+  burstLength: 0
+  ammo: {fileID: 11485994, guid: b32bfac6faa372041a2e96da05596928, type: 2}
+  ammoSize: 1
+  barrelEnd: {fileID: 433314}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
