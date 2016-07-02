@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -289,7 +289,7 @@ MonoBehaviour:
   armor: 1
   movementSpeed: 5
   rotationSpeed: 120
-  weapon: {fileID: 11487518, guid: 01f33180113572b45a88bdc7555ece31, type: 2}
+  weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 172144}
   collidersInRange: []
   enemiesInRange: []
