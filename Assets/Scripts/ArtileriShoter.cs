@@ -92,7 +92,7 @@ public class ArtileriShoter : MonoBehaviour
                 aligned = true;
                 Debug.Log("retningS og BarrelRotation: " + retningS + " og " + BarrelRotation.rotation.eulerAngles);
                 //BarrelRotation.rotation = Quaternion.LookRotation(retningS, Vector3.up) * Quaternion.Inverse(transform.rotation);
-                BarrelRotation.localRotation = Quaternion.Euler( new Vector3(- SkuddVinkel * Mathf.Rad2Deg, 0, 0));//It works, eller i hvertfall nærme nok tror jeg
+                BarrelRotation.localRotation = Quaternion.RotateTowards(BarrelRotation.localRotation, Quaternion.Euler( new Vector3(- SkuddVinkel * Mathf.Rad2Deg, 0, 0)),barrelRotationSpeed * Time.deltaTime);//It works, eller i hvertfall nærme nok tror jeg
 
                 //BarrelRotation.rotation = Quaternion.RotateTowards(BarrelRotation.rotation, Quaternion.LookRotation(retningS,Vector3.up) * Quaternion.Inverse(transform.rotation), 45f * Time.deltaTime);
                 //Quaternion towerRotation = Quaternion.Euler(-180 + SkuddVinkel * Mathf.Rad2Deg, 90, 0);
