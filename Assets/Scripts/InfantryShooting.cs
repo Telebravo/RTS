@@ -54,7 +54,7 @@ public class InfantryShooting : MonoBehaviour
                             }
                             else
                             {
-                                Debug.DrawRay(barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.2f);
+                                Debug.DrawRay(barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.1f);
                             }
                         }
                     }
