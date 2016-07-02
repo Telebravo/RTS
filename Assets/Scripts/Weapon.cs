@@ -52,6 +52,8 @@ public class Unarmed : Weapon
         displayName = "Unarmed";
         firerate = 1;
         range = 1;
+        ammoSize = AmmunitionSize.None;
+        ammo = new NoAmmo();
     }
 }
 
