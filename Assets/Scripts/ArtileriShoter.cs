@@ -103,7 +103,7 @@ public class ArtileriShoter : MonoBehaviour
                 //BarrelRotation.rotation = Quaternion.RotateTowards(BarrelRotation.rotation, towerRotation, barrelRotationSpeed * Time.deltaTime);
                 Debug.Log("Barrel Rotation etter:" + BarrelRotation.rotation);*/
 
-                if (Quaternion.Angle(BarrelRotation.rotation, Quaternion.LookRotation(retningS, Vector3.up) * Quaternion.Inverse(transform.rotation)) < 5)
+                if (Quaternion.Angle(BarrelRotation.localRotation, Quaternion.Euler(new Vector3(-SkuddVinkel * Mathf.Rad2Deg, 0, 0))) < 5)
                 {
                     retning = retning.normalized * Mathf.Cos(SkuddVinkel);
                     retning.y = Mathf.Sin(SkuddVinkel);
