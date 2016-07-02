@@ -82,7 +82,10 @@ public class CameraControlls : MonoBehaviour
             holdOverObject = hit.transform;
             //Ser om det kan velges
             cSelectable = holdOverObject.GetComponent<CSelectable>();
-            if (cSelectable != null) ;
+            if (cSelectable != null)
+            {
+
+            }
 
         }
 
