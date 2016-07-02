@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400136}
   - 114: {fileID: 11450856}
   m_Layer: 0
-  m_Name: HK416N
+  m_Name: Hk416N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

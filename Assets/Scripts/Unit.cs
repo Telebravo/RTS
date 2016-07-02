@@ -17,7 +17,6 @@ public class Unit : MonoBehaviour
     public int rotationSpeed = 120;
     public Weapon weapon;
     public GameObject weaponObject;
-
     public Collider[] collidersInRange;
     public List<Transform> enemiesInRange;
     public Transform closestEnemy;
@@ -76,13 +75,17 @@ public class Unit : MonoBehaviour
     {
         if (newWeapon == null)
             return;
-
-        GameObject newWeaponObject = GameObject.Instantiate(newWeapon.gameObject);
-        newWeaponObject.transform.position = weaponObject.transform.position;
-        newWeaponObject.transform.parent = weaponObject.transform.parent;
-        weaponObject = newWeaponObject;
-
-        weapon = newWeaponObject.GetComponent<Weapon>();
-        GetComponent<InfantryShooting>().barrelEnd = weapon.barrelEnd;
+        if (newWeapon.loadModel)
+        { 
+            GameObject newWeaponObject = GameObject.Instantiate(newWeapon.gameObject);
+            newWeaponObject.transform.position = weaponObject.transform.position;
+            newWeaponObject.transform.parent = weaponObject.transform.parent;
+            weaponObject = newWeaponObject;
+            weapon = newWeaponObject.GetComponent<Weapon>();
+        }
+        else
+        {
+            weapon = newWeapon;
+        }
     }
 }

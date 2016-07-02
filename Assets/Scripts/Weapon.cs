@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour
     public Ammunition ammo;
     public AmmunitionSize ammoSize = AmmunitionSize.NATO556x45;
     public Transform barrelEnd;
+    public float minRange = 0;
+    public bool loadModel = true;
 
     public bool SetAmmo(Ammunition ammo)
     {
