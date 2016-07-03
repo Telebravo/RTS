@@ -68,6 +68,8 @@ GameObject:
   - 114: {fileID: 11428340}
   - 114: {fileID: 11498114}
   - 136: {fileID: 13673824}
+  - 114: {fileID: 11491498}
+  - 114: {fileID: 11438454}
   m_Layer: 8
   m_Name: Infantry
   m_TagString: Team 1
@@ -95,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.148674, y: 1, z: 22.33}
+  m_LocalPosition: {x: 10.036497, y: 1, z: 40.391586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -234,6 +236,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11438454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc64f3dc0f1c724bbc28dd9d00e609d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11459804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,6 +280,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11491498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a5ab95d6829b4f94d21a198f5fbe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iStilling: 0
+  iBevegelse: 0
 --- !u!114 &11498114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,13 +310,15 @@ MonoBehaviour:
   displayName: Infantry
   startHealth: 100
   size: 1
-  optics: 10
+  optics: 1000
+  camo: 0
   armor: 1
   movementSpeed: 5
   rotationSpeed: 120
   weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 172144}
   icon: {fileID: 2800000, guid: 812ae813ac0b613489405fc657371f42, type: 3}
+  visibleParts: {fileID: 0}
   collidersInRange: []
   enemiesInRange: []
   closestEnemy: {fileID: 0}
