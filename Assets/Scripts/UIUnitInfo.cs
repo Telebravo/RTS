@@ -8,8 +8,10 @@ public class UIUnitInfo : MonoBehaviour
     public GameObject units;
     public GameObject unitPanel;
     public List<GameObject> unitPanels;
+
+    public GameObject[] unitInfoPanels;
     public Image unitInfoImage;
-    public List<Text> unitInfo;
+    public List<Text> unitInfoText;
 
 	void Start ()
     {
@@ -38,34 +40,53 @@ public class UIUnitInfo : MonoBehaviour
         //Unit info
         if (GameManager.selectedUnit != null)
         {
+            for (int i = 0; i < unitInfoPanels.Length; i++)
+            {
+                if (!unitInfoPanels[i].activeInHierarchy)
+                    unitInfoPanels[i].SetActive(true);
+            }
+
             unitInfoImage.gameObject.SetActive(true);
             unitInfoImage.sprite = Sprite.Create(GameManager.selectedUnit.icon, new Rect(Vector2.zero, new Vector2(194, 259)), Vector2.zero);
 
-            unitInfo[0].text = GameManager.selectedUnit.displayName.ToString();
-            unitInfo[1].text = GameManager.selectedUnit.cHealth.currentHealth.ToString();
+            unitInfoText[0].text = GameManager.selectedUnit.displayName.ToString();
+            unitInfoText[1].text = GameManager.selectedUnit.cHealth.currentHealth.ToString();
 
             if (GameManager.selectedUnit.weapon != null)
             {
-                unitInfo[2].text = GameManager.selectedUnit.weapon.name;
-                unitInfo[3].text = GameManager.selectedUnit.weapon.ammoSize.ToString();
+                unitInfoText[2].text = GameManager.selectedUnit.weapon.name;
+                unitInfoText[3].text = GameManager.selectedUnit.weapon.ammoSize.ToString();
             }
             else
             {
-                unitInfo[2].text = "-";
-                unitInfo[3].text = "-";
+                unitInfoText[2].text = "-";
+                unitInfoText[3].text = "-";
             }
-            unitInfo[4].text = GameManager.selectedUnit.armor.ToString();
-            unitInfo[5].text = GameManager.selectedUnit.movementSpeed.ToString();
+            unitInfoText[4].text = GameManager.selectedUnit.armor.ToString();
+            unitInfoText[5].text = GameManager.selectedUnit.movementSpeed.ToString();
         }
         else
         {
-            unitInfoImage.gameObject.SetActive(false);
-            for (int i = 0; i <= 5; i++)
+            for (int i = 0; i < unitInfoPanels.Length; i++)
             {
-                unitInfo[i].text = "";
+                if(unitInfoPanels[i].activeInHierarchy)
+                    unitInfoPanels[i].SetActive(false);
             }
         }
+        //Skjuler panelene som ikke er i bruk
+        for (int i = GameManager.controlls.selectedObjects.Count; i < GameManager.controlls.selectionLimit; i++)
+        {
+            if (unitPanels[i].activeInHierarchy)
+                unitPanels[i].SetActive(false);
+        }
 
+        if(GameManager.controlls.selectedObjects.Count <= 0)
+        {
+            return;
+        }
+
+        float unitPanelWidth = units.GetComponent<RectTransform>().rect.width-100;
+        float widthPerPanel = Mathf.Min(unitPanelWidth / GameManager.controlls.selectedObjects.Count, 100);
         //Units 
         Unit unit;
         for (int i = 0; i < GameManager.controlls.selectedObjects.Count; i++)
@@ -75,7 +96,7 @@ public class UIUnitInfo : MonoBehaviour
                 unitPanels[i].SetActive(true);
 
             //Setter posisjonen
-            unitPanels[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, i * 100, 100);
+            unitPanels[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, i * widthPerPanel, 100);
 
             //Henter unit komponenten
             unit = GameManager.controlls.selectedObjects[i].GetComponent<Unit>();
@@ -89,12 +110,6 @@ public class UIUnitInfo : MonoBehaviour
             //Setter størrelsen på helath baren
             unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth*n);
 
-        }
-        //Skjuler panelene som ikke er i bruk
-        for (int i = GameManager.controlls.selectedObjects.Count; i < GameManager.controlls.selectionLimit; i++)
-        {
-            if (unitPanels[i].activeInHierarchy)
-                unitPanels[i].SetActive(false);
         }
     }
 }

@@ -39,14 +39,20 @@ public class CameraControlls : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     //Unit layeret
-    int layer = 8;
-    int layermask;
+    int unitLayer = 8;
+    int unitLayermask;
+    //UI layer
+    int UILayer = 5;
+    int unitAndUILayermask;
+
+    bool onUI = false;
 
     //Ved start, liksom litt før den andre start greien
     void Awake()
     {
         //Layermask for unit-layeret
-        layermask = 1 << layer;
+        unitLayermask = 1 << unitLayer;
+        unitAndUILayermask = 1 << unitLayer | 1 << UILayer;
 
         //Initsierer stuff
         visibleObjects = new List<Transform>();
@@ -70,12 +76,17 @@ public class CameraControlls : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
+        Selection();
+        Movement();
+    }
+    void Selection()
+    {
         //Finner objektet man paker på
         holdOverObject = null;
         //Lager er ray fra kamera til posisjonen i verdenen man peker på med musen
         ray = camera.ScreenPointToRay(Input.mousePosition);
         //Ser om vi treffer noen units
-        if (Physics.Raycast(ray, out hit, 10000, layermask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(ray, out hit, 10000, unitLayermask, QueryTriggerInteraction.Ignore))
         {
             //Lagrer treffpunket
             mouseWorldPositionUnitLayer = hit.point;
@@ -106,6 +117,14 @@ public class CameraControlls : MonoBehaviour
         //Når man trykker ned venste museknapp
         if (Input.GetMouseButtonDown(0))
         {
+            //Gjør ingen ting om musen er over UIet
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
+            {
+                onUI = true;
+                return;
+            }
+            onUI = false;
+
             //Posisjonen når museknapen ble trykket ned
             mp1 = Input.mousePosition;
             selectionAreaPanel.gameObject.SetActive(true);
@@ -127,6 +146,20 @@ public class CameraControlls : MonoBehaviour
             //Gjemmer grafikken
             selectionAreaPanel.gameObject.SetActive(false);
 
+            if(onUI)
+            {
+                return;
+            }
+            onUI = false;
+            //Om man bare har trykket
+            if (Vector2.Distance(mp1, mp2) < 10)
+            {
+                //Ignorerer det om musen er over UIet
+                if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
+                { 
+                    return;
+                }
+            }
             //Husker de forige valgte objektene
             previouslySelectedObjects = new List<Transform>(selectedObjects);
             selectedObjects.Clear();
@@ -142,7 +175,7 @@ public class CameraControlls : MonoBehaviour
                 //Finner posisjon i verden utifra musepeker
                 ray = camera.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, 10000, layermask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(ray, out hit, 10000, unitAndUILayermask, QueryTriggerInteraction.Ignore))
                 {
                     //Ser om objektet kan valges
                     cSelectable = hit.transform.GetComponent<CSelectable>();
@@ -197,7 +230,10 @@ public class CameraControlls : MonoBehaviour
             }
             //Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
         }
+    }
 
+    void Movement()
+    {
         //FLYTTE UNIT
         if (Input.GetMouseButtonUp(1))
         {
@@ -224,6 +260,7 @@ public class CameraControlls : MonoBehaviour
             }
         }
     }
+
     void Move()
     {
         //Finner posisjon i verden utifra musepeker
@@ -251,6 +288,7 @@ public class CameraControlls : MonoBehaviour
             transfom.GetComponent<CSelectable>().SendMessage("Deselected");
         }
     }
+
     public void SetVisible(Transform transform, bool visible)
     {
         if (visible)
@@ -264,6 +302,7 @@ public class CameraControlls : MonoBehaviour
             GameManager.controlls.visibleObjects.Remove(transform);
         }
     }
+
     public static Rect GUIRectWithObject(GameObject go)
     {
         Vector3 cen = go.GetComponent<Renderer>().bounds.center;
