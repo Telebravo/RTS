@@ -317,8 +317,8 @@ MonoBehaviour:
   rotationSpeed: 120
   weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 172144}
+  icon: {fileID: 2800000, guid: 812ae813ac0b613489405fc657371f42, type: 3}
   visibleParts: {fileID: 0}
-  icon: {fileID: 0}
   collidersInRange: []
   enemiesInRange: []
   closestEnemy: {fileID: 0}
