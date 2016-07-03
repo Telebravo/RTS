@@ -195,7 +195,7 @@ public class CameraControlls : MonoBehaviour
                     //Sier ifra til objektet at det ikke er valgt lenger
                     obj.GetComponent<CSelectable>().SendMessage("Deselected");
             }
-            Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
+            //Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
         }
 
         //FLYTTE UNIT
