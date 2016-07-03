@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 028f8dc5f2fa6a449ba8f8558ce36289
-timeCreated: 1467318277
+guid: 411012d58e4dd19479a52e6c73b4f1b1
+timeCreated: 1467394384
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -168,7 +168,7 @@ ModelImporter:
     4300060: Cube.003
     4300062: Cube.004
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -192,7 +192,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
@@ -208,7 +208,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0

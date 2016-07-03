@@ -17,6 +17,9 @@ public class Unit : MonoBehaviour
     public int rotationSpeed = 120;
     public Weapon weapon;
     public GameObject weaponObject;
+
+    public Texture2D icon;
+
     public Collider[] collidersInRange;
     public List<Transform> enemiesInRange;
     public Transform closestEnemy;
