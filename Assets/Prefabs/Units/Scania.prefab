@@ -1445,6 +1445,7 @@ MonoBehaviour:
   rotationSpeed: 120
   weapon: {fileID: 0}
   weaponObject: {fileID: 0}
+  icon: {fileID: 0}
   collidersInRange: []
   enemiesInRange: []
   closestEnemy: {fileID: 0}

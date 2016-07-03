@@ -224,6 +224,8 @@ GameObject:
   - 114: {fileID: 11472350}
   - 95: {fileID: 9555934}
   - 208: {fileID: 20880628}
+  - 114: {fileID: 11450474}
+  - 114: {fileID: 11489400}
   m_Layer: 8
   m_Name: K2IS Container
   m_TagString: Team 1
@@ -496,10 +498,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171292}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 30.795713, y: 1, z: 37.591255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.24117, y: 1, z: 49.286037}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 422794}
   - {fileID: 405288}
@@ -1078,6 +1080,33 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11450474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800621c0c2b27af45900b9860485efd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cSelectable: {fileID: 0}
+  cMoveable: {fileID: 0}
+  cHealth: {fileID: 0}
+  displayName: K2IS Container
+  startHealth: 100
+  size: 1
+  optics: 1
+  armor: 10
+  movementSpeed: 0
+  rotationSpeed: 0
+  weapon: {fileID: 0}
+  weaponObject: {fileID: 0}
+  icon: {fileID: 0}
+  collidersInRange: []
+  enemiesInRange: []
+  closestEnemy: {fileID: 0}
 --- !u!114 &11469978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1137,6 +1166,19 @@ MonoBehaviour:
   selectionCanvas: {fileID: 22415136}
   CallComponent: K2ISContainer
   CallFunction: Select
+--- !u!114 &11489400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda3ebe9505c5514e9e54973f7ebf2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  currentHealth: 0
 --- !u!208 &20880628
 NavMeshObstacle:
   m_ObjectHideFlags: 1

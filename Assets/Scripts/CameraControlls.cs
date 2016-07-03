@@ -32,7 +32,7 @@ public class CameraControlls : MonoBehaviour
     CMoveable cMoveable;
 
     //Kameraet
-    new public static Camera camera;
+    public static Camera camera;
     Vector3 mp1, mp2;
 
     //Raycast stuff

@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  barrelEnd: {fileID: 0}
 --- !u!114 &11412592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,6 +290,7 @@ MonoBehaviour:
   rotationSpeed: 120
   weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 172144}
+  icon: {fileID: 0}
   collidersInRange: []
   enemiesInRange: []
   closestEnemy: {fileID: 0}
