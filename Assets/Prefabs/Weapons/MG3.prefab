@@ -130,17 +130,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 169132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3972086d172ba48a8488f06fa52b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: MG3
-  firerate: 300
+  firerate: 180
   range: 100
   accuracy: 80
   burstLength: 10
   ammo: {fileID: 11403876, guid: ad1ea0b9191eb514ebea9b9c70b15e4d, type: 2}
-  ammoSize: 2
+  ammoSize: 1
   barrelEnd: {fileID: 465728}
+  minRange: 0
+  loadModel: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

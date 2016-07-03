@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.552505, y: 0, z: 31.820965}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 122862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a673ba91ecab042b15866dee4badbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3972086d172ba48a8488f06fa52b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: HK416
@@ -267,8 +267,10 @@ MonoBehaviour:
   accuracy: 100
   burstLength: 0
   ammo: {fileID: 11485994, guid: b32bfac6faa372041a2e96da05596928, type: 2}
-  ammoSize: 1
+  ammoSize: 0
   barrelEnd: {fileID: 433314}
+  minRange: 0
+  loadModel: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

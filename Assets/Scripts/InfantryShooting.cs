@@ -8,7 +8,6 @@ public class InfantryShooting : MonoBehaviour
     CHealth hitHealth;
 
     public Transform target;
-    public Transform barrelEnd;
 
     float lastShootTime;
 
@@ -24,7 +23,7 @@ public class InfantryShooting : MonoBehaviour
 
         if (target != null)
         {
-            Vector3 targetDirection = target.position - barrelEnd.position;
+            Vector3 targetDirection = target.position - unit.weapon.barrelEnd.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
             if (transform.rotation.eulerAngles.y < targetRotation.eulerAngles.y + 3 && transform.rotation.eulerAngles.y > targetRotation.eulerAngles.y - 3)
@@ -33,7 +32,7 @@ public class InfantryShooting : MonoBehaviour
                 {
                     RaycastHit hit;
 
-                    if (Physics.Raycast(barrelEnd.position, targetDirection, out hit, unit.weapon.range))
+                    if (Physics.Raycast(unit.weapon.barrelEnd.position, targetDirection, out hit, unit.weapon.range))
                     {
                         if (hit.transform == target)
                         {
@@ -41,9 +40,9 @@ public class InfantryShooting : MonoBehaviour
 
                             Vector3 shootDirection = targetDirection.normalized + (new Vector3(Random.value - 0.5f, Random.value - 0.5f, Random.value - 0.5f)*2 / unit.weapon.accuracy);
 
-                            if (Physics.Raycast(barrelEnd.position, shootDirection, out hit, unit.weapon.range))
+                            if (Physics.Raycast(unit.weapon.barrelEnd.position, shootDirection, out hit, unit.weapon.range))
                             {
-                                Debug.DrawLine(barrelEnd.position, hit.point, Color.yellow, 0.1f);
+                                Debug.DrawLine(unit.weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
 
                                 hitHealth = hit.transform.GetComponent<CHealth>();
 
@@ -54,7 +53,7 @@ public class InfantryShooting : MonoBehaviour
                             }
                             else
                             {
-                                Debug.DrawRay(barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.1f);
+                                Debug.DrawRay(unit.weapon.barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.2f);
                             }
                         }
                     }
