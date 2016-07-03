@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CameraControlls : MonoBehaviour
 {
@@ -156,7 +157,8 @@ public class CameraControlls : MonoBehaviour
             {
                 //Ignorerer det om musen er over UIet
                 if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
-                { 
+                {
+                    UIUnitInfo.UpdateSelection();
                     return;
                 }
             }
@@ -228,7 +230,9 @@ public class CameraControlls : MonoBehaviour
                     //Sier ifra til objektet at det ikke er valgt lenger
                     obj.GetComponent<CSelectable>().SendMessage("Deselected");
             }
-            //Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
+
+            if(!selectedObjects.Equals(previouslySelectedObjects))
+                UIUnitInfo.SelectionChanged();
         }
     }
 

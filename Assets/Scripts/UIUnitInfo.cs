@@ -5,34 +5,31 @@ using System.Collections.Generic;
 
 public class UIUnitInfo : MonoBehaviour
 {
+    //Units
     public GameObject units;
     public GameObject unitPanel;
-    public List<GameObject> unitPanels;
+    public static List<GameObject> unitPanels;
 
+    //Selected unit info
     public GameObject[] unitInfoPanels;
     public Image unitInfoImage;
     public List<Text> unitInfoText;
+    static UIUnitInfo self;
 
 	void Start ()
     {
+        self = this;
+
         unitPanels = new List<GameObject>();
         for (int i = 0; i < GameManager.controlls.selectionLimit; i++)
         {
             unitPanels.Add(Instantiate(unitPanel));
+            unitPanels[i].transform.name = "Unit " + i.ToString();
             unitPanels[i].transform.SetParent(units.transform, false);
         }
 	}
     void Update()
     {
-        if (GameManager.controlls.selectedObjects.Count > 0)
-        {
-            GameManager.selectedUnit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
-        }
-        else
-        {
-            GameManager.selectedUnit = null;
-        }
-
         UpdateUI();
     }
     public void UpdateUI()
@@ -73,6 +70,7 @@ public class UIUnitInfo : MonoBehaviour
                     unitInfoPanels[i].SetActive(false);
             }
         }
+
         //Skjuler panelene som ikke er i bruk
         for (int i = GameManager.controlls.selectedObjects.Count; i < GameManager.controlls.selectionLimit; i++)
         {
@@ -87,6 +85,7 @@ public class UIUnitInfo : MonoBehaviour
 
         float unitPanelWidth = units.GetComponent<RectTransform>().rect.width-100;
         float widthPerPanel = Mathf.Min(unitPanelWidth / GameManager.controlls.selectedObjects.Count, 100);
+
         //Units 
         Unit unit;
         for (int i = 0; i < GameManager.controlls.selectedObjects.Count; i++)
@@ -108,8 +107,30 @@ public class UIUnitInfo : MonoBehaviour
             float n = 96f / unit.startHealth;
 
             //Setter størrelsen på helath baren
-            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth*n);
-
+            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth * n);
         }
+    }
+    public void SelectUnit(RectTransform rTransform)
+    {
+        Debug.Log(rTransform.name);
+        GameManager.selectedUnit = GameManager.controlls.selectedObjects[unitPanels.IndexOf(rTransform.gameObject)].GetComponent<Unit>();
+    }
+
+    public static void UpdateSelection()
+    {
+        //self.UpdateUI();
+    }
+    public static void SelectionChanged()
+    {
+        if(GameManager.controlls.selectedObjects.Count == 0)
+        {
+            GameManager.selectedUnit = null;
+        }
+        else
+        {
+            if(GameManager.selectedUnit == null || !GameManager.controlls.selectedObjects.Contains(GameManager.selectedUnit.transform))
+                GameManager.selectedUnit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
+        }
+       self.UpdateUI();
     }
 }
