@@ -11,12 +11,14 @@ public class Unit : MonoBehaviour
     public string displayName = "Unit";
     public int startHealth = 100;
     public int size = 1;
-    public int optics = 1;
+    public int optics = 0;
+    public int camo = 0;
     public int armor = 1;
     public int movementSpeed = 5;
     public int rotationSpeed = 120;
     public Weapon weapon;
     public GameObject weaponObject;
+    public GameObject visibleParts;
 
     public Texture2D icon;
 
