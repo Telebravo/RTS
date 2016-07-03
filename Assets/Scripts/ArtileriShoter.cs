@@ -17,7 +17,6 @@ public class ArtileriShoter : MonoBehaviour
     private float SkuddVinkel;
     Ray ray;
     RaycastHit hit;
-    new Camera camera;
     Vector3 retning;
     Vector3 retningS;
 
@@ -34,7 +33,6 @@ public class ArtileriShoter : MonoBehaviour
         Utgangshatighet = Mathf.Sqrt((float)(unit.weapon.range * -Physics.gravity.y)); // Sin(2 * 45) = 1
         //Debug.Log("Utgangshastighet: " + Utgangshatighet);
 
-        camera = Camera.main;
         retning = Vector3.down;
         
     }
