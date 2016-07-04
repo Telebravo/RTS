@@ -38,12 +38,11 @@ public class Se : MonoBehaviour {
 
             for (int i = 0; i < EnheterInnenforMaksLOS.Length; i++)
             {
-                Debug.Log(EnheterInnenforMaksLOS[i].name);
                 if (Lag != EnheterInnenforMaksLOS[i].tag)
                 {
                     synligDist = unit.optics * EnheterInnenforMaksLOS[i].GetComponent<Visibility>().getVisibility();
-                    Debug.Log("synligDist" + synligDist);
-                    Debug.Log("dist: " + Vector3.Distance(EnheterInnenforMaksLOS[i].GetComponent<Transform>().position, transform.position));
+                    //Debug.Log("synligDist" + synligDist);
+                    //Debug.Log("dist: " + Vector3.Distance(EnheterInnenforMaksLOS[i].GetComponent<Transform>().position, transform.position));
                     if (Vector3.Distance( EnheterInnenforMaksLOS[i].GetComponent<Transform>().position , transform.position) > synligDist)
                     {
                         EnheterInnenforMaksLOS[i].GetComponentInParent<MeshRenderer>().enabled = false;
