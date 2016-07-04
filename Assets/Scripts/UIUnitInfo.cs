@@ -49,7 +49,7 @@ public class UIUnitInfo : MonoBehaviour
             unitInfoImage.sprite = GameManager.selectedUnit.icon;
 
             unitInfoText[0].text = GameManager.selectedUnit.displayName.ToString();
-            unitInfoText[1].text = GameManager.selectedUnit.cHealth.currentHealth.ToString();
+            unitInfoText[1].text = GameManager.selectedUnit.currentHealth.ToString();
 
             if (GameManager.selectedUnit.weapon != null)
             {
@@ -109,7 +109,7 @@ public class UIUnitInfo : MonoBehaviour
             float n = 96f / unit.startHealth;
 
             //Setter størrelsen på helath baren
-            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth * n);
+            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.currentHealth * n);
             unitPanels[i].transform.FindChild("Icon").transform.GetComponent<Image>().sprite = unit.icon;
         }
     }

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 public class InfantryShooting : MonoBehaviour
 {
     Unit unit;
-    CHealth hitHealth;
 
     public Unit target;
 
@@ -47,11 +46,11 @@ public class InfantryShooting : MonoBehaviour
                             {
                                 Debug.DrawLine(unit.weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
 
-                                hitHealth = hit.transform.GetComponent<CHealth>();
+                                hitUnit = hit.transform.GetComponent<Unit>();
 
-                                if (hitHealth != null)
+                                if (hitUnit != null)
                                 {
-                                    hitHealth.Damage(unit.weapon.ammo);
+                                    hitUnit.Damage(unit.weapon.ammo);
                                 }
                             }
                             else

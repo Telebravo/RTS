@@ -5,14 +5,12 @@ using System.Collections.Generic;
 [AddComponentMenu("Unit/Unit")]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(CSelectable))]
-[RequireComponent(typeof(CHealth))]
 [RequireComponent(typeof(Visibility))]
 public class Unit : MonoBehaviour
 {
     //Komponenter
     [HideInInspector] public CSelectable cSelectable;
     [HideInInspector] public CMoveable cMoveable;
-    [HideInInspector] public CHealth cHealth;
     [HideInInspector] public Visibility visibility;
 
     //Stats?
@@ -28,6 +26,8 @@ public class Unit : MonoBehaviour
     public Weapon weapon;
     public GameObject weaponObject;
     public Sprite icon;
+    [HideInInspector]
+    public float currentHealth;
 
     //Fiender og sånt
     Collider[] collidersInRange;
@@ -41,6 +41,7 @@ public class Unit : MonoBehaviour
     void Awake()
     {
         tag = team.ToString();
+        currentHealth = startHealth;
 
         layermask = 1 << unitLayer;
         if(team == GameManager.team)
@@ -56,7 +57,6 @@ public class Unit : MonoBehaviour
     {
         cSelectable = GetComponent<CSelectable>(); cSelectable.unit = this;
         cMoveable = GetComponent<CMoveable>();
-        cHealth = GetComponent<CHealth>();
         visibility = GetComponent<Visibility>();
 
         StartCoroutine(UpdateEnemies());
@@ -112,6 +112,19 @@ public class Unit : MonoBehaviour
         else
         {
             weapon = newWeapon;
+        }
+    }
+
+    public void Damage(Ammunition ammo, float distance = 1)
+    {
+        if (ammo.damageType == DamageType.Kinetic)
+            currentHealth -= ammo.damage * Mathf.Min(ammo.armorPenetration / armor, 1);
+        if (ammo.damageType == DamageType.Explosive)
+            currentHealth -= ammo.damage / (armor * Mathf.Max(Mathf.Pow(distance, 2) / 10, 1));
+
+        if (currentHealth <= 0)
+        {
+            Destroy();
         }
     }
 
