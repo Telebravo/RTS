@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Unit/CHealth")]
+[RequireComponent(typeof(Unit))]
 public class CHealth : MonoBehaviour
 {
     Unit unit;
@@ -33,7 +35,7 @@ public class CHealth : MonoBehaviour
     {
         currentHealth = 0;
         isDead = true;
-        GameManager.controlls.Deselect(transform);
+        GameManager.controlls.Deselect(unit);
         this.gameObject.SetActive(false);
     }
 }

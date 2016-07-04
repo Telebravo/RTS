@@ -15,6 +15,8 @@ public class UIUnitInfo : MonoBehaviour
     public Image unitInfoImage;
     public List<Text> unitInfoText;
     static UIUnitInfo self;
+    static float lastClick = 0f;
+
 
 	void Start ()
     {
@@ -72,23 +74,23 @@ public class UIUnitInfo : MonoBehaviour
         }
 
         //Skjuler panelene som ikke er i bruk
-        for (int i = GameManager.controlls.selectedObjects.Count; i < GameManager.controlls.selectionLimit; i++)
+        for (int i = GameManager.controlls.selectedUnits.Count; i < GameManager.controlls.selectionLimit; i++)
         {
             if (unitPanels[i].activeInHierarchy)
                 unitPanels[i].SetActive(false);
         }
 
-        if(GameManager.controlls.selectedObjects.Count <= 0)
+        if(GameManager.controlls.selectedUnits.Count <= 0)
         {
             return;
         }
 
         float unitPanelWidth = units.GetComponent<RectTransform>().rect.width-100;
-        float widthPerPanel = Mathf.Min(unitPanelWidth / GameManager.controlls.selectedObjects.Count, 100);
+        float widthPerPanel = Mathf.Min(unitPanelWidth / GameManager.controlls.selectedUnits.Count, 100);
 
         //Units 
         Unit unit;
-        for (int i = 0; i < GameManager.controlls.selectedObjects.Count; i++)
+        for (int i = 0; i < GameManager.controlls.selectedUnits.Count; i++)
         {
             //Aktiverer panelet
             if(!unitPanels[i].activeInHierarchy)
@@ -98,7 +100,7 @@ public class UIUnitInfo : MonoBehaviour
             unitPanels[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, i * widthPerPanel, 100);
 
             //Henter unit komponenten
-            unit = GameManager.controlls.selectedObjects[i].GetComponent<Unit>();
+            unit = GameManager.controlls.selectedUnits[i].GetComponent<Unit>();
 
             //Setter navnet
             unitPanels[i].transform.GetComponentInChildren<Text>().text = unit.displayName;
@@ -112,24 +114,25 @@ public class UIUnitInfo : MonoBehaviour
     }
     public void SelectUnit(RectTransform rTransform)
     {
-        Debug.Log(rTransform.name);
-        GameManager.selectedUnit = GameManager.controlls.selectedObjects[unitPanels.IndexOf(rTransform.gameObject)].GetComponent<Unit>();
-    }
+        GameManager.selectedUnit = GameManager.controlls.selectedUnits[unitPanels.IndexOf(rTransform.gameObject)].GetComponent<Unit>();
 
-    public static void UpdateSelection()
-    {
-        //self.UpdateUI();
+        if(Time.time - lastClick < 0.2f && GameManager.selectedUnit)
+        {
+            GameManager.controlls.DeselectAll();
+            GameManager.controlls.Select(GameManager.selectedUnit);
+        }
+        lastClick = Time.time;
     }
     public static void SelectionChanged()
     {
-        if(GameManager.controlls.selectedObjects.Count == 0)
+        if(GameManager.controlls.selectedUnits.Count == 0)
         {
             GameManager.selectedUnit = null;
         }
         else
         {
-            if(GameManager.selectedUnit == null || !GameManager.controlls.selectedObjects.Contains(GameManager.selectedUnit.transform))
-                GameManager.selectedUnit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
+            if(GameManager.selectedUnit == null || !GameManager.controlls.selectedUnits.Contains(GameManager.selectedUnit))
+                GameManager.selectedUnit = GameManager.controlls.selectedUnits[0].GetComponent<Unit>();
         }
        self.UpdateUI();
     }

@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Unit/InfantryShooting")]
+[RequireComponent(typeof(Unit))]
 public class InfantryShooting : MonoBehaviour
 {
     Unit unit;
     CHealth hitHealth;
 
-    public Transform target;
+    public Unit target;
 
     float lastShootTime;
 
@@ -20,10 +22,10 @@ public class InfantryShooting : MonoBehaviour
 	void Update ()
     {
         target = unit.closestEnemy;
-
+        Unit hitUnit;
         if (target != null)
         {
-            Vector3 targetDirection = target.position - unit.weapon.barrelEnd.position;
+            Vector3 targetDirection = target.transform.position - unit.weapon.barrelEnd.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
             if (transform.rotation.eulerAngles.y < targetRotation.eulerAngles.y + 3 && transform.rotation.eulerAngles.y > targetRotation.eulerAngles.y - 3)
@@ -34,7 +36,8 @@ public class InfantryShooting : MonoBehaviour
 
                     if (Physics.Raycast(unit.weapon.barrelEnd.position, targetDirection, out hit, unit.weapon.range))
                     {
-                        if (hit.transform == target)
+                        hitUnit = hit.transform.GetComponent<Unit>();
+                        if (hitUnit != null && hitUnit.team != unit.team)
                         {
                             lastShootTime = Time.time;
 

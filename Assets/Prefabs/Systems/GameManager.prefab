@@ -26,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419792}
   - 114: {fileID: 11445792}
+  - 114: {fileID: 11410190}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -65,6 +66,17 @@ Transform:
   - {fileID: 22423740}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11410190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8650bfdc3615ac40975f8b7be5bee7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11411302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59b790f7d0d87640831d29267b94dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _team: Team 1
+  _team: 0
 --- !u!114 &11460156
 MonoBehaviour:
   m_ObjectHideFlags: 1

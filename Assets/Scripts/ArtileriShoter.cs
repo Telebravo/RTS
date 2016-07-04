@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+[AddComponentMenu("Unit/ArtileriShoter")]
+[RequireComponent(typeof(Unit))]
 public class ArtileriShoter : MonoBehaviour
 {
     public float range = 1;

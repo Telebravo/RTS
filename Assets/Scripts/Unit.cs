@@ -2,12 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[AddComponentMenu("Unit/Unit")]
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(CSelectable))]
+[RequireComponent(typeof(CHealth))]
+[RequireComponent(typeof(Visibility))]
 public class Unit : MonoBehaviour
 {
+    //Komponenter
     [HideInInspector] public CSelectable cSelectable;
     [HideInInspector] public CMoveable cMoveable;
     [HideInInspector] public CHealth cHealth;
+    [HideInInspector] public Visibility visibility;
 
+    //Stats?
+    public Team team = Team.Team1;
     public string displayName = "Unit";
     public int startHealth = 100;
     public int size = 1;
@@ -19,12 +28,12 @@ public class Unit : MonoBehaviour
     public Weapon weapon;
     public GameObject weaponObject;
     public GameObject visibleParts;
-
     public Texture2D icon;
 
-    public Collider[] collidersInRange;
-    public List<Transform> enemiesInRange;
-    public Transform closestEnemy;
+    //Fiender og sånt
+    Collider[] collidersInRange;
+    [HideInInspector] public List<Unit> enemiesInRange;
+    [HideInInspector] public Unit closestEnemy;
 
     //Unit layeret
     int unitLayer = 8;
@@ -32,13 +41,24 @@ public class Unit : MonoBehaviour
 
     void Awake()
     {
+        tag = team.ToString();
+
         layermask = 1 << unitLayer;
+        if(team == GameManager.team)
+        {
+            GameManager.friendlyUnits.Add(this);
+        }
+        else
+        {
+            GameManager.enemyUnits.Add(this);
+        }
     }
     void Start()
     {
-        cSelectable = GetComponent<CSelectable>();
+        cSelectable = GetComponent<CSelectable>(); cSelectable.unit = this;
         cMoveable = GetComponent<CMoveable>();
         cHealth = GetComponent<CHealth>();
+        visibility = GetComponent<Visibility>();
 
         StartCoroutine(UpdateEnemies());
 
@@ -46,6 +66,7 @@ public class Unit : MonoBehaviour
     }
     IEnumerator UpdateEnemies()
     {
+        Unit enemyUnit;
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
@@ -61,15 +82,16 @@ public class Unit : MonoBehaviour
 
             for (int i = 0; i < collidersInRange.Length; i++)
             {
-                if (collidersInRange[i].tag != this.tag && collidersInRange[i].tag.Contains("Team"))
+                enemyUnit = collidersInRange[i].GetComponent<Unit>();
+                if (enemyUnit.team != this.team)
                 {
-                    enemiesInRange.Add(collidersInRange[i].transform);
+                    enemiesInRange.Add(enemyUnit);
 
-                    dist = (collidersInRange[i].transform.position - this.transform.position).magnitude;
+                    dist = (enemyUnit.transform.position - this.transform.position).magnitude;
                     if (dist < minDist)
                     {
                         minDist = dist;
-                        closestEnemy = collidersInRange[i].transform;
+                        closestEnemy = enemyUnit;
                     }
                 }
             }

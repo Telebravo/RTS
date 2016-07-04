@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/CSelectable")]
+[RequireComponent(typeof(Unit))]
 public class CSelectable : MonoBehaviour
 {
+    [HideInInspector]
+    public Unit unit;
+
     public bool selected = false;
     public Transform selectionCanvas;
     public string CallComponent;
@@ -38,12 +43,12 @@ public class CSelectable : MonoBehaviour
 
     void OnBecameVisible()
     {
-        GameManager.controlls.SetVisible(this.transform, true);
+        GameManager.controlls.SetVisible(unit, true);
     }
 
     void OnBecameInvisible()
     {
-        GameManager.controlls.SetVisible(this.transform, false);
+        GameManager.controlls.SetVisible(unit, false);
     }
 
     void Update()

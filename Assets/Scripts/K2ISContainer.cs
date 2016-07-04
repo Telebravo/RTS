@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/K2ISContainer")]
+[RequireComponent(typeof(CHookliftable))]
 public class K2ISContainer : MonoBehaviour
 {
     CHookliftable hookliftable;
