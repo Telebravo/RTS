@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/CHookliftable")]
+[RequireComponent(typeof(Unit))]
 public class CHookliftable : MonoBehaviour
 {
+    Unit unit;
+
     //Possjonen obektet skal ha når det er låst fast på et lasteplan elns
     public Vector3 lockPossition;
     //Krokfestet
@@ -20,18 +24,19 @@ public class CHookliftable : MonoBehaviour
     void Awake()
     {
         //Heter komponenter
+        unit = GetComponent<Unit>();
         navMeshObstacle = GetComponent<NavMeshObstacle>();
     }
     //Når objektet går inn på skjermen
     void OnBecameVisible()
     {
         //Sier ifra til folkz at det er synlig
-        GameManager.controlls.SetVisible(this.transform, true);
+        GameManager.controlls.SetVisible(unit, true);
     }
     //Når objektet går ut av skjermen
     void OnBecameInvisible()
     {
         //Ikke synlig lengere
-        GameManager.controlls.SetVisible(this.transform, false);
+        GameManager.controlls.SetVisible(unit, false);
     }
 }

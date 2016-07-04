@@ -45,7 +45,7 @@ MonoBehaviour:
   damageType: 0
   damage: 1200
   armorPenetration: 50
-  explosionRadius: 0
+  explosionRadius: 0.2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

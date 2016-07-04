@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: 7ba45b5ed650662449e69af07b5768eb
+timeCreated: 1467634624
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body
+    100002: Cube.015
+    100004: Cube.016
+    100006: Cube.018
+    100008: Cube.019
+    100010: Cylinder.053
+    100012: Cylinder.054
+    100014: Cylinder.055
+    100016: Cylinder.056
+    100018: Cylinder.057
+    100020: Cylinder.058
+    100022: Cylinder.059
+    100024: Cylinder.060
+    100026: Cylinder.061
+    100028: Cylinder.062
+    100030: Cylinder.063
+    100032: Cylinder.064
+    100034: Cylinder.065
+    100036: Cylinder.070
+    100038: Cylinder.071
+    100040: Cylinder.073
+    100042: //RootNode
+    100044: M3 Browning
+    100046: Mortar
+    100048: Plane.011
+    100050: Plane.012
+    100052: Plane.013
+    100054: Plane.014
+    100056: Plane.015
+    400000: Body
+    400002: Cube.015
+    400004: Cube.016
+    400006: Cube.018
+    400008: Cube.019
+    400010: Cylinder.053
+    400012: Cylinder.054
+    400014: Cylinder.055
+    400016: Cylinder.056
+    400018: Cylinder.057
+    400020: Cylinder.058
+    400022: Cylinder.059
+    400024: Cylinder.060
+    400026: Cylinder.061
+    400028: Cylinder.062
+    400030: Cylinder.063
+    400032: Cylinder.064
+    400034: Cylinder.065
+    400036: Cylinder.070
+    400038: Cylinder.071
+    400040: Cylinder.073
+    400042: //RootNode
+    400044: M3 Browning
+    400046: Mortar
+    400048: Plane.011
+    400050: Plane.012
+    400052: Plane.013
+    400054: Plane.014
+    400056: Plane.015
+    2300000: Body
+    2300002: Cube.015
+    2300004: Cube.016
+    2300006: Cube.018
+    2300008: Cube.019
+    2300010: Cylinder.053
+    2300012: Cylinder.054
+    2300014: Cylinder.055
+    2300016: Cylinder.056
+    2300018: Cylinder.057
+    2300020: Cylinder.058
+    2300022: Cylinder.059
+    2300024: Cylinder.060
+    2300026: Cylinder.061
+    2300028: Cylinder.062
+    2300030: Cylinder.063
+    2300032: Cylinder.064
+    2300034: Cylinder.065
+    2300036: Cylinder.070
+    2300038: Cylinder.071
+    2300040: Cylinder.073
+    2300042: M3 Browning
+    2300044: Mortar
+    2300046: Plane.011
+    2300048: Plane.012
+    2300050: Plane.013
+    2300052: Plane.014
+    2300054: Plane.015
+    3300000: Body
+    3300002: Cube.015
+    3300004: Cube.016
+    3300006: Cube.018
+    3300008: Cube.019
+    3300010: Cylinder.053
+    3300012: Cylinder.054
+    3300014: Cylinder.055
+    3300016: Cylinder.056
+    3300018: Cylinder.057
+    3300020: Cylinder.058
+    3300022: Cylinder.059
+    3300024: Cylinder.060
+    3300026: Cylinder.061
+    3300028: Cylinder.062
+    3300030: Cylinder.063
+    3300032: Cylinder.064
+    3300034: Cylinder.065
+    3300036: Cylinder.070
+    3300038: Cylinder.071
+    3300040: Cylinder.073
+    3300042: M3 Browning
+    3300044: Mortar
+    3300046: Plane.011
+    3300048: Plane.012
+    3300050: Plane.013
+    3300052: Plane.014
+    3300054: Plane.015
+    4300000: M3 Browning
+    4300002: Cube.015
+    4300004: Cube.016
+    4300006: Cube.018
+    4300008: Cube.019
+    4300010: Cylinder.053
+    4300012: Cylinder.054
+    4300014: Cylinder.055
+    4300016: Cylinder.056
+    4300018: Cylinder.057
+    4300020: Cylinder.058
+    4300022: Cylinder.059
+    4300024: Cylinder.060
+    4300026: Cylinder.061
+    4300028: Cylinder.062
+    4300030: Cylinder.063
+    4300032: Cylinder.064
+    4300034: Cylinder.065
+    4300036: Plane.011
+    4300038: Plane.012
+    4300040: Plane.013
+    4300042: Plane.014
+    4300044: Plane.015
+    4300046: Mortar
+    4300048: Cylinder.070
+    4300050: Cylinder.071
+    4300052: Cylinder.073
+    4300054: Body
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/CMoveable")]
+[RequireComponent(typeof(Unit))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class CMoveable : MonoBehaviour
 {
     //Uniten

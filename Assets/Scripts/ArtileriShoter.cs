@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+[AddComponentMenu("Unit/ArtileriShoter")]
+[RequireComponent(typeof(Unit))]
 public class ArtileriShoter : MonoBehaviour
 {
     public float range = 1;
     public GameObject Shell;
+    public Transform barrelEnd;
     public Transform BarrelRotation;
     public float barrelRotationSpeed;
 
@@ -65,7 +67,7 @@ public class ArtileriShoter : MonoBehaviour
                         SkuddVinkel = (Mathf.PI - SkuddVinkel);
                     }
                     SkuddVinkel = SkuddVinkel / 2;//Resten av formelen
-                    retning = hit.point - unit.weapon.barrelEnd.position;
+                    retning = hit.point - barrelEnd.position;
                     retning.y = 0;
                     retningS = retning.normalized * Mathf.Cos(SkuddVinkel);
                     retningS.y = Mathf.Sin(SkuddVinkel);
@@ -94,7 +96,7 @@ public class ArtileriShoter : MonoBehaviour
                     GameObject Kjell = Instantiate(Shell);
                     Kjell.GetComponent<ShotHandler>().AirTime = 99999;
                     Kjell.GetComponent<ShotHandler>().ammo = unit.weapon.ammo;
-                    Kjell.transform.position = unit.weapon.barrelEnd.position;
+                    Kjell.transform.position = barrelEnd.position;
 
                     Rigidbody rgbd = Kjell.GetComponent<Rigidbody>();
                     rgbd.useGravity = true;

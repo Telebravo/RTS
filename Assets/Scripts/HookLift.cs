@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/HookLift")]
+[RequireComponent(typeof(Unit))]
 public class HookLift : MonoBehaviour
 {
     //Transformen til dummyen brukt i animasjonen

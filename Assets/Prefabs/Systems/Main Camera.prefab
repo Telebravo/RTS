@@ -103,12 +103,12 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 03d6c1ce6265cfd4fa1071714d9d5796, type: 3}
   - {fileID: 2800000, guid: 3ef152c470c64f64abb401a895e74d16, type: 3}
   - {fileID: 2800000, guid: 560ec7b0b33fd89459d0d50c47f82098, type: 3}
-  visibleObjects: []
+  visibleUnits: []
   selectionLimit: 20
   holdOverObject: {fileID: 0}
   mouseWorldPositionUnitLayer: {x: 0, y: 0, z: 0}
   mouseWorldPosition: {x: 0, y: 0, z: 0}
-  selectedObjects: []
+  selectedUnits: []
   selectionAreaPanel: {fileID: 0}
   directionArrow: {fileID: 0}
 --- !u!114 &11498496

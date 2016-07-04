@@ -14,9 +14,9 @@ public class InformationScript : MonoBehaviour
 	void Update ()
     {
         timer.text = tid.ToString();
-        if (GameManager.controlls.selectedObjects.Count > 0)
+        if (GameManager.controlls.selectedUnits.Count > 0)
         {
-            Unit unit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
+            Unit unit = GameManager.controlls.selectedUnits[0].GetComponent<Unit>();
             if (unit != null)
             {
                 hitPoints.text = "HP: " + unit.cHealth.currentHealth.ToString();//unit Health
