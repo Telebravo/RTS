@@ -1,27 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &105786
+--- !u!1 &183456
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 494632}
-  - 114: {fileID: 11418104}
-  m_Layer: 0
-  m_Name: DM63 APDS
+  - 4: {fileID: 487740}
+  - 114: {fileID: 11461748}
+  m_Layer: 8
+  m_Name: M30 Mortar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &494632
+--- !u!4 &487740
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105786}
+  m_GameObject: {fileID: 183456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -29,23 +29,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11418104
+--- !u!114 &11461748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105786}
+  m_GameObject: {fileID: 183456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0d29c1f19de9b49b645e30e88a99e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3972086d172ba48a8488f06fa52b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: DM63 APDS
-  size: 3
-  damageType: 0
-  damage: 1200
-  armorPenetration: 50
-  explosionRadius: 0.2
+  name: M30 Mortar
+  firerate: 5
+  range: 500
+  accuracy: 100
+  burstLength: 0
+  ammo: {fileID: 11487422, guid: b9533264acd58394f97a1abb449fcedd, type: 2}
+  ammoSize: 3
+  barrelEnd: {fileID: 0}
+  minRange: 10
+  loadModel: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -55,5 +59,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 105786}
+  m_RootGameObject: {fileID: 183456}
   m_IsPrefabParent: 1

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 494632}
   - 114: {fileID: 11418104}
   m_Layer: 0
-  m_Name: DM63 APDS
+  m_Name: CV90 ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,11 +40,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0d29c1f19de9b49b645e30e88a99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: DM63 APDS
-  size: 3
+  name: CV90 ammo
+  size: 4
   damageType: 0
-  damage: 1200
-  armorPenetration: 50
+  damage: 300
+  armorPenetration: 10
   explosionRadius: 0.2
 --- !u!1001 &100100000
 Prefab:

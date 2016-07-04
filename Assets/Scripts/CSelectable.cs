@@ -8,7 +8,9 @@ public class CSelectable : MonoBehaviour
     [HideInInspector]
     public Unit unit;
 
+    [HideInInspector]
     public bool selected = false;
+
     public Transform selectionCanvas;
     public string CallComponent;
     public string CallFunction;

@@ -24,7 +24,7 @@ public class FogOfWar : MonoBehaviour
     {
         Unit unit;
         Unit enemy;
-
+        MeshRenderer[] meshRenderers;
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
@@ -61,15 +61,21 @@ public class FogOfWar : MonoBehaviour
                     yield return new WaitForFixedUpdate();
 
                 enemy = GameManager.enemyUnits[i];
+                meshRenderers = enemy.GetComponentsInChildren<MeshRenderer>();
                 if (GameManager.visibleEnemies.Contains(enemy))
-                {   
-                    enemy.GetComponent<MeshRenderer>().enabled = true;
+                {
+                    for (int n = 0; n < meshRenderers.Length; n++)
+                    {
+                        meshRenderers[n].enabled = true;
+                    }
                 }
                 else
                 {
-                    enemy.GetComponent<MeshRenderer>().enabled = false;
+                    for (int n = 0; n < meshRenderers.Length; n++)
+                    {
+                        meshRenderers[n].enabled = false;
+                    }
                 }
-
             }
         }
     }

@@ -9,10 +9,10 @@ public class TanksShoter : MonoBehaviour
     Unit unit;
 
     public GameObject shell;
-    public Unit target;
     public Transform turret;
     public Transform barrelEnd;
 
+    private Unit target;
     private float lastShootTime;
     private float range;
 
@@ -39,7 +39,7 @@ public class TanksShoter : MonoBehaviour
 
                     if (Physics.Raycast(barrelEnd.position, targetDirection, out hit, unit.weapon.range))
                     {
-                        if (hit.transform == target)
+                        if (hit.transform == target.transform)
                         {
                             lastShootTime = Time.time;
 

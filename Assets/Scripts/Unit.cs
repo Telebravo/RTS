@@ -27,7 +27,6 @@ public class Unit : MonoBehaviour
     public int rotationSpeed = 120;
     public Weapon weapon;
     public GameObject weaponObject;
-    public GameObject visibleParts;
     public Texture2D icon;
 
     //Fiender og sånt

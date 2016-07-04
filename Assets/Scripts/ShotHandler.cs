@@ -36,6 +36,8 @@ public class ShotHandler : MonoBehaviour
                 if (health != null)
                 {
                     health.Damage(ammo);
+                    GameObject explotionObject = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
+                    explotionObject.transform.localScale = Vector3.one * ammo.explosionRadius * 2;
                     Destroy(gameObject);
                 }
             }
