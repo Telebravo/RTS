@@ -8,7 +8,6 @@ public class TanksShoter : MonoBehaviour
 {
     Unit unit;
 
-    public GameObject shell;
     public Transform turret;
     public Transform barrelEnd;
 
@@ -43,7 +42,7 @@ public class TanksShoter : MonoBehaviour
                         {
                             lastShootTime = Time.time;
 
-                            GameObject newShell = Instantiate<GameObject>(shell);
+                            GameObject newShell = Instantiate<GameObject>(unit.weapon.ammo.projectilePrefab);
                             newShell.layer = 0;
                             newShell.transform.position = barrelEnd.position;
                             newShell.transform.rotation = barrelEnd.rotation;

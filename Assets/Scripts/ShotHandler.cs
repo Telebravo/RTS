@@ -5,9 +5,12 @@ public class ShotHandler : MonoBehaviour
 {
     public float Speed;
     public GameObject Explosion;
-    public float Range;
+
+    [HideInInspector]
     public Ammunition ammo;
-    public float ExplosionRadius;
+    [HideInInspector]
+    public float Range;
+    [HideInInspector]
     public float AirTime;
     
     private float StartTime;

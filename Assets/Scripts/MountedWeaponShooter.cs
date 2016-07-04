@@ -25,8 +25,10 @@ public class MountedWeaponShooter : MonoBehaviour
 	
 	void Update ()
     {
+        //Skyter på den nærmeste duden
         target = unit.closestEnemy;
 
+        //om vi har et mål
         if (target != null)
         {
             //Retningen mot målet
@@ -52,30 +54,68 @@ public class MountedWeaponShooter : MonoBehaviour
                     targetDirection = target.transform.position - weapon.barrelEnd.position;
                     if (Time.time >= lastShootTime + (60f / weapon.firerate))
                     {
+                        //Ser hva vi treffer
                         RaycastHit hit;
                         if (Physics.Raycast(weapon.barrelEnd.position, targetDirection, out hit, weapon.range))
                         {
+                            //Om det er en fientlig unit
                             hitUnit = hit.transform.GetComponent<Unit>();
                             if (hitUnit != null && hitUnit.team != unit.team)
                             {
+                                //Husker når vi sist skjøt
                                 lastShootTime = Time.time;
 
-                                Vector3 shootDirection = targetDirection.normalized + (new Vector3(Random.value - 0.5f, Random.value - 0.5f, Random.value - 0.5f) * 2 / weapon.accuracy);
-
-                                if (Physics.Raycast(weapon.barrelEnd.position, shootDirection, out hit, weapon.range))
+                                //Om det ikke skyter noe prosjektil
+                                if (weapon.ammo.projectilePrefab == null)
                                 {
-                                    Debug.DrawLine(weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
+                                    //Accuracy
+                                    Vector3 shootDirection = targetDirection.normalized + (new Vector3(Random.value - 0.5f, Random.value - 0.5f, Random.value - 0.5f) * 2 / weapon.accuracy);
 
-                                    hitUnit = hit.transform.GetComponent<Unit>();
-
-                                    if (hitUnit != null)
+                                    //Ser om vi treffer noe
+                                    if (Physics.Raycast(weapon.barrelEnd.position, shootDirection, out hit, weapon.range))
                                     {
-                                        hitUnit.Damage(weapon.ammo);
+                                        //Tegner linje
+                                        Debug.DrawLine(weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
+
+                                        //Ser om vi treff en unit
+                                        hitUnit = hit.transform.GetComponent<Unit>();
+                                        if (hitUnit != null)
+                                        {
+                                            //Påfører skade
+                                            hitUnit.Damage(weapon.ammo);
+                                        }
+                                    }
+                                    //Om vi ikke traff noe
+                                    else
+                                    {
+                                        //Tegner en linje med lengden til våpenets rekkevidde
+                                        Debug.DrawRay(weapon.barrelEnd.position, shootDirection.normalized * 1000, Color.yellow, 0.2f);
                                     }
                                 }
+                                //Om vi skal skyte et prosjektil
                                 else
                                 {
-                                    Debug.DrawRay(weapon.barrelEnd.position, shootDirection.normalized * 1000, Color.yellow, 0.2f);
+                                    //Lager et nytt prosjektil
+                                    GameObject newShell = Instantiate<GameObject>(weapon.ammo.projectilePrefab);
+
+                                    //Setter layeret til Default
+                                    newShell.layer = 0;
+                                    //Posisjonerer det
+                                    newShell.transform.position = weapon.barrelEnd.position;
+                                    newShell.transform.rotation = weapon.barrelEnd.rotation;
+
+                                    //Henter ShotHandler komponenten
+                                    ShotHandler shotHandlerShell = newShell.GetComponent<ShotHandler>();
+                                    
+                                    //Setter farten
+                                    newShell.GetComponent<Rigidbody>().velocity = ((target.transform.position - weapon.barrelEnd.position).normalized) * shotHandlerShell.Speed;
+                                    
+                                    //Setter airtime
+                                    float range = Mathf.Min((target.transform.position - weapon.barrelEnd.position).magnitude, weapon.range);
+                                    shotHandlerShell.AirTime = unit.weapon.ammo.damageType == DamageType.Explosive ? range / shotHandlerShell.Speed : 99999;
+
+                                    //Setter hvilken ammo prosjektilet kommer fra
+                                    shotHandlerShell.ammo = unit.weapon.ammo;
                                 }
                             }
                         }
@@ -87,18 +127,25 @@ public class MountedWeaponShooter : MonoBehaviour
 
     public void SetWeapon(Weapon newWeapon)
     {
+        //om det ikke er noe driter vi i det
         if (newWeapon == null)
             return;
 
+        //Hvis det har en modell,
         if (newWeapon.loadModel)
         {
+            //Laster inn prefaben
             GameObject newWeaponObject = GameObject.Instantiate(newWeapon.gameObject);
+            //Setter den på riktig sted
             newWeaponObject.transform.position = weaponPosition.position;
             newWeaponObject.transform.parent = weaponPosition.transform.parent;
+            //Henter Weapon komponenten
             weapon = newWeaponObject.GetComponent<Weapon>();
         }
+        //Om ikke
         else
         {
+            //Setter våpenet som det nye
             weapon = newWeapon;
         }
     }
