@@ -22,32 +22,24 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
-        // deb.text = Input.inputString;
+        CameraSpeed = CameraSpeed1 * transform.position.y * Time.smoothDeltaTime;
         if (SideBuffer > Input.mousePosition.x || Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {
-            //transform.position = new Vector3( transform.position.x - CameraSpeed , transform.position.y, transform.position.z);
-            //transform.position -= new Vector3(CameraSpeed, 0, 0);
             transform.Translate(new Vector3(-CameraSpeed, 0, 0), Space.Self);
         }
         else if (Screen.width - SideBuffer < Input.mousePosition.x || Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
         {
-            //transform.position = new Vector3(transform.position.x + CameraSpeed, transform.position.y, transform.position.z);
-            //transform.position += new Vector3(CameraSpeed, 0, 0);
             transform.Translate(new Vector3(CameraSpeed, 0, 0), Space.Self);
         }
 
         if ((TopDownBuffer > Input.mousePosition.y || Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow)) && !Input.GetKey(KeyCode.LeftShift))
         {
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - CameraSpeed);
-            //transform.position -= new Vector3(0, 0, CameraSpeed);
             tempy = transform.position.y;
             transform.Translate(new Vector3(0, 0, - CameraSpeed), Space.Self);
             transform.position += new Vector3(0,tempy - transform.position.y,0);
         }
         else if ((Screen.height - TopDownBuffer < Input.mousePosition.y || Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow)) && !Input.GetKey(KeyCode.LeftShift))
         {
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + CameraSpeed);
-            //transform.position += new Vector3(0, 0, CameraSpeed);
             tempy = transform.position.y;
             transform.Translate(new Vector3(0, 0, CameraSpeed), Space.Self);
             transform.position += new Vector3(0, tempy - transform.position.y, 0);
@@ -55,18 +47,12 @@ public class CameraMover : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey("s"))
         {
-            //transform.position = new Vector3( transform.position.x - CameraSpeed , transform.position.y, transform.position.z);
-            //transform.position -= new Vector3(CameraSpeed, 0, 0);
             transform.Translate(new Vector3(0, -CameraSpeed, 0), Space.World);
         }
         else if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey("w"))
         {
-            //transform.position = new Vector3( transform.position.x - CameraSpeed , transform.position.y, transform.position.z);
-            //transform.position -= new Vector3(CameraSpeed, 0, 0);
             transform.Translate(new Vector3(0, +CameraSpeed, 0), Space.World);
         }
-
-
             if (Input.GetMouseButtonDown(2))
         {
             MousePosStart = Input.mousePosition;
@@ -81,6 +67,6 @@ public class CameraMover : MonoBehaviour
         {
             transform.Translate(new Vector3(0, 0, Input.mouseScrollDelta.y * ZoomSpeed * transform.position.y));
         }
-        CameraSpeed = CameraSpeed1 * transform.position.y;
+
     }
 }
