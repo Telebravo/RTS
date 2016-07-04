@@ -1313,7 +1313,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.278, y: 1.044, z: 10.737967}
+  m_LocalPosition: {x: 40, y: 0, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1518,7 +1518,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143536}
-  m_LocalRotation: {x: 0.61237246, y: -0.35355347, z: -0.35355344, w: 0.61237246}
+  m_LocalRotation: {x: 0.6123724, y: -0.35355344, z: -0.3535534, w: 0.6123724}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: -90}
@@ -1748,14 +1748,14 @@ MonoBehaviour:
   displayName: Infantry
   startHealth: 100
   size: 1
-  optics: 0
+  optics: 100
   camo: 0
   armor: 1
   movementSpeed: 5
   rotationSpeed: 120
   weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 146476}
-  icon: {fileID: 2800000, guid: 812ae813ac0b613489405fc657371f42, type: 3}
+  icon: {fileID: 21300000, guid: 4508643712d85724e988f6a697282267, type: 3}
   enemiesInRange: []
   closestEnemy: {fileID: 0}
 --- !u!136 &13608218

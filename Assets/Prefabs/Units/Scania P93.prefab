@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467372}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 476008}
   - 33: {fileID: 3316502}
   - 23: {fileID: 2366140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hook model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453712}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scania p93 merged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - 4: {fileID: 431358}
   - 33: {fileID: 3332576}
   - 23: {fileID: 2330630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - 114: {fileID: 11476796}
   - 195: {fileID: 19590468}
   - 114: {fileID: 11488522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scania P93
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.44815, y: 1.09, z: 67.28}
+  m_LocalPosition: {x: 13.969741, y: 0, z: 21.790482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -394,8 +394,8 @@ MonoBehaviour:
   size: 1
   optics: 0
   camo: 0
-  armor: 1
-  movementSpeed: 20
+  armor: 2
+  movementSpeed: 25
   rotationSpeed: 120
   weapon: {fileID: 0}
   weaponObject: {fileID: 0}

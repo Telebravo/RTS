@@ -28,14 +28,7 @@ public class CHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Death();
+            unit.Destroy();
         }
-    }
-    void Death()
-    {
-        currentHealth = 0;
-        isDead = true;
-        GameManager.controlls.Deselect(unit);
-        this.gameObject.SetActive(false);
     }
 }

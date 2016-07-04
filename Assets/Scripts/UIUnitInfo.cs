@@ -46,7 +46,7 @@ public class UIUnitInfo : MonoBehaviour
             }
 
             unitInfoImage.gameObject.SetActive(true);
-            unitInfoImage.sprite = Sprite.Create(GameManager.selectedUnit.icon, new Rect(Vector2.zero, new Vector2(194, 259)), Vector2.zero);
+            unitInfoImage.sprite = GameManager.selectedUnit.icon;
 
             unitInfoText[0].text = GameManager.selectedUnit.displayName.ToString();
             unitInfoText[1].text = GameManager.selectedUnit.cHealth.currentHealth.ToString();
@@ -110,6 +110,7 @@ public class UIUnitInfo : MonoBehaviour
 
             //Setter størrelsen på helath baren
             unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth * n);
+            unitPanels[i].transform.FindChild("Icon").transform.GetComponent<Image>().sprite = unit.icon;
         }
     }
     public void SelectUnit(RectTransform rTransform)

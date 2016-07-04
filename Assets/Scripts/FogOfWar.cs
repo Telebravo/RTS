@@ -25,6 +25,7 @@ public class FogOfWar : MonoBehaviour
         Unit unit;
         Unit enemy;
         MeshRenderer[] meshRenderers;
+        SkinnedMeshRenderer[] skinnedMeshRenderers;
         while (true)
         {
             yield return new WaitForSeconds(0.5f);
@@ -62,11 +63,16 @@ public class FogOfWar : MonoBehaviour
 
                 enemy = GameManager.enemyUnits[i];
                 meshRenderers = enemy.GetComponentsInChildren<MeshRenderer>();
+                skinnedMeshRenderers = enemy.GetComponentsInChildren<SkinnedMeshRenderer>();
                 if (GameManager.visibleEnemies.Contains(enemy))
                 {
                     for (int n = 0; n < meshRenderers.Length; n++)
                     {
                         meshRenderers[n].enabled = true;
+                    }
+                    for (int n = 0; n < skinnedMeshRenderers.Length; n++)
+                    {
+                        skinnedMeshRenderers[n].enabled = true;
                     }
                 }
                 else
@@ -74,6 +80,10 @@ public class FogOfWar : MonoBehaviour
                     for (int n = 0; n < meshRenderers.Length; n++)
                     {
                         meshRenderers[n].enabled = false;
+                    }
+                    for (int n = 0; n < skinnedMeshRenderers.Length; n++)
+                    {
+                        skinnedMeshRenderers[n].enabled = false;
                     }
                 }
             }

@@ -27,7 +27,7 @@ public class Unit : MonoBehaviour
     public int rotationSpeed = 120;
     public Weapon weapon;
     public GameObject weaponObject;
-    public Texture2D icon;
+    public Sprite icon;
 
     //Fiender og sånt
     Collider[] collidersInRange;
@@ -113,5 +113,23 @@ public class Unit : MonoBehaviour
         {
             weapon = newWeapon;
         }
+    }
+
+    public void Destroy()
+    {
+        GameManager.controlls.Deselect(this);
+
+        if (team == GameManager.team)
+        {
+            GameManager.friendlyUnits.Remove(this);
+        }
+        else
+        {
+            GameManager.enemyUnits.Remove(this);
+            if (GameManager.visibleEnemies.Contains(this))
+                GameManager.visibleEnemies.Remove(this);
+        }
+
+        GameObject.Destroy(gameObject);
     }
 }
