@@ -692,12 +692,12 @@ GameObject:
   - 114: {fileID: 11407422}
   - 114: {fileID: 11476146}
   - 23: {fileID: 2342822}
-  - 114: {fileID: 11441936}
   - 114: {fileID: 11486662}
   - 195: {fileID: 19506910}
   - 114: {fileID: 11426514}
   - 114: {fileID: 11431834}
   - 136: {fileID: 13608218}
+  - 120: {fileID: 12008676}
   m_Layer: 8
   m_Name: Infantry
   m_TagString: Untagged
@@ -1313,7 +1313,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: 50}
+  m_LocalPosition: {x: 26.913944, y: 1, z: 61.133305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1518,7 +1518,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143536}
-  m_LocalRotation: {x: 0.6123724, y: -0.35355344, z: -0.3535534, w: 0.6123724}
+  m_LocalRotation: {x: 0.61237246, y: -0.35355347, z: -0.35355344, w: 0.61237246}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: -90}
@@ -1679,6 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  lineRenderer: {fileID: 0}
 --- !u!114 &11436306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1700,19 +1701,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11441936
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda3ebe9505c5514e9e54973f7ebf2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  currentHealth: 0
 --- !u!114 &11476146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1742,7 +1730,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
-  cHealth: {fileID: 0}
   visibility: {fileID: 0}
   team: 0
   displayName: Infantry
@@ -1756,8 +1743,48 @@ MonoBehaviour:
   weapon: {fileID: 11450856, guid: 06bb2171e99034d42b01b2633d5c7047, type: 2}
   weaponObject: {fileID: 146476}
   icon: {fileID: 21300000, guid: 4508643712d85724e988f6a697282267, type: 3}
+  currentHealth: 0
   enemiesInRange: []
   closestEnemy: {fileID: 0}
+--- !u!120 &12008676
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182694}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8475623707efb0149b0d6526d8e0212a, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 0.05
+    endWidth: 0.05
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!136 &13608218
 CapsuleCollider:
   m_ObjectHideFlags: 1

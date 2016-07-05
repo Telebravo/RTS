@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 457226}
   - 114: {fileID: 11403876}
   m_Layer: 0
-  m_Name: 12.7 NATO
+  m_Name: 7.62 Soviet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,13 +40,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0d29c1f19de9b49b645e30e88a99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 12.7 NATO
-  size: 2
+  name: 7.62 Soviet
+  size: 5
   damageType: 0
-  damage: 127
-  armorPenetration: 3
+  damage: 76
+  armorPenetration: 2
   explosionRadius: 0
-  lineWidth: 0.12
+  lineWidth: 0.07
   projectilePrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
