@@ -12,5 +12,6 @@ public class Ammunition : MonoBehaviour
     public float damage = 0;
     public float armorPenetration = 1;
     public float explosionRadius = 0;
+    public float lineWidth = 0.05f;
     public GameObject projectilePrefab;
 }

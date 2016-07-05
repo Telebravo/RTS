@@ -18,7 +18,7 @@ public class TanksShoter : MonoBehaviour
     void Start()
     {
         unit = GetComponent<Unit>();
-        lastShootTime = 1;
+        lastShootTime = Random.value * 60 / unit.weapon.firerate;
     }
 
     void Update()
