@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 3ce26352ee4f16c4ba43912553ddc45f
+timeCreated: 1467551579
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cone
+    100002: Cone.001
+    100004: Cone.002
+    100006: Cone.003
+    100008: Cone.004
+    100010: Cube.008
+    100012: Cube.012
+    100014: Cube.016
+    100016: Cylinder.020
+    100018: Cylinder.032
+    100020: Cylinder.044
+    100022: //RootNode
+    100024: M2 Browning.000
+    100026: M2 Browning.002
+    100028: M2 Browning.003
+    100030: Plane.010
+    100032: Plane.017
+    400000: Cone
+    400002: Cone.001
+    400004: Cone.002
+    400006: Cone.003
+    400008: Cone.004
+    400010: Cube.008
+    400012: Cube.012
+    400014: Cube.016
+    400016: Cylinder.020
+    400018: Cylinder.032
+    400020: Cylinder.044
+    400022: //RootNode
+    400024: M2 Browning.000
+    400026: M2 Browning.002
+    400028: M2 Browning.003
+    400030: Plane.010
+    400032: Plane.017
+    2300000: Cone
+    2300002: Cone.001
+    2300004: Cone.002
+    2300006: Cone.003
+    2300008: Cone.004
+    2300010: Cube.008
+    2300012: Cube.012
+    2300014: Cube.016
+    2300016: Cylinder.020
+    2300018: Cylinder.032
+    2300020: Cylinder.044
+    2300022: M2 Browning.000
+    2300024: M2 Browning.002
+    2300026: M2 Browning.003
+    2300028: Plane.010
+    2300030: Plane.017
+    3300000: Cone
+    3300002: Cone.001
+    3300004: Cone.002
+    3300006: Cone.003
+    3300008: Cone.004
+    3300010: Cube.008
+    3300012: Cube.012
+    3300014: Cube.016
+    3300016: Cylinder.020
+    3300018: Cylinder.032
+    3300020: Cylinder.044
+    3300022: M2 Browning.000
+    3300024: M2 Browning.002
+    3300026: M2 Browning.003
+    3300028: Plane.010
+    3300030: Plane.017
+    4300000: Cone
+    4300002: Cube.008
+    4300004: Cylinder.020
+    4300006: M2 Browning.000
+    4300008: Plane.010
+    4300010: Cube.012
+    4300012: Cylinder.032
+    4300014: M2 Browning.002
+    4300016: Plane.017
+    4300018: Cube.016
+    4300020: Cylinder.044
+    4300022: M2 Browning.003
+    4300024: Cone.001
+    4300026: Cone.002
+    4300028: Cone.003
+    4300030: Cone.004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
