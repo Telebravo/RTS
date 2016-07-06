@@ -702,9 +702,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9a5e0e3f39afc4993286fe4946456b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visible: []
+  cursorTextures: []
+  visibleObjects: []
   selectionLimit: 20
+  holdOverObject: {fileID: 0}
+  mouseWorldPositionUnitLayer: {x: 0, y: 0, z: 0}
+  mouseWorldPosition: {x: 0, y: 0, z: 0}
+  selectedObjects: []
   selectionAreaPanel: {fileID: 438405597}
+  directionArrow: {fileID: 0}
 --- !u!1 &639956450
 GameObject:
   m_ObjectHideFlags: 0

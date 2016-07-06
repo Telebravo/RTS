@@ -2,12 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 public class CameraControlls : MonoBehaviour
 {
     public Texture2D[] cursorTextures;
 
     //Liste over synlige objekter
-    public List<Transform> visibleObjects;
+    public List<Unit> visibleUnits;
     //Maks antall valgte units
     public int selectionLimit;
 
@@ -17,14 +19,16 @@ public class CameraControlls : MonoBehaviour
     public Vector3 mouseWorldPosition;
 
     //Objektet som er valgt
-    public List<Transform> selectedObjects;
-    List<Transform> previouslySelectedObjects;
+    public List<Unit> selectedUnits;
+    List<Unit> previouslySelectedUnits;
     public RectTransform selectionAreaPanel;
     //Det forrige objektet
     Transform lastSelected;
 
+    public RectTransform directionArrow;
+
     //Selectable komponenten til objektet (ser om det er noe som skal kunne bli valgt)
-    CSelectable cSelectable;
+    Unit selectedUnit;
     //Moveable komponenten til objektet (ser om et er noe som kan beordres til å flytte)
     CMoveable cMoveable;
 
@@ -36,16 +40,27 @@ public class CameraControlls : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     //Unit layeret
-    int layer = 8;
-    int layermask;
+    int unitLayer = 8;
+    int unitLayermask;
+    //UI layer
+    int UILayer = 5;
+    int unitAndUILayermask;
 
+    bool onUI = false;
+
+    //Ved start, liksom litt før den andre start greien
     void Awake()
     {
-        layermask = 1 << layer;
-        visibleObjects = new List<Transform>();
-        selectedObjects = new List<Transform>();
+        //Layermask for unit-layeret
+        unitLayermask = 1 << unitLayer;
+        unitAndUILayermask = 1 << unitLayer | 1 << UILayer;
+
+        //Initsierer stuff
+        visibleUnits = new List<Unit>();
+        selectedUnits = new List<Unit>();
         GameManager.controlls = this;
     }
+    //Ved start
     void Start()
     {
         //Henter kamera koponenten
@@ -55,37 +70,62 @@ public class CameraControlls : MonoBehaviour
     }
     void Update()
     {
+        //Om vi trykker på escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //Frigjør musepekeren
             Cursor.lockState = CursorLockMode.None;
         }
 
+        Selection();
+        Movement();
+    }
+    void Selection()
+    {
         //Finner objektet man paker på
         holdOverObject = null;
+        //Lager er ray fra kamera til posisjonen i verdenen man peker på med musen
         ray = camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 10000, layermask, QueryTriggerInteraction.Ignore))
+        //Ser om vi treffer noen units
+        if (Physics.Raycast(ray, out hit, 10000, unitLayermask, QueryTriggerInteraction.Ignore))
         {
+            //Lagrer treffpunket
             mouseWorldPositionUnitLayer = hit.point;
+            //Lagrer hvilken unit vi peker på
             holdOverObject = hit.transform;
-            cSelectable = holdOverObject.GetComponent<CSelectable>();
-            if (cSelectable != null) ;
+            //Ser om det kan velges
+            selectedUnit = holdOverObject.GetComponent<Unit>();
+            if (selectedUnit != null)
+            {
+
+            }
 
         }
 
         //Musepekeren sin posison i verden
         ray = camera.ScreenPointToRay(Input.mousePosition);
+        //Ser om vi treffer noe, gjelder også andre ting enn units
         if (Physics.Raycast(ray, out hit, 10000, 1, QueryTriggerInteraction.Ignore))
         {
+            //Lagrer treffpunktet
             mouseWorldPosition = hit.point;
         }
 
-        //Kan ikke velge og flytte ting om man holder inne control
+        //Kan ikke velge og flytte ting om man holder inne control, da den brukes for å utføre handlinger med units
         if (Input.GetKey(KeyCode.LeftControl))
             return;
 
         //Når man trykker ned venste museknapp
         if (Input.GetMouseButtonDown(0))
         {
+            //Gjør ingen ting om musen er over UIet
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
+            {
+                onUI = true;
+                return;
+            }
+            onUI = false;
+
             //Posisjonen når museknapen ble trykket ned
             mp1 = Input.mousePosition;
             selectionAreaPanel.gameObject.SetActive(true);
@@ -107,9 +147,23 @@ public class CameraControlls : MonoBehaviour
             //Gjemmer grafikken
             selectionAreaPanel.gameObject.SetActive(false);
 
+            if(onUI)
+            {
+                return;
+            }
+            onUI = false;
+            //Om man bare har trykket
+            if (Vector2.Distance(mp1, mp2) < 10)
+            {
+                //Ignorerer det om musen er over UIet
+                if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
+                {
+                    return;
+                }
+            }
             //Husker de forige valgte objektene
-            previouslySelectedObjects = new List<Transform>(selectedObjects);
-            selectedObjects.Clear();
+            previouslySelectedUnits = new List<Unit>(selectedUnits);
+            selectedUnits.Clear();
 
             //Det merkede området
             Rect area = selectionAreaPanel.rect;
@@ -122,77 +176,93 @@ public class CameraControlls : MonoBehaviour
                 //Finner posisjon i verden utifra musepeker
                 ray = camera.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, 10000, layermask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(ray, out hit, 10000, unitAndUILayermask, QueryTriggerInteraction.Ignore))
                 {
                     //Ser om objektet kan valges
-                    cSelectable = hit.transform.GetComponent<CSelectable>();
-                    if (cSelectable != null)
+                    selectedUnit = hit.transform.GetComponent<Unit>();
+                    if (selectedUnit != null)
                     {
                         //Velger objektet
-                        selectedObjects.Add(hit.transform);
-                        cSelectable.SendMessage("Selected");
+                        selectedUnits.Add(selectedUnit);
+                        selectedUnit.SendMessage("Selected");
                     }
                 }
             }
             else //Om man har markert et område
             {
                 //Går igjennom alle objektene på skjermen
-                foreach (Transform obj in visibleObjects)
+                foreach (Unit unit in visibleUnits)
                 {
                     //Ser om de er i området
-                    Vector2 point = Camera.main.WorldToScreenPoint(obj.position);
+                    Vector2 point = Camera.main.WorldToScreenPoint(unit.transform.position);
                     if (area.Contains(point))
                     {
                         //Ser om det allerede var valgt
-                        if (previouslySelectedObjects.Contains(obj))
+                        if (previouslySelectedUnits.Contains(unit))
                         {
-                            selectedObjects.Add(obj);
-                            if (selectedObjects.Count >= selectionLimit)
+                            selectedUnits.Add(unit);
+                            //Om vi har nådd selectionlimiten
+                            if (selectedUnits.Count >= selectionLimit)
                                 break;
                             else
                                 continue;
                         }
 
                         //Legger det til i listen over valgte objekter
-                        selectedObjects.Add(obj);
+                        selectedUnits.Add(unit);
 
                         //Melder fra til objektet at det er valgt
-                        cSelectable = obj.GetComponent<CSelectable>();
-                        cSelectable.SendMessage("Selected");
+                        unit.cSelectable.SendMessage("Selected");
 
-                        if (selectedObjects.Count >= selectionLimit)
+                        //Ser om vi har nådd selectionlimiten
+                        if (selectedUnits.Count >= selectionLimit)
                             break;
                     }
                 }
             }
-            foreach (Transform obj in previouslySelectedObjects)
+            //For hvert objekt av de vi hadde velgt forrige frame
+            foreach (Unit unit in previouslySelectedUnits)
             {
-                if (!selectedObjects.Contains(obj))
-                    obj.GetComponent<CSelectable>().SendMessage("Deselected");
+                //Om det ikke er valgt lenger
+                if (!selectedUnits.Contains(unit))
+                    //Sier ifra til objektet at det ikke er valgt lenger
+                    unit.cSelectable.SendMessage("Deselected");
             }
-            Debug.Log(string.Format("current: {0}, prev: {1}", selectedObjects.Count, previouslySelectedObjects.Count));
-        }
 
+            if(!selectedUnits.Equals(previouslySelectedUnits))
+                UIUnitInfo.SelectionChanged();
+        }
+    }
+
+    void Movement()
+    {
         //FLYTTE UNIT
         if (Input.GetMouseButtonUp(1))
         {
             //Om et object er vagt
-            if (selectedObjects.Count > 0)
+            if (selectedUnits.Count > 0)
             {
                 //Finner posisjon i verden utifra musepeker
                 ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 10000, 1, QueryTriggerInteraction.Ignore))
                 {
-                    foreach (Transform obj in selectedObjects)
+                    //For hvert av de valgte unitsene
+                    foreach (Unit unit in selectedUnits)
                     {
-                        cMoveable = obj.GetComponent<CMoveable>();
+                        //Får tak i move-komponenten
+                        cMoveable = unit.GetComponent<CMoveable>();
+                        //Om uniten kan flytte på seg
                         if (cMoveable != null)
+                        {
+                            //Sier at den skal ture 
                             cMoveable.SendMessage("SetTarget", hit.point);
+                        }
                     }
                 }
             }
         }
     }
+
     void Move()
     {
         //Finner posisjon i verden utifra musepeker
@@ -204,35 +274,46 @@ public class CameraControlls : MonoBehaviour
         }
     }
 
-    public void Select(Transform transfom)
+    public void Select(Unit unit)
     {
-        if (!selectedObjects.Contains(transfom))
+        if (!selectedUnits.Contains(unit))
         {
-            selectedObjects.Add(transfom);
-            transfom.GetComponent<CSelectable>().SendMessage("Selected");
+            selectedUnits.Add(unit);
+            unit.cSelectable.SendMessage("Selected");
         }
     }
-    public void Deselect(Transform transfom)
+    public void Deselect(Unit unit)
     {
-        if (selectedObjects.Contains(transfom))
+        if (selectedUnits.Contains(unit))
         {
-            selectedObjects.Remove(transfom);
-            transfom.GetComponent<CSelectable>().SendMessage("Deselected");
+            selectedUnits.Remove(unit);
+            unit.cSelectable.SendMessage("Deselected");
         }
     }
-    public void SetVisible(Transform transform, bool visible)
+    public void DeselectAll()
+    {
+        previouslySelectedUnits = new List<Unit>(selectedUnits);
+        selectedUnits.Clear();
+        for (int i = 0; i < previouslySelectedUnits.Count; i++)
+        {
+            previouslySelectedUnits[i].cSelectable.SendMessage("Deselected");
+        }
+    }
+
+    public void SetVisible(Unit unit, bool visible)
     {
         if (visible)
         {
-            if (!GameManager.controlls.visibleObjects.Contains(transform))
-                GameManager.controlls.visibleObjects.Add(transform);
+            if (!GameManager.controlls.visibleUnits.Contains(unit))
+                GameManager.controlls.visibleUnits.Add(unit);
         }
         else
         {
-        if (GameManager.controlls.visibleObjects.Contains(transform))
-            GameManager.controlls.visibleObjects.Remove(transform);
+            if (GameManager.controlls.visibleUnits.Contains(unit))
+                GameManager.controlls.visibleUnits.Remove(unit);
         }
     }
+
     public static Rect GUIRectWithObject(GameObject go)
     {
         Vector3 cen = go.GetComponent<Renderer>().bounds.center;
@@ -279,8 +360,14 @@ public class CameraControlls : MonoBehaviour
             case Cursors.Load:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
                 break;
-            case Cursors.Unload:
+            case Cursors.LoadBlocked:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 0), CursorMode.Auto);
+                break;
+            case Cursors.Unload:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
+                break;
+            case Cursors.UnloadBlocked:
+                Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 32), CursorMode.Auto);
                 break;
             case Cursors.Pack:
                 Cursor.SetCursor(cursorTextures[(int)cursor], new Vector2(16, 16), CursorMode.Auto);
@@ -291,4 +378,4 @@ public class CameraControlls : MonoBehaviour
         }
     }
 }
-public enum Cursors { Arrow, Select, Attack, Load, Unload, Pack, Unpack}
+public enum Cursors { Arrow, Select, Attack, Load, LoadBlocked, Unload, UnloadBlocked, Pack, Unpack}

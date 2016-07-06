@@ -14,14 +14,14 @@ public class InformationScript : MonoBehaviour
 	void Update ()
     {
         timer.text = tid.ToString();
-        if (GameManager.controlls.selectedObjects.Count > 0)
+        if (GameManager.controlls.selectedUnits.Count > 0)
         {
-            Unit unit = GameManager.controlls.selectedObjects[0].GetComponent<Unit>();
+            Unit unit = GameManager.controlls.selectedUnits[0].GetComponent<Unit>();
             if (unit != null)
             {
-                hitPoints.text = "HP: " + unit.cHealth.currentHealth.ToString();//unit Health
+                hitPoints.text = "HP: " + unit.currentHealth.ToString();//unit Health
                 unitName.text = unit.displayName; //unit navn
-                generalInfo.text = "Weapon: " + unit.weapon.ToString() + "\n" + "Optics: " + unit.optics.ToString() + "\n" + "Armor: " + unit.armor.ToString() + "\n" + "Movement Speed: " + unit.movementSpeed.ToString() + "\n" + "Range: " + unit.weapon.range.ToString() + "\n" + "Rate of fire: " + unit.weapon.firerate.ToString() + "\n" + "Damage: " + unit.weapon.damage.ToString() + " " + unit.weapon.damageType.ToString();
+                generalInfo.text = "Weapon: " + unit.weapon.ToString() + "\n" + "Optics: " + unit.optics.ToString() + "\n" + "Armor: " + unit.armor.ToString() + "\n" + "Movement Speed: " + unit.movementSpeed.ToString() + "\n" + "Range: " + unit.weapon.range.ToString() + "\n" + "Rate of fire: " + unit.weapon.firerate.ToString() + "\n" + "Damage: " + unit.weapon.ammo.damage.ToString() + " " + unit.weapon.ammo.damageType.ToString();
                 //Lang string med generel info
             }
             else

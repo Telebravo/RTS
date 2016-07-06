@@ -5,9 +5,12 @@ public class ShotHandler : MonoBehaviour
 {
     public float Speed;
     public GameObject Explosion;
+
+    [HideInInspector]
+    public Ammunition ammo;
+    [HideInInspector]
     public float Range;
-    public float Damage;
-    public float ExplosionRadius;
+    [HideInInspector]
     public float AirTime;
     
     private float StartTime;
@@ -30,20 +33,34 @@ public class ShotHandler : MonoBehaviour
     {
         if(!other.isTrigger)
         {
-            Explode();
+            if (ammo.damageType == DamageType.Kinetic)
+            {
+                Unit unit = other.GetComponent<Unit>();
+                if (unit != null)
+                {
+                    unit.Damage(ammo);
+                    GameObject explotionObject = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
+                    explotionObject.transform.localScale = Vector3.one * ammo.explosionRadius * 2;
+                    Destroy(gameObject);
+                }
+            }
+            else if (ammo.damageType == DamageType.Explosive)
+            {
+                Explode();
+            }
         }
     }
     void Explode()
     {
-        Instantiate(Explosion, transform.position, transform.rotation);
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+        GameObject explotionObject = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
+        explotionObject.transform.localScale = Vector3.one * ammo.explosionRadius * 2;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ammo.explosionRadius);
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            CHealth health = hitColliders[i].GetComponent<CHealth>();
-            if(health != null)
+            Unit unit = hitColliders[i].GetComponent<Unit>();
+            if(unit != null)
             {
-                health.Damage(Damage, DamageType.Explosive, (hitColliders[i].transform.position - transform.position).magnitude);
-                print((hitColliders[i].transform.position - transform.position).magnitude);
+                unit.Damage(ammo, (hitColliders[i].bounds.ClosestPoint(transform.position) - transform.position).magnitude);
             }
         }
         Destroy(gameObject);

@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/CSelectable")]
+[RequireComponent(typeof(Unit))]
 public class CSelectable : MonoBehaviour
 {
+    [HideInInspector]
+    public Unit unit;
+
+    [HideInInspector]
     public bool selected = false;
+
     public Transform selectionCanvas;
     public string CallComponent;
     public string CallFunction;
+
     void Selected()
     {
         Debug.Log(gameObject.name + " selected");
@@ -20,6 +28,7 @@ public class CSelectable : MonoBehaviour
             component.SendMessage(CallFunction, selected);
         }
     }
+
     void Deselected()
     {
         Debug.Log(gameObject.name + " deselected");
@@ -33,14 +42,17 @@ public class CSelectable : MonoBehaviour
             component.SendMessage(CallFunction, selected);
         }
     }
+
     void OnBecameVisible()
     {
-        GameManager.controlls.SetVisible(this.transform, true);
+        GameManager.controlls.SetVisible(unit, true);
     }
+
     void OnBecameInvisible()
     {
-        GameManager.controlls.SetVisible(this.transform, false);
+        GameManager.controlls.SetVisible(unit, false);
     }
+
     void Update()
     {
         Vector3 directionToCamera = Camera.main.transform.position - transform.position;
