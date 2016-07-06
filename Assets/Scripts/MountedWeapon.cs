@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MountedWeapon : MonoBehaviour
 {
+    public bool primary = false;
     public Weapon weapon;
     public Transform mount;
     public Transform weaponPosition;
@@ -21,6 +22,8 @@ public class MountedWeapon : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         SetWeapon(weapon);
+        if (primary)
+            unit.weapon = weapon;
         lastShootTime = Random.value * 60 / weapon.firerate;
         if (lineRenderer != null)
             lineRenderer.SetWidth(weapon.ammo.lineWidth, weapon.ammo.lineWidth);
@@ -120,7 +123,7 @@ public class MountedWeapon : MonoBehaviour
                                     
                                     //Setter airtime
                                     float range = Mathf.Min((target.transform.position - weapon.barrelEnd.position).magnitude, weapon.range);
-                                    shotHandlerShell.AirTime = weapon.ammo.damageType == DamageType.Explosive ? range / shotHandlerShell.Speed : 99999;
+                                    shotHandlerShell.AirTime = weapon.ammo.damageType == DamageType.Explosive ? range / shotHandlerShell.Speed + 1: 60;
 
                                     //Setter hvilken ammo prosjektilet kommer fra
                                     shotHandlerShell.ammo = weapon.ammo;

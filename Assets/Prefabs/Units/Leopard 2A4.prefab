@@ -284,7 +284,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.8, y: 1.51, z: 95.7}
+  m_LocalPosition: {x: 56.73857, y: 1, z: 129.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -569,11 +569,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171182}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 0
   weapon: {fileID: 11438068, guid: 878546955e6cda341a26488fdb35b5b9, type: 2}
   mount: {fileID: 486134}
   weaponPosition: {fileID: 451312}
@@ -632,11 +633,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171182}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 0
   weapon: {fileID: 11438068, guid: 878546955e6cda341a26488fdb35b5b9, type: 2}
   mount: {fileID: 414188}
   weaponPosition: {fileID: 413814}
@@ -654,6 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 1
   weapon: {fileID: 11406132, guid: fef28152ee182ab4c88e2da06e008123, type: 2}
   mount: {fileID: 402946}
   weaponPosition: {fileID: 484050}
@@ -786,7 +789,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171182}
   m_Enabled: 1
-  m_Radius: 2.67
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

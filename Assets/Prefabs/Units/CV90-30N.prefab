@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 1
   weapon: {fileID: 11443938, guid: 77adec4f68a9b8242a6641d8469efbf0, type: 2}
   mount: {fileID: 474346}
   weaponPosition: {fileID: 426678}
