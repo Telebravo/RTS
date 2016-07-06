@@ -81,15 +81,13 @@ public class UIUnitInfo : MonoBehaviour
             unitInfoText[5].text = GameManager.selectedUnit.movementSpeed.ToString();
 
             List <MountedWeapon> mountedWeapons = GameManager.selectedUnit.mountedWeapons.Where(mountedWeapon => mountedWeapon.primary == false).ToList();
-            Debug.Log(mountedWeapons.Count);
+
             for (int i = 0; i < mountedWeapons.Count; i++)
             {
                 //Aktiverer panelet
                 if (!mountedWeaponsPanels[i].activeInHierarchy)
                     mountedWeaponsPanels[i].SetActive(true);
                     
-                Debug.Log(mountedWeapons[i].weapon.name);
-                Debug.Log(mountedWeaponsPanels[i].name);
                 mountedWeaponsPanels[i].transform.FindChild("Text").GetComponent<Text>().text = mountedWeapons[i].weapon.name;
             }
             for (int i = mountedWeapons.Count; i < mountedWeaponPanelCount; i++)

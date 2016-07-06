@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Vold's Main Menu.unity
+    path: Assets/Scenes/Vold's Main Menu.unity
   - enabled: 1
-    path: Assets/Vold's test bench.unity
+    path: Assets/Scenes/Vold's test bench.unity
