@@ -602,7 +602,7 @@ MonoBehaviour:
   optics: 1000
   camo: 0
   armor: 90
-  movementSpeed: 20
+  movementSpeed: 25
   rotationSpeed: 120
   weapon: {fileID: 0}
   mountedWeapons: []

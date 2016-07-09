@@ -386,7 +386,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
-  cHealth: {fileID: 0}
   visibility: {fileID: 0}
   team: 0
   displayName: Scania P93
@@ -395,11 +394,13 @@ MonoBehaviour:
   optics: 0
   camo: 0
   armor: 2
-  movementSpeed: 25
+  movementSpeed: 50
   rotationSpeed: 120
   weapon: {fileID: 0}
+  mountedWeapons: []
   weaponObject: {fileID: 0}
   icon: {fileID: 0}
+  currentHealth: 0
   enemiesInRange: []
   closestEnemy: {fileID: 0}
 --- !u!114 &11477770

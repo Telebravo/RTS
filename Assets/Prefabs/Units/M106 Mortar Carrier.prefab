@@ -459,9 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 0
   weapon: {fileID: 11487518, guid: 01f33180113572b45a88bdc7555ece31, type: 2}
   mount: {fileID: 493504}
   weaponPosition: {fileID: 487084}
+  lineRenderer: {fileID: 0}
   mountRotationSpeed: 50
   weaponElevationSpeed: 50
 --- !u!114 &11413626
@@ -497,10 +499,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1
-  Shell: {fileID: 154260, guid: 43696c4113adacb4788d38dee1206202, type: 2}
   barrelEnd: {fileID: 414158}
   BarrelRotation: {fileID: 414158}
   barrelRotationSpeed: 15
+  timeBetweenEachShot: 0
 --- !u!114 &11448252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -522,9 +524,10 @@ MonoBehaviour:
   optics: 1000
   camo: 0
   armor: 20
-  movementSpeed: 15
+  movementSpeed: 25
   rotationSpeed: 120
   weapon: {fileID: 11461748, guid: 98858075c18348c418c2a28d24fc0922, type: 2}
+  mountedWeapons: []
   weaponObject: {fileID: 0}
   icon: {fileID: 0}
   currentHealth: 0
