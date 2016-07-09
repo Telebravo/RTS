@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum AmmunitionSize { NATO556x45, NATO762x51, NATO127x99, Tank120, Shell30x173 }
+public enum AmmunitionSize { NATO556x45, NATO762x51, NATO127x99, Shell120, Shell30x173, Soviet762x39 }
 public enum DamageType { Kinetic, Explosive }
 
 public class Ammunition : MonoBehaviour
@@ -12,5 +12,6 @@ public class Ammunition : MonoBehaviour
     public float damage = 0;
     public float armorPenetration = 1;
     public float explosionRadius = 0;
-    public GameObject prefab;
+    public float lineWidth = 0.05f;
+    public GameObject projectilePrefab;
 }

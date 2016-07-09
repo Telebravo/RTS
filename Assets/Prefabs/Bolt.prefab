@@ -8,9 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
+  - 65: {fileID: 6558500}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11483510}
-  - 65: {fileID: 6558500}
   m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
@@ -199,9 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 100
   Explosion: {fileID: 155474, guid: 8f4dd8919d9a5fc44b957090df155d1a, type: 2}
+  ammo: {fileID: 0}
   Range: 50
-  Damage: 14
-  ExplosionRadius: 4
   AirTime: 0
 --- !u!1001 &100100000
 Prefab:

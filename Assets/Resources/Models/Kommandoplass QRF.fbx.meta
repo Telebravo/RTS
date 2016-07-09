@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 32f02b93e4758bc478a3e0640871448d
+timeCreated: 1467547481
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cone
+    100002: Cone.001
+    100004: Cone.002
+    100006: Cone.003
+    100008: Cone.004
+    100010: Cube
+    100012: Cube.001
+    100014: Cube.006
+    100016: Cube.007
+    100018: Cube.008
+    100020: Cube.009
+    100022: Cube.010
+    100024: Cube.011
+    100026: Cube.012
+    100028: Cube.013
+    100030: Cube.014
+    100032: Cube.015
+    100034: Cube.016
+    100036: Cube.017
+    100038: Cylinder
+    100040: Cylinder.001
+    100042: Cylinder.002
+    100044: Cylinder.015
+    100046: Cylinder.016
+    100048: Cylinder.017
+    100050: Cylinder.018
+    100052: Cylinder.019
+    100054: Cylinder.020
+    100056: Cylinder.021
+    100058: Cylinder.022
+    100060: Cylinder.023
+    100062: Cylinder.024
+    100064: Cylinder.025
+    100066: Cylinder.026
+    100068: Cylinder.027
+    100070: Cylinder.028
+    100072: Cylinder.029
+    100074: Cylinder.030
+    100076: Cylinder.031
+    100078: Cylinder.032
+    100080: Cylinder.033
+    100082: Cylinder.034
+    100084: Cylinder.035
+    100086: Cylinder.036
+    100088: Cylinder.037
+    100090: Cylinder.038
+    100092: Cylinder.039
+    100094: Cylinder.040
+    100096: Cylinder.041
+    100098: Cylinder.042
+    100100: Cylinder.043
+    100102: Cylinder.044
+    100104: Cylinder.045
+    100106: Cylinder.046
+    100108: Cylinder.047
+    100110: Cylinder.048
+    100112: Cylinder.049
+    100114: Cylinder.050
+    100116: //RootNode
+    100118: M2 Browning gun .000
+    100120: M2 Browning gun .002
+    100122: M2 Browning gun .003
+    100124: M2 Browning.000
+    100126: M2 Browning.002
+    100128: M2 Browning.003
+    100130: Plane.006
+    100132: Plane.007
+    100134: Plane.008
+    100136: Plane.009
+    100138: Plane.010
+    100140: Plane.012
+    100142: Plane.013
+    100144: Plane.014
+    100146: Plane.015
+    100148: Plane.016
+    100150: Plane.017
+    100152: Plane.018
+    100154: Plane.019
+    100156: Plane.020
+    100158: Plane.021
+    100160: Plane.022
+    100162: Plane.023
+    100164: Plane.024
+    100166: Torus
+    400000: Cone
+    400002: Cone.001
+    400004: Cone.002
+    400006: Cone.003
+    400008: Cone.004
+    400010: Cube
+    400012: Cube.001
+    400014: Cube.006
+    400016: Cube.007
+    400018: Cube.008
+    400020: Cube.009
+    400022: Cube.010
+    400024: Cube.011
+    400026: Cube.012
+    400028: Cube.013
+    400030: Cube.014
+    400032: Cube.015
+    400034: Cube.016
+    400036: Cube.017
+    400038: Cylinder
+    400040: Cylinder.001
+    400042: Cylinder.002
+    400044: Cylinder.015
+    400046: Cylinder.016
+    400048: Cylinder.017
+    400050: Cylinder.018
+    400052: Cylinder.019
+    400054: Cylinder.020
+    400056: Cylinder.021
+    400058: Cylinder.022
+    400060: Cylinder.023
+    400062: Cylinder.024
+    400064: Cylinder.025
+    400066: Cylinder.026
+    400068: Cylinder.027
+    400070: Cylinder.028
+    400072: Cylinder.029
+    400074: Cylinder.030
+    400076: Cylinder.031
+    400078: Cylinder.032
+    400080: Cylinder.033
+    400082: Cylinder.034
+    400084: Cylinder.035
+    400086: Cylinder.036
+    400088: Cylinder.037
+    400090: Cylinder.038
+    400092: Cylinder.039
+    400094: Cylinder.040
+    400096: Cylinder.041
+    400098: Cylinder.042
+    400100: Cylinder.043
+    400102: Cylinder.044
+    400104: Cylinder.045
+    400106: Cylinder.046
+    400108: Cylinder.047
+    400110: Cylinder.048
+    400112: Cylinder.049
+    400114: Cylinder.050
+    400116: //RootNode
+    400118: M2 Browning gun .000
+    400120: M2 Browning gun .002
+    400122: M2 Browning gun .003
+    400124: M2 Browning.000
+    400126: M2 Browning.002
+    400128: M2 Browning.003
+    400130: Plane.006
+    400132: Plane.007
+    400134: Plane.008
+    400136: Plane.009
+    400138: Plane.010
+    400140: Plane.012
+    400142: Plane.013
+    400144: Plane.014
+    400146: Plane.015
+    400148: Plane.016
+    400150: Plane.017
+    400152: Plane.018
+    400154: Plane.019
+    400156: Plane.020
+    400158: Plane.021
+    400160: Plane.022
+    400162: Plane.023
+    400164: Plane.024
+    400166: Torus
+    2300000: Cone
+    2300002: Cone.001
+    2300004: Cone.002
+    2300006: Cone.003
+    2300008: Cone.004
+    2300010: Cube
+    2300012: Cube.001
+    2300014: Cube.006
+    2300016: Cube.007
+    2300018: Cube.008
+    2300020: Cube.009
+    2300022: Cube.010
+    2300024: Cube.011
+    2300026: Cube.012
+    2300028: Cube.013
+    2300030: Cube.014
+    2300032: Cube.015
+    2300034: Cube.016
+    2300036: Cube.017
+    2300038: Cylinder
+    2300040: Cylinder.001
+    2300042: Cylinder.002
+    2300044: Cylinder.015
+    2300046: Cylinder.016
+    2300048: Cylinder.017
+    2300050: Cylinder.018
+    2300052: Cylinder.019
+    2300054: Cylinder.020
+    2300056: Cylinder.021
+    2300058: Cylinder.022
+    2300060: Cylinder.023
+    2300062: Cylinder.024
+    2300064: Cylinder.025
+    2300066: Cylinder.026
+    2300068: Cylinder.027
+    2300070: Cylinder.028
+    2300072: Cylinder.029
+    2300074: Cylinder.030
+    2300076: Cylinder.031
+    2300078: Cylinder.032
+    2300080: Cylinder.033
+    2300082: Cylinder.034
+    2300084: Cylinder.035
+    2300086: Cylinder.036
+    2300088: Cylinder.037
+    2300090: Cylinder.038
+    2300092: Cylinder.039
+    2300094: Cylinder.040
+    2300096: Cylinder.041
+    2300098: Cylinder.042
+    2300100: Cylinder.043
+    2300102: Cylinder.044
+    2300104: Cylinder.045
+    2300106: Cylinder.046
+    2300108: Cylinder.047
+    2300110: Cylinder.048
+    2300112: Cylinder.049
+    2300114: Cylinder.050
+    2300116: M2 Browning gun .000
+    2300118: M2 Browning gun .002
+    2300120: M2 Browning gun .003
+    2300122: M2 Browning.000
+    2300124: M2 Browning.002
+    2300126: M2 Browning.003
+    2300128: Plane.006
+    2300130: Plane.007
+    2300132: Plane.008
+    2300134: Plane.009
+    2300136: Plane.010
+    2300138: Plane.012
+    2300140: Plane.013
+    2300142: Plane.014
+    2300144: Plane.015
+    2300146: Plane.016
+    2300148: Plane.017
+    2300150: Plane.018
+    2300152: Plane.019
+    2300154: Plane.020
+    2300156: Plane.021
+    2300158: Plane.022
+    2300160: Plane.023
+    2300162: Plane.024
+    2300164: Torus
+    3300000: Cone
+    3300002: Cone.001
+    3300004: Cone.002
+    3300006: Cone.003
+    3300008: Cone.004
+    3300010: Cube
+    3300012: Cube.001
+    3300014: Cube.006
+    3300016: Cube.007
+    3300018: Cube.008
+    3300020: Cube.009
+    3300022: Cube.010
+    3300024: Cube.011
+    3300026: Cube.012
+    3300028: Cube.013
+    3300030: Cube.014
+    3300032: Cube.015
+    3300034: Cube.016
+    3300036: Cube.017
+    3300038: Cylinder
+    3300040: Cylinder.001
+    3300042: Cylinder.002
+    3300044: Cylinder.015
+    3300046: Cylinder.016
+    3300048: Cylinder.017
+    3300050: Cylinder.018
+    3300052: Cylinder.019
+    3300054: Cylinder.020
+    3300056: Cylinder.021
+    3300058: Cylinder.022
+    3300060: Cylinder.023
+    3300062: Cylinder.024
+    3300064: Cylinder.025
+    3300066: Cylinder.026
+    3300068: Cylinder.027
+    3300070: Cylinder.028
+    3300072: Cylinder.029
+    3300074: Cylinder.030
+    3300076: Cylinder.031
+    3300078: Cylinder.032
+    3300080: Cylinder.033
+    3300082: Cylinder.034
+    3300084: Cylinder.035
+    3300086: Cylinder.036
+    3300088: Cylinder.037
+    3300090: Cylinder.038
+    3300092: Cylinder.039
+    3300094: Cylinder.040
+    3300096: Cylinder.041
+    3300098: Cylinder.042
+    3300100: Cylinder.043
+    3300102: Cylinder.044
+    3300104: Cylinder.045
+    3300106: Cylinder.046
+    3300108: Cylinder.047
+    3300110: Cylinder.048
+    3300112: Cylinder.049
+    3300114: Cylinder.050
+    3300116: M2 Browning gun .000
+    3300118: M2 Browning gun .002
+    3300120: M2 Browning gun .003
+    3300122: M2 Browning.000
+    3300124: M2 Browning.002
+    3300126: M2 Browning.003
+    3300128: Plane.006
+    3300130: Plane.007
+    3300132: Plane.008
+    3300134: Plane.009
+    3300136: Plane.010
+    3300138: Plane.012
+    3300140: Plane.013
+    3300142: Plane.014
+    3300144: Plane.015
+    3300146: Plane.016
+    3300148: Plane.017
+    3300150: Plane.018
+    3300152: Plane.019
+    3300154: Plane.020
+    3300156: Plane.021
+    3300158: Plane.022
+    3300160: Plane.023
+    3300162: Plane.024
+    3300164: Torus
+    4300000: Cone
+    4300002: Cylinder
+    4300004: Cube
+    4300006: Cube.001
+    4300008: Cylinder.002
+    4300010: Cylinder.001
+    4300012: M2 Browning gun .000
+    4300014: Cube.006
+    4300016: Cube.007
+    4300018: Cube.008
+    4300020: Cube.009
+    4300022: Cylinder.015
+    4300024: Cylinder.016
+    4300026: Cylinder.017
+    4300028: Cylinder.018
+    4300030: Cylinder.019
+    4300032: Cylinder.020
+    4300034: Cylinder.021
+    4300036: Cylinder.022
+    4300038: Cylinder.023
+    4300040: Cylinder.024
+    4300042: Cylinder.025
+    4300044: Cylinder.026
+    4300046: M2 Browning.000
+    4300048: Plane.006
+    4300050: Plane.007
+    4300052: Plane.008
+    4300054: Plane.009
+    4300056: Plane.010
+    4300058: Plane.012
+    4300060: M2 Browning gun .002
+    4300062: Cube.010
+    4300064: Cube.011
+    4300066: Cube.012
+    4300068: Cube.013
+    4300070: Cylinder.027
+    4300072: Cylinder.028
+    4300074: Cylinder.029
+    4300076: Cylinder.030
+    4300078: Cylinder.031
+    4300080: Cylinder.032
+    4300082: Cylinder.033
+    4300084: Cylinder.034
+    4300086: Cylinder.035
+    4300088: Cylinder.036
+    4300090: Cylinder.037
+    4300092: Cylinder.038
+    4300094: M2 Browning.002
+    4300096: Plane.013
+    4300098: Plane.014
+    4300100: Plane.015
+    4300102: Plane.016
+    4300104: Plane.017
+    4300106: Plane.018
+    4300108: M2 Browning gun .003
+    4300110: Cube.014
+    4300112: Cube.015
+    4300114: Cube.016
+    4300116: Cube.017
+    4300118: Cylinder.039
+    4300120: Cylinder.040
+    4300122: Cylinder.041
+    4300124: Cylinder.042
+    4300126: Cylinder.043
+    4300128: Cylinder.044
+    4300130: Cylinder.045
+    4300132: Cylinder.046
+    4300134: Cylinder.047
+    4300136: Cylinder.048
+    4300138: Cylinder.049
+    4300140: Cylinder.050
+    4300142: M2 Browning.003
+    4300144: Plane.019
+    4300146: Plane.020
+    4300148: Plane.021
+    4300150: Plane.022
+    4300152: Plane.023
+    4300154: Plane.024
+    4300156: Cone.001
+    4300158: Cone.002
+    4300160: Cone.003
+    4300162: Cone.004
+    4300164: Torus
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

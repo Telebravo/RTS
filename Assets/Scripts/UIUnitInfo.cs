@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class UIUnitInfo : MonoBehaviour
 {
@@ -16,9 +17,14 @@ public class UIUnitInfo : MonoBehaviour
     public List<Text> unitInfoText;
     static UIUnitInfo self;
     static float lastClick = 0f;
+    public GameObject mountedWeaponsPanel;
+    public GameObject mountedWeaponPanelPrefab;
+    public int mountedWeaponPanelCount = 2;
+    [HideInInspector]
+    public List<GameObject> mountedWeaponsPanels;
 
 
-	void Start ()
+    void Start ()
     {
         self = this;
 
@@ -29,11 +35,19 @@ public class UIUnitInfo : MonoBehaviour
             unitPanels[i].transform.name = "Unit " + i.ToString();
             unitPanels[i].transform.SetParent(units.transform, false);
         }
-	}
+        for (int i = 0; i < mountedWeaponPanelCount; i++)
+        {
+            mountedWeaponsPanels.Add(Instantiate(mountedWeaponPanelPrefab));
+            mountedWeaponsPanels[i].transform.name = "Weapon " + i.ToString();
+            mountedWeaponsPanels[i].transform.SetParent(mountedWeaponsPanel.transform, false);
+            mountedWeaponsPanels[i].GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, i * 200, 200);
+        }
+    }
     void Update()
     {
         UpdateUI();
     }
+
     public void UpdateUI()
     {
         //Unit info
@@ -44,12 +58,14 @@ public class UIUnitInfo : MonoBehaviour
                 if (!unitInfoPanels[i].activeInHierarchy)
                     unitInfoPanels[i].SetActive(true);
             }
+            if (!mountedWeaponsPanel.activeInHierarchy)
+                mountedWeaponsPanel.SetActive(true);
 
             unitInfoImage.gameObject.SetActive(true);
             unitInfoImage.sprite = GameManager.selectedUnit.icon;
 
             unitInfoText[0].text = GameManager.selectedUnit.displayName.ToString();
-            unitInfoText[1].text = GameManager.selectedUnit.cHealth.currentHealth.ToString();
+            unitInfoText[1].text = GameManager.selectedUnit.currentHealth.ToString();
 
             if (GameManager.selectedUnit.weapon != null)
             {
@@ -63,6 +79,23 @@ public class UIUnitInfo : MonoBehaviour
             }
             unitInfoText[4].text = GameManager.selectedUnit.armor.ToString();
             unitInfoText[5].text = GameManager.selectedUnit.movementSpeed.ToString();
+
+            List <MountedWeapon> mountedWeapons = GameManager.selectedUnit.mountedWeapons.Where(mountedWeapon => mountedWeapon.primary == false).ToList();
+
+            for (int i = 0; i < mountedWeapons.Count; i++)
+            {
+                //Aktiverer panelet
+                if (!mountedWeaponsPanels[i].activeInHierarchy)
+                    mountedWeaponsPanels[i].SetActive(true);
+                    
+                mountedWeaponsPanels[i].transform.FindChild("Text").GetComponent<Text>().text = mountedWeapons[i].weapon.name;
+            }
+            for (int i = mountedWeapons.Count; i < mountedWeaponPanelCount; i++)
+            {
+                //Deaktiverer panelet
+                if (mountedWeaponsPanels[i].activeInHierarchy)
+                    mountedWeaponsPanels[i].SetActive(false);
+            }
         }
         else
         {
@@ -70,6 +103,12 @@ public class UIUnitInfo : MonoBehaviour
             {
                 if(unitInfoPanels[i].activeInHierarchy)
                     unitInfoPanels[i].SetActive(false);
+            }
+            for (int i = 0; i < mountedWeaponPanelCount; i++)
+            {
+                //Deaktiverer panelet
+                if (mountedWeaponsPanels[i].activeInHierarchy)
+                    mountedWeaponsPanels[i].SetActive(false);
             }
         }
 
@@ -109,10 +148,11 @@ public class UIUnitInfo : MonoBehaviour
             float n = 96f / unit.startHealth;
 
             //Setter størrelsen på helath baren
-            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.cHealth.currentHealth * n);
+            unitPanels[i].transform.FindChild("HealthBar").transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 2, unit.currentHealth * n);
             unitPanels[i].transform.FindChild("Icon").transform.GetComponent<Image>().sprite = unit.icon;
         }
     }
+
     public void SelectUnit(RectTransform rTransform)
     {
         GameManager.selectedUnit = GameManager.controlls.selectedUnits[unitPanels.IndexOf(rTransform.gameObject)].GetComponent<Unit>();
@@ -124,6 +164,7 @@ public class UIUnitInfo : MonoBehaviour
         }
         lastClick = Time.time;
     }
+
     public static void SelectionChanged()
     {
         if(GameManager.controlls.selectedUnits.Count == 0)

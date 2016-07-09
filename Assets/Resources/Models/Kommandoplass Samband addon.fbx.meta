@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: df306cae888bcf847ab93c4809819c16
+timeCreated: 1467551581
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bakvogn
+    100004: Bakvogn_end
+    100006: Belt Back.L
+    100008: Belt Back.R
+    100010: Belt front.L
+    100012: Belt front.R
+    100014: Beltevogn
+    100016: Bineledd
+    100018: Cylinder.003
+    100020: Framvogn
+    100022: Framvogn_end
+    100024: //RootNode
+    100026: RF1
+    100028: RF2
+    100030: SHF
+    100032: TH1
+    100034: TH2
+    100036: TH3
+    100038: UHF
+    400000: Armature
+    400002: Bakvogn
+    400004: Bakvogn_end
+    400006: Belt Back.L
+    400008: Belt Back.R
+    400010: Belt front.L
+    400012: Belt front.R
+    400014: Beltevogn
+    400016: Bineledd
+    400018: Cylinder.003
+    400020: Framvogn
+    400022: Framvogn_end
+    400024: //RootNode
+    400026: RF1
+    400028: RF2
+    400030: SHF
+    400032: TH1
+    400034: TH2
+    400036: TH3
+    400038: UHF
+    2300000: Cylinder.003
+    2300002: RF1
+    2300004: RF2
+    2300006: SHF
+    2300008: TH1
+    2300010: TH2
+    2300012: TH3
+    2300014: UHF
+    3300000: Cylinder.003
+    3300002: RF1
+    3300004: RF2
+    3300006: SHF
+    3300008: TH1
+    3300010: TH2
+    3300012: TH3
+    3300014: UHF
+    4300000: Cylinder.003
+    4300002: TH2
+    4300004: TH3
+    4300006: TH1
+    4300008: RF2
+    4300010: RF1
+    4300012: UHF
+    4300014: SHF
+    4300016: Belt Back.L
+    4300018: Belt Back.R
+    4300020: Beltevogn
+    4300022: Belt front.R
+    4300024: Belt front.L
+    9500000: //RootNode
+    13700000: Belt Back.L
+    13700002: Belt Back.R
+    13700004: Belt front.L
+    13700006: Belt front.R
+    13700008: Beltevogn
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

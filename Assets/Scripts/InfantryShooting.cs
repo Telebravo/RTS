@@ -7,20 +7,26 @@ using System.Collections.Generic;
 public class InfantryShooting : MonoBehaviour
 {
     Unit unit;
-    CHealth hitHealth;
 
     public Unit target;
+    public LineRenderer lineRenderer;
 
     float lastShootTime;
+    Vector3[] noline = new Vector3[2] { Vector3.zero, Vector3.zero };
 
-	void Start ()
+    void Start ()
     {
         unit = GetComponent<Unit>();
-        lastShootTime = 1;
+        lineRenderer = GetComponent<LineRenderer>();
+        lastShootTime = Random.value * 60 / unit.weapon.firerate;
+        lineRenderer.SetWidth(unit.weapon.ammo.lineWidth, unit.weapon.ammo.lineWidth);
     }
 	
 	void Update ()
     {
+        if (Time.time > lastShootTime + 0.1f)
+            lineRenderer.SetPositions(noline);
+
         target = unit.closestEnemy;
         Unit hitUnit;
         if (target != null)
@@ -45,18 +51,20 @@ public class InfantryShooting : MonoBehaviour
 
                             if (Physics.Raycast(unit.weapon.barrelEnd.position, shootDirection, out hit, unit.weapon.range))
                             {
-                                Debug.DrawLine(unit.weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
+                                //Debug.DrawLine(unit.weapon.barrelEnd.position, hit.point, Color.yellow, 0.1f);
+                                lineRenderer.SetPositions(new Vector3[2] { unit.weapon.barrelEnd.position, hit.point });
 
-                                hitHealth = hit.transform.GetComponent<CHealth>();
+                                hitUnit = hit.transform.GetComponent<Unit>();
 
-                                if (hitHealth != null)
+                                if (hitUnit != null)
                                 {
-                                    hitHealth.Damage(unit.weapon.ammo);
+                                    hitUnit.Damage(unit.weapon.ammo);
                                 }
                             }
                             else
                             {
-                                Debug.DrawRay(unit.weapon.barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.2f);
+                                //Debug.DrawRay(unit.weapon.barrelEnd.position, shootDirection.normalized*1000, Color.yellow, 0.2f);
+                                lineRenderer.SetPositions(new Vector3[2] { unit.weapon.barrelEnd.position, unit.weapon.barrelEnd.position + shootDirection.normalized * unit.weapon.range });
                             }
                         }
                     }

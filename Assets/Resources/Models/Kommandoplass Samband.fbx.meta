@@ -1,0 +1,536 @@
+fileFormatVersion: 2
+guid: f62c39bda457f494d8652fa23351c414
+timeCreated: 1467547485
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bakvogn
+    100004: Bakvogn_end
+    100006: Belt Back.L
+    100008: Belt Back.R
+    100010: Belt front.L
+    100012: Belt front.R
+    100014: Beltevogn
+    100016: Bineledd
+    100018: Cube
+    100020: Cube.001
+    100022: Cube.006
+    100024: Cube.007
+    100026: Cube.008
+    100028: Cube.009
+    100030: Cube.010
+    100032: Cube.011
+    100034: Cube.012
+    100036: Cube.013
+    100038: Cube.014
+    100040: Cube.015
+    100042: Cube.016
+    100044: Cube.017
+    100046: Cylinder
+    100048: Cylinder.001
+    100050: Cylinder.002
+    100052: Cylinder.003
+    100054: Cylinder.015
+    100056: Cylinder.016
+    100058: Cylinder.017
+    100060: Cylinder.018
+    100062: Cylinder.019
+    100064: Cylinder.020
+    100066: Cylinder.021
+    100068: Cylinder.022
+    100070: Cylinder.023
+    100072: Cylinder.024
+    100074: Cylinder.025
+    100076: Cylinder.026
+    100078: Cylinder.027
+    100080: Cylinder.028
+    100082: Cylinder.029
+    100084: Cylinder.030
+    100086: Cylinder.031
+    100088: Cylinder.032
+    100090: Cylinder.033
+    100092: Cylinder.034
+    100094: Cylinder.035
+    100096: Cylinder.036
+    100098: Cylinder.037
+    100100: Cylinder.038
+    100102: Cylinder.039
+    100104: Cylinder.040
+    100106: Cylinder.041
+    100108: Cylinder.042
+    100110: Cylinder.043
+    100112: Cylinder.044
+    100114: Cylinder.045
+    100116: Cylinder.046
+    100118: Cylinder.047
+    100120: Cylinder.048
+    100122: Cylinder.049
+    100124: Cylinder.050
+    100126: Framvogn
+    100128: Framvogn_end
+    100130: //RootNode
+    100132: M2 Browning gun .000
+    100134: M2 Browning gun .002
+    100136: M2 Browning gun .003
+    100138: M2 Browning.000
+    100140: M2 Browning.002
+    100142: M2 Browning.003
+    100144: Plane.006
+    100146: Plane.007
+    100148: Plane.008
+    100150: Plane.009
+    100152: Plane.010
+    100154: Plane.012
+    100156: Plane.013
+    100158: Plane.014
+    100160: Plane.015
+    100162: Plane.016
+    100164: Plane.017
+    100166: Plane.018
+    100168: Plane.019
+    100170: Plane.020
+    100172: Plane.021
+    100174: Plane.022
+    100176: Plane.023
+    100178: Plane.024
+    100180: RF1
+    100182: RF2
+    100184: SHF
+    100186: TH1
+    100188: TH2
+    100190: TH3
+    100192: Torus
+    100194: UHF
+    400000: Armature
+    400002: Bakvogn
+    400004: Bakvogn_end
+    400006: Belt Back.L
+    400008: Belt Back.R
+    400010: Belt front.L
+    400012: Belt front.R
+    400014: Beltevogn
+    400016: Bineledd
+    400018: Cube
+    400020: Cube.001
+    400022: Cube.006
+    400024: Cube.007
+    400026: Cube.008
+    400028: Cube.009
+    400030: Cube.010
+    400032: Cube.011
+    400034: Cube.012
+    400036: Cube.013
+    400038: Cube.014
+    400040: Cube.015
+    400042: Cube.016
+    400044: Cube.017
+    400046: Cylinder
+    400048: Cylinder.001
+    400050: Cylinder.002
+    400052: Cylinder.003
+    400054: Cylinder.015
+    400056: Cylinder.016
+    400058: Cylinder.017
+    400060: Cylinder.018
+    400062: Cylinder.019
+    400064: Cylinder.020
+    400066: Cylinder.021
+    400068: Cylinder.022
+    400070: Cylinder.023
+    400072: Cylinder.024
+    400074: Cylinder.025
+    400076: Cylinder.026
+    400078: Cylinder.027
+    400080: Cylinder.028
+    400082: Cylinder.029
+    400084: Cylinder.030
+    400086: Cylinder.031
+    400088: Cylinder.032
+    400090: Cylinder.033
+    400092: Cylinder.034
+    400094: Cylinder.035
+    400096: Cylinder.036
+    400098: Cylinder.037
+    400100: Cylinder.038
+    400102: Cylinder.039
+    400104: Cylinder.040
+    400106: Cylinder.041
+    400108: Cylinder.042
+    400110: Cylinder.043
+    400112: Cylinder.044
+    400114: Cylinder.045
+    400116: Cylinder.046
+    400118: Cylinder.047
+    400120: Cylinder.048
+    400122: Cylinder.049
+    400124: Cylinder.050
+    400126: Framvogn
+    400128: Framvogn_end
+    400130: //RootNode
+    400132: M2 Browning gun .000
+    400134: M2 Browning gun .002
+    400136: M2 Browning gun .003
+    400138: M2 Browning.000
+    400140: M2 Browning.002
+    400142: M2 Browning.003
+    400144: Plane.006
+    400146: Plane.007
+    400148: Plane.008
+    400150: Plane.009
+    400152: Plane.010
+    400154: Plane.012
+    400156: Plane.013
+    400158: Plane.014
+    400160: Plane.015
+    400162: Plane.016
+    400164: Plane.017
+    400166: Plane.018
+    400168: Plane.019
+    400170: Plane.020
+    400172: Plane.021
+    400174: Plane.022
+    400176: Plane.023
+    400178: Plane.024
+    400180: RF1
+    400182: RF2
+    400184: SHF
+    400186: TH1
+    400188: TH2
+    400190: TH3
+    400192: Torus
+    400194: UHF
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.006
+    2300006: Cube.007
+    2300008: Cube.008
+    2300010: Cube.009
+    2300012: Cube.010
+    2300014: Cube.011
+    2300016: Cube.012
+    2300018: Cube.013
+    2300020: Cube.014
+    2300022: Cube.015
+    2300024: Cube.016
+    2300026: Cube.017
+    2300028: Cylinder
+    2300030: Cylinder.001
+    2300032: Cylinder.002
+    2300034: Cylinder.003
+    2300036: Cylinder.015
+    2300038: Cylinder.016
+    2300040: Cylinder.017
+    2300042: Cylinder.018
+    2300044: Cylinder.019
+    2300046: Cylinder.020
+    2300048: Cylinder.021
+    2300050: Cylinder.022
+    2300052: Cylinder.023
+    2300054: Cylinder.024
+    2300056: Cylinder.025
+    2300058: Cylinder.026
+    2300060: Cylinder.027
+    2300062: Cylinder.028
+    2300064: Cylinder.029
+    2300066: Cylinder.030
+    2300068: Cylinder.031
+    2300070: Cylinder.032
+    2300072: Cylinder.033
+    2300074: Cylinder.034
+    2300076: Cylinder.035
+    2300078: Cylinder.036
+    2300080: Cylinder.037
+    2300082: Cylinder.038
+    2300084: Cylinder.039
+    2300086: Cylinder.040
+    2300088: Cylinder.041
+    2300090: Cylinder.042
+    2300092: Cylinder.043
+    2300094: Cylinder.044
+    2300096: Cylinder.045
+    2300098: Cylinder.046
+    2300100: Cylinder.047
+    2300102: Cylinder.048
+    2300104: Cylinder.049
+    2300106: Cylinder.050
+    2300108: M2 Browning gun .000
+    2300110: M2 Browning gun .002
+    2300112: M2 Browning gun .003
+    2300114: M2 Browning.000
+    2300116: M2 Browning.002
+    2300118: M2 Browning.003
+    2300120: Plane.006
+    2300122: Plane.007
+    2300124: Plane.008
+    2300126: Plane.009
+    2300128: Plane.010
+    2300130: Plane.012
+    2300132: Plane.013
+    2300134: Plane.014
+    2300136: Plane.015
+    2300138: Plane.016
+    2300140: Plane.017
+    2300142: Plane.018
+    2300144: Plane.019
+    2300146: Plane.020
+    2300148: Plane.021
+    2300150: Plane.022
+    2300152: Plane.023
+    2300154: Plane.024
+    2300156: RF1
+    2300158: RF2
+    2300160: SHF
+    2300162: TH1
+    2300164: TH2
+    2300166: TH3
+    2300168: Torus
+    2300170: UHF
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.006
+    3300006: Cube.007
+    3300008: Cube.008
+    3300010: Cube.009
+    3300012: Cube.010
+    3300014: Cube.011
+    3300016: Cube.012
+    3300018: Cube.013
+    3300020: Cube.014
+    3300022: Cube.015
+    3300024: Cube.016
+    3300026: Cube.017
+    3300028: Cylinder
+    3300030: Cylinder.001
+    3300032: Cylinder.002
+    3300034: Cylinder.003
+    3300036: Cylinder.015
+    3300038: Cylinder.016
+    3300040: Cylinder.017
+    3300042: Cylinder.018
+    3300044: Cylinder.019
+    3300046: Cylinder.020
+    3300048: Cylinder.021
+    3300050: Cylinder.022
+    3300052: Cylinder.023
+    3300054: Cylinder.024
+    3300056: Cylinder.025
+    3300058: Cylinder.026
+    3300060: Cylinder.027
+    3300062: Cylinder.028
+    3300064: Cylinder.029
+    3300066: Cylinder.030
+    3300068: Cylinder.031
+    3300070: Cylinder.032
+    3300072: Cylinder.033
+    3300074: Cylinder.034
+    3300076: Cylinder.035
+    3300078: Cylinder.036
+    3300080: Cylinder.037
+    3300082: Cylinder.038
+    3300084: Cylinder.039
+    3300086: Cylinder.040
+    3300088: Cylinder.041
+    3300090: Cylinder.042
+    3300092: Cylinder.043
+    3300094: Cylinder.044
+    3300096: Cylinder.045
+    3300098: Cylinder.046
+    3300100: Cylinder.047
+    3300102: Cylinder.048
+    3300104: Cylinder.049
+    3300106: Cylinder.050
+    3300108: M2 Browning gun .000
+    3300110: M2 Browning gun .002
+    3300112: M2 Browning gun .003
+    3300114: M2 Browning.000
+    3300116: M2 Browning.002
+    3300118: M2 Browning.003
+    3300120: Plane.006
+    3300122: Plane.007
+    3300124: Plane.008
+    3300126: Plane.009
+    3300128: Plane.010
+    3300130: Plane.012
+    3300132: Plane.013
+    3300134: Plane.014
+    3300136: Plane.015
+    3300138: Plane.016
+    3300140: Plane.017
+    3300142: Plane.018
+    3300144: Plane.019
+    3300146: Plane.020
+    3300148: Plane.021
+    3300150: Plane.022
+    3300152: Plane.023
+    3300154: Plane.024
+    3300156: RF1
+    3300158: RF2
+    3300160: SHF
+    3300162: TH1
+    3300164: TH2
+    3300166: TH3
+    3300168: Torus
+    3300170: UHF
+    4300000: Cylinder.003
+    4300002: TH2
+    4300004: TH3
+    4300006: TH1
+    4300008: RF2
+    4300010: RF1
+    4300012: UHF
+    4300014: SHF
+    4300016: Belt Back.L
+    4300018: Belt Back.R
+    4300020: Beltevogn
+    4300022: Belt front.R
+    4300024: Belt front.L
+    4300026: Cylinder
+    4300028: Cube
+    4300030: Cube.001
+    4300032: Cylinder.002
+    4300034: Cylinder.001
+    4300036: M2 Browning gun .000
+    4300038: Cube.006
+    4300040: Cube.007
+    4300042: Cube.008
+    4300044: Cube.009
+    4300046: Cylinder.015
+    4300048: Cylinder.016
+    4300050: Cylinder.017
+    4300052: Cylinder.018
+    4300054: Cylinder.019
+    4300056: Cylinder.020
+    4300058: Cylinder.021
+    4300060: Cylinder.022
+    4300062: Cylinder.023
+    4300064: Cylinder.024
+    4300066: Cylinder.025
+    4300068: Cylinder.026
+    4300070: M2 Browning.000
+    4300072: Plane.006
+    4300074: Plane.007
+    4300076: Plane.008
+    4300078: Plane.009
+    4300080: Plane.010
+    4300082: Plane.012
+    4300084: M2 Browning gun .002
+    4300086: Cube.010
+    4300088: Cube.011
+    4300090: Cube.012
+    4300092: Cube.013
+    4300094: Cylinder.027
+    4300096: Cylinder.028
+    4300098: Cylinder.029
+    4300100: Cylinder.030
+    4300102: Cylinder.031
+    4300104: Cylinder.032
+    4300106: Cylinder.033
+    4300108: Cylinder.034
+    4300110: Cylinder.035
+    4300112: Cylinder.036
+    4300114: Cylinder.037
+    4300116: Cylinder.038
+    4300118: M2 Browning.002
+    4300120: Plane.013
+    4300122: Plane.014
+    4300124: Plane.015
+    4300126: Plane.016
+    4300128: Plane.017
+    4300130: Plane.018
+    4300132: M2 Browning gun .003
+    4300134: Cube.014
+    4300136: Cube.015
+    4300138: Cube.016
+    4300140: Cube.017
+    4300142: Cylinder.039
+    4300144: Cylinder.040
+    4300146: Cylinder.041
+    4300148: Cylinder.042
+    4300150: Cylinder.043
+    4300152: Cylinder.044
+    4300154: Cylinder.045
+    4300156: Cylinder.046
+    4300158: Cylinder.047
+    4300160: Cylinder.048
+    4300162: Cylinder.049
+    4300164: Cylinder.050
+    4300166: M2 Browning.003
+    4300168: Plane.019
+    4300170: Plane.020
+    4300172: Plane.021
+    4300174: Plane.022
+    4300176: Plane.023
+    4300178: Plane.024
+    4300180: Torus
+    9500000: //RootNode
+    13700000: Belt Back.L
+    13700002: Belt Back.R
+    13700004: Belt front.L
+    13700006: Belt front.R
+    13700008: Beltevogn
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

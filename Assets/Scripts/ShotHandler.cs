@@ -5,9 +5,12 @@ public class ShotHandler : MonoBehaviour
 {
     public float Speed;
     public GameObject Explosion;
-    public float Range;
+
+    [HideInInspector]
     public Ammunition ammo;
-    public float ExplosionRadius;
+    [HideInInspector]
+    public float Range;
+    [HideInInspector]
     public float AirTime;
     
     private float StartTime;
@@ -32,10 +35,10 @@ public class ShotHandler : MonoBehaviour
         {
             if (ammo.damageType == DamageType.Kinetic)
             {
-                CHealth health = other.GetComponent<CHealth>();
-                if (health != null)
+                Unit unit = other.GetComponent<Unit>();
+                if (unit != null)
                 {
-                    health.Damage(ammo);
+                    unit.Damage(ammo);
                     GameObject explotionObject = (GameObject)Instantiate(Explosion, transform.position, transform.rotation);
                     explotionObject.transform.localScale = Vector3.one * ammo.explosionRadius * 2;
                     Destroy(gameObject);
@@ -54,10 +57,10 @@ public class ShotHandler : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, ammo.explosionRadius);
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            CHealth health = hitColliders[i].GetComponent<CHealth>();
-            if(health != null)
+            Unit unit = hitColliders[i].GetComponent<Unit>();
+            if(unit != null)
             {
-                health.Damage(ammo, (hitColliders[i].bounds.ClosestPoint(transform.position) - transform.position).magnitude);
+                unit.Damage(ammo, (hitColliders[i].bounds.ClosestPoint(transform.position) - transform.position).magnitude);
             }
         }
         Destroy(gameObject);
