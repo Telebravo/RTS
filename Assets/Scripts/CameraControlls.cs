@@ -236,6 +236,10 @@ public class CameraControlls : MonoBehaviour
 
     void Movement()
     {
+        //Kan ikke velge og flytte ting om man holder inne control, da den brukes for å utføre handlinger med units
+        if (Input.GetKey(KeyCode.LeftControl))
+            return;
+
         //FLYTTE UNIT
         if (Input.GetMouseButtonUp(1))
         {
