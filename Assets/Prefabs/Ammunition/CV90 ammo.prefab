@@ -46,6 +46,7 @@ MonoBehaviour:
   damage: 300
   armorPenetration: 10
   explosionRadius: 0.2
+  lineWidth: 0.05
   projectilePrefab: {fileID: 154260, guid: e94f0b64e88a25a48a61a260743e5650, type: 2}
 --- !u!1001 &100100000
 Prefab:
