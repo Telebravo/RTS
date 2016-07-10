@@ -45,7 +45,7 @@ MonoBehaviour:
   range: 500
   accuracy: 100
   burstLength: 0
-  ammo: {fileID: 11487422, guid: b9533264acd58394f97a1abb449fcedd, type: 2}
+  ammo: {fileID: 11487422, guid: 3bb8e6bd31f2dde42a62d7a5c0db43cb, type: 2}
   ammoSize: 3
   barrelEnd: {fileID: 0}
   minRange: 10

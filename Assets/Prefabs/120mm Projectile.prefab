@@ -134,10 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 100
-  Explosion: {fileID: 155474, guid: 8f4dd8919d9a5fc44b957090df155d1a, type: 2}
-  Range: 50
+  Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
   ammo: {fileID: 0}
-  ExplosionRadius: 1
+  Range: 50
   AirTime: 0
 --- !u!1001 &100100000
 Prefab:

@@ -74,6 +74,7 @@ GameObject:
   - 4: {fileID: 493504}
   - 33: {fileID: 3341624}
   - 23: {fileID: 2356422}
+  - 120: {fileID: 12078612}
   m_Layer: 0
   m_Name: Weapon mount
   m_TagString: Untagged
@@ -499,10 +500,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1
-  Shell: {fileID: 154260, guid: 43696c4113adacb4788d38dee1206202, type: 2}
   barrelEnd: {fileID: 414158}
   BarrelRotation: {fileID: 414158}
   barrelRotationSpeed: 15
+  timeBetweenEachShot: 0
 --- !u!114 &11448252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,14 +518,14 @@ MonoBehaviour:
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
   visibility: {fileID: 0}
-  team: 0
+  team: 1
   displayName: M106 Mortar Carrier
   startHealth: 1000
   size: 1
   optics: 1000
   camo: 0
   armor: 20
-  movementSpeed: 15
+  movementSpeed: 25
   rotationSpeed: 120
   weapon: {fileID: 11461748, guid: 98858075c18348c418c2a28d24fc0922, type: 2}
   mountedWeapons: []
@@ -617,6 +618,45 @@ MonoBehaviour:
   selectionCanvas: {fileID: 22454284}
   CallComponent: 
   CallFunction: 
+--- !u!120 &12078612
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134832}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8475623707efb0149b0d6526d8e0212a, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!195 &19555058
 NavMeshAgent:
   m_ObjectHideFlags: 1

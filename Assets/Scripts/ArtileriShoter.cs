@@ -6,10 +6,10 @@ using System.Collections;
 public class ArtileriShoter : MonoBehaviour
 {
     public float range = 1;
-    public GameObject Shell;
     public Transform barrelEnd;
     public Transform BarrelRotation;
     public float barrelRotationSpeed;
+    public float timeBetweenEachShot;
 
     private float Utgangshatighet;
     private float AirTime;
@@ -17,6 +17,7 @@ public class ArtileriShoter : MonoBehaviour
     private float Dist;
     private float Dist1;
     private float SkuddVinkel;
+    private float lastShot = 0;
     Ray ray;
     RaycastHit hit;
     Vector3 retning;
@@ -41,7 +42,7 @@ public class ArtileriShoter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0) && unit.cSelectable.selected)
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0) && unit.cSelectable.selected )
         {
             //print("Fire1");
             //Finner posisjon i verden utifra musepeker
@@ -80,20 +81,20 @@ public class ArtileriShoter : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(retning, Vector3.up), 45f * Time.deltaTime);
 
             //Om det er innafor
-            if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(retning, Vector3.up)) < 1)
+            if (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(retning, Vector3.up)) < 1 )
             {
                 //Debug.Log("retningS og BarrelRotation: " + retningS + " og " + BarrelRotation.rotation.eulerAngles);
 
                 BarrelRotation.localRotation = Quaternion.RotateTowards(BarrelRotation.localRotation, Quaternion.Euler( new Vector3(- SkuddVinkel * Mathf.Rad2Deg, 0, 0)),barrelRotationSpeed * Time.deltaTime);
 
-                if (Quaternion.Angle(BarrelRotation.localRotation, Quaternion.Euler(new Vector3(-SkuddVinkel * Mathf.Rad2Deg, 0, 0))) < 5)
+                if (Quaternion.Angle(BarrelRotation.localRotation, Quaternion.Euler(new Vector3(-SkuddVinkel * Mathf.Rad2Deg, 0, 0))) < 5 && Time.time > lastShot + timeBetweenEachShot)
                 {
                     retning = retning.normalized * Mathf.Cos(SkuddVinkel);
                     retning.y = Mathf.Sin(SkuddVinkel);
 
                     //Debug.Log("Skuddvinkel: " + SkuddVinkel * Mathf.Rad2Deg);
 
-                    GameObject Kjell = Instantiate(Shell);
+                    GameObject Kjell = Instantiate(unit.weapon.ammo.projectilePrefab);
                     Kjell.GetComponent<ShotHandler>().AirTime = 99999;
                     Kjell.GetComponent<ShotHandler>().ammo = unit.weapon.ammo;
                     Kjell.transform.position = barrelEnd.position;
@@ -111,6 +112,7 @@ public class ArtileriShoter : MonoBehaviour
                     //Kjell.GetComponent<ShotHandler>().AirTime  = Dist / new Vector2(rgbd.velocity.x, rgbd.velocity.z).magnitude;
 
                     retning = Vector3.down;
+                    lastShot = Time.time;
                 }
             }
         }
