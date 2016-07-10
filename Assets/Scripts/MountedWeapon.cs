@@ -56,7 +56,7 @@ public class MountedWeapon : MonoBehaviour
             //Om mounten er riktig rotert
             if (Quaternion.Angle(mount.rotation, mountRotation) < 1)
             {
-                //Om våoenet er riktig rotert
+                //Om våpenet er riktig rotert
                 if (Quaternion.Angle(weapon.transform.localRotation, Quaternion.Euler(new Vector3(-angle, 0, 0))) < 1)
                 {
                     //Oppdaterer retningen til fra tuppen av våpenet

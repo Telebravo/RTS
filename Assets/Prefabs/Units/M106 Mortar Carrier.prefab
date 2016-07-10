@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.21906, y: 0, z: 105.47716}
+  m_LocalPosition: {x: 96.129745, y: 0, z: 60.710564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -602,6 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iStilling: 0
   iBevegelse: 0
+  bakSmoke: 0
 --- !u!114 &11491820
 MonoBehaviour:
   m_ObjectHideFlags: 1

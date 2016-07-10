@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.18938, y: 1, z: 94.43236}
+  m_LocalPosition: {x: 87.401436, y: 0, z: 75.0618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -402,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iStilling: 0
   iBevegelse: 0
+  bakSmoke: 0
 --- !u!114 &11466914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,7 +433,7 @@ MonoBehaviour:
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
   visibility: {fileID: 0}
-  team: 0
+  team: 1
   displayName: CV90-30N
   startHealth: 1000
   size: 1

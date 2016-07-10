@@ -1518,7 +1518,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143536}
-  m_LocalRotation: {x: 0.6123724, y: -0.35355344, z: -0.3535534, w: 0.6123724}
+  m_LocalRotation: {x: 0.61237246, y: -0.35355347, z: -0.35355344, w: 0.61237246}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 30, y: -90, z: -90}
@@ -1612,6 +1612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iStilling: 0
   iBevegelse: 0
+  bakSmoke: 0
 --- !u!114 &11409506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1731,7 +1732,7 @@ MonoBehaviour:
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
   visibility: {fileID: 0}
-  team: 0
+  team: 1
   displayName: Infantry
   startHealth: 100
   size: 1

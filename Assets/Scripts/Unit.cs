@@ -31,7 +31,6 @@ public class Unit : MonoBehaviour
     public float currentHealth;
 
     //Fiender og sånt
-    Collider[] collidersInRange;
     [HideInInspector] public List<Unit> enemiesInRange;
     [HideInInspector] public Unit closestEnemy;
 
@@ -49,10 +48,7 @@ public class Unit : MonoBehaviour
 
         //Legger oss inn i listen for riktig lag
         tag = team.ToString();
-        if (team == GameManager.team)
-            GameManager.friendlyUnits.Add(this);
-        else
-            GameManager.enemyUnits.Add(this);
+        GameManager.units[(int)team].Add(this);
 
         //Ser om vi har noen (ekstra) våpen
         mountedWeapons = GetComponents<MountedWeapon>();
@@ -71,8 +67,6 @@ public class Unit : MonoBehaviour
 
     IEnumerator UpdateEnemies()
     {
-        Unit enemyUnit;
-
         //Finner den lengste rekkeviden på alle våpen
         float maxRange = 0;
         if (weapon != null)
@@ -95,9 +89,6 @@ public class Unit : MonoBehaviour
             //Glemmer alle fra forige gang vi sjekket
             enemiesInRange.Clear();
             closestEnemy = null;
-
-            //Finner alle collidere i en kule med radiusen maxRande rundt uniten
-            collidersInRange = Physics.OverlapSphere(transform.position, maxRange, layermask);
             
             //Distansen til uniten
             float dist;
@@ -105,24 +96,20 @@ public class Unit : MonoBehaviour
             float minDist = Mathf.Infinity;
 
             //For hver collider
-            for (int i = 0; i < collidersInRange.Length; i++)
+            foreach (Unit enemy in GameManager.visibleEnemies[(int)team])
             {
-                //Om det er en fientlig unit
-                enemyUnit = collidersInRange[i].GetComponent<Unit>();
-                if (enemyUnit != null && enemyUnit.team != this.team)
+                //Finner distansen
+                dist = (enemy.transform.position - this.transform.position).magnitude;
+
+                if (dist < maxRange)
                 {
-                    //Hiver den inn i listen
-                    enemiesInRange.Add(enemyUnit);
-
-                    //Finner distansen
-                    dist = (enemyUnit.transform.position - this.transform.position).magnitude;
-
+                    enemiesInRange.Add(enemy);
                     //Om det er den bærmeste hittil
                     if (dist < minDist)
                     {
                         //Husker på det
                         minDist = dist;
-                        closestEnemy = enemyUnit;
+                        closestEnemy = enemy;
                     }
                 }
             }
@@ -172,16 +159,13 @@ public class Unit : MonoBehaviour
     {
         GameManager.controlls.Deselect(this);
 
-        if (team == GameManager.team)
+        GameManager.units[(int)team].Remove(this);
+        for (int i = 0; i < GameManager.teams; i++)
         {
-            GameManager.friendlyUnits.Remove(this);
+            if (GameManager.visibleEnemies[i].Contains(this))
+                GameManager.visibleEnemies[i].Remove(this);
         }
-        else
-        {
-            GameManager.enemyUnits.Remove(this);
-            if (GameManager.visibleEnemies.Contains(this))
-                GameManager.visibleEnemies.Remove(this);
-        }
+        
 
         GameObject.Destroy(gameObject);
     }

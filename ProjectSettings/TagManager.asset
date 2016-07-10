@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Team0
   - Team1
   - Team2
+  - Team3
+  - Team4
+  - Fire
+  - Smoke
   layers:
   - Default
   - TransparentFX

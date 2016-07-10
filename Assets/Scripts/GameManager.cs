@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum Team { Team1, Team2 }
+public enum Team { Team0, Team1, Team2 }
 
 public class GameManager : MonoBehaviour
 {
     public static Team team;
+    public static int teams;
     public static Unit selectedUnit;
-    public static List<Unit> friendlyUnits;
-    public static List<Unit> enemyUnits;
-    public static List<Unit> visibleEnemies;
+    public static List<Unit>[] units;
+    public static List<Unit>[] visibleEnemies;
     public static CameraControlls controlls;
 
     [SerializeField]
@@ -19,9 +19,15 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         team = _team;
+        teams = System.Enum.GetNames(typeof(Team)).Length;
 
-        friendlyUnits = new List<Unit>();
-        enemyUnits = new List<Unit>();
-        visibleEnemies = new List<Unit>();
+        units = new List<Unit>[teams];
+        visibleEnemies = new List<Unit>[teams];
+        for (int i = 0; i < teams; i++)
+        {
+            units[i] = new List<Unit>();
+            visibleEnemies[i] = new List<Unit>();
+        }
+
     }
 }

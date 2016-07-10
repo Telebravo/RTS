@@ -111,10 +111,10 @@ GameObject:
   - 114: {fileID: 11494766}
   - 114: {fileID: 11442312}
   - 23: {fileID: 2302846}
-  - 114: {fileID: 11439374}
   - 114: {fileID: 11476796}
   - 195: {fileID: 19590468}
   - 114: {fileID: 11488522}
+  - 114: {fileID: 11403696}
   m_Layer: 8
   m_Name: Scania P93
   m_TagString: Untagged
@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.502357, y: 0, z: 105.67366}
+  m_LocalPosition: {x: 108.41888, y: 0, z: 54.506134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -296,6 +296,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6738515, y: 2.9981627, z: 6.8270965}
   m_Center: {x: -0.05230713, y: 0.4236945, z: 0.40277863}
+--- !u!114 &11403696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba8e4069e7a01340ae2ce385a221e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cargoTransform: {fileID: 0}
+  hookPoint: {fileID: 0}
 --- !u!114 &11413104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,19 +330,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11439374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda3ebe9505c5514e9e54973f7ebf2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  currentHealth: 0
 --- !u!114 &11442312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +387,7 @@ MonoBehaviour:
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
   visibility: {fileID: 0}
-  team: 0
+  team: 1
   displayName: Scania P93
   startHealth: 100
   size: 1
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iStilling: 0
   iBevegelse: 0
+  bakSmoke: 0
 --- !u!195 &19590468
 NavMeshAgent:
   m_ObjectHideFlags: 1
