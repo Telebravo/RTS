@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.8, y: 0, z: 139.62114}
+  m_LocalPosition: {x: 14.21906, y: 0, z: 105.47716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -464,7 +464,7 @@ MonoBehaviour:
   weapon: {fileID: 11487518, guid: 01f33180113572b45a88bdc7555ece31, type: 2}
   mount: {fileID: 493504}
   weaponPosition: {fileID: 487084}
-  lineRenderer: {fileID: 12078612}
+  lineRenderer: {fileID: 0}
   mountRotationSpeed: 50
   weaponElevationSpeed: 50
 --- !u!114 &11413626

@@ -225,7 +225,6 @@ GameObject:
   - 95: {fileID: 9555934}
   - 208: {fileID: 20880628}
   - 114: {fileID: 11450474}
-  - 114: {fileID: 11489400}
   m_Layer: 8
   m_Name: K2IS Container
   m_TagString: Team 1
@@ -499,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.24117, y: 1, z: 49.286037}
+  m_LocalPosition: {x: 30.183321, y: 1, z: 110.84832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -755,7 +754,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7417b226be75cc54aa69c7200bb1bf2b, type: 2}
+  - {fileID: 2100000, guid: dd2076b7cf0f1934eb69fb46b11e2387, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1093,7 +1092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
-  cHealth: {fileID: 0}
   visibility: {fileID: 0}
   team: 0
   displayName: K2IS Container
@@ -1105,8 +1103,10 @@ MonoBehaviour:
   movementSpeed: 0
   rotationSpeed: 0
   weapon: {fileID: 0}
+  mountedWeapons: []
   weaponObject: {fileID: 0}
   icon: {fileID: 0}
+  currentHealth: 0
   enemiesInRange: []
   closestEnemy: {fileID: 0}
 --- !u!114 &11469978
@@ -1147,12 +1147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8420cb1f08e44e94f97c716d4ae3be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPossition: {x: 0, y: 2.2, z: -1.18}
+  lockPossition: {x: 0, y: 0, z: 0}
   hookPoint: {fileID: 401966}
-  onGroundY: 1
+  onGroundY: 0
   onTruck: 0
   liftable: 1
-  navMeshObstacle: {fileID: 0}
+  navMeshObstacle: {fileID: 20880628}
 --- !u!114 &11487940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1169,19 +1169,6 @@ MonoBehaviour:
   selectionCanvas: {fileID: 22415136}
   CallComponent: K2ISContainer
   CallFunction: Select
---- !u!114 &11489400
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda3ebe9505c5514e9e54973f7ebf2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  currentHealth: 0
 --- !u!208 &20880628
 NavMeshObstacle:
   m_ObjectHideFlags: 1
