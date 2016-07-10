@@ -35,13 +35,13 @@ public class Unit : MonoBehaviour
     [HideInInspector] public Unit closestEnemy;
 
     //Unit layeret
-    int unitLayer = 8;
-    int layermask;
+    //int unitLayer = 8;
+    //int layermask;
 
     void Awake()
     {
         //unit layeret
-        layermask = 1 << unitLayer;
+        //layermask = 1 << unitLayer;
 
         //Gir oss noe liv
         currentHealth = startHealth;

@@ -30,13 +30,13 @@ public class FogOfWar : MonoBehaviour
         while (true)
         {
             //Vent 0.5 sek
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
 
             //For hvert lag
             for (int team = 0; team < GameManager.teams; team++)
             {
                 //Venter på neste fixed update, tar bare et lag om gangen
-                //yield return new WaitForFixedUpdate();
+                yield return new WaitForFixedUpdate();
 
                 //Glemmer hvem som var synlig forrige gang
                 GameManager.visibleEnemies[team].Clear();
@@ -45,8 +45,8 @@ public class FogOfWar : MonoBehaviour
                 for (int i = 0; i < GameManager.units[team].Count; i++)
                 {
                     //Tar bare 10 om gangen
-                    /*if (i % 10 == 0)
-                        yield return new WaitForFixedUpdate();*/
+                    if (i % 10 == 0)
+                        yield return new WaitForFixedUpdate();
                     
                     friendlyUnit = GameManager.units[team][i];
 
@@ -119,8 +119,8 @@ public class FogOfWar : MonoBehaviour
                         //For hver unit
                         for (int i = 0; i < GameManager.units[t].Count; i++)
                         {
-                            /*if (i % 10 == 0)
-                                yield return new WaitForFixedUpdate();*/
+                            if (i % 10 == 0)
+                                yield return new WaitForFixedUpdate();
                             
                             //Henter litt komponenter
                             enemyUnit = GameManager.units[t][i];

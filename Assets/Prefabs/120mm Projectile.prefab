@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 100
-  Explosion: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  Explosion: {fileID: 148214, guid: f8955d9328b88c24a95cd8b9df2bc895, type: 2}
   ammo: {fileID: 0}
   Range: 50
   AirTime: 0

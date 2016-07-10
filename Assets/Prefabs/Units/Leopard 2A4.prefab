@@ -638,7 +638,7 @@ MonoBehaviour:
   visibility: {fileID: 0}
   team: 1
   displayName: Leopard 2A4
-  startHealth: 1000
+  startHealth: 10000
   size: 1
   optics: 1000
   camo: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   mount: {fileID: 410910}
   weaponPosition: {fileID: 477316}
   lineRenderer: {fileID: 0}
-  mountRotationSpeed: 50
+  mountRotationSpeed: 40
   weaponElevationSpeed: 50
 --- !u!114 &11476186
 MonoBehaviour:

@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.396, y: 0, z: 68.769104}
+  m_LocalPosition: {x: 103.535614, y: 0, z: 51.092613}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -134,10 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 100
-  Explosion: {fileID: 155474, guid: 8f4dd8919d9a5fc44b957090df155d1a, type: 2}
-  Range: 50
+  Explosion: {fileID: 148214, guid: f8955d9328b88c24a95cd8b9df2bc895, type: 2}
   ammo: {fileID: 0}
-  ExplosionRadius: 1
+  Range: 50
   AirTime: 0
 --- !u!1001 &100100000
 Prefab:
