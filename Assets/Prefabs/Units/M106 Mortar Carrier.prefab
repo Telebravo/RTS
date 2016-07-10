@@ -192,7 +192,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.95134, y: 1.16, z: 32.95}
+  m_LocalPosition: {x: 14.21906, y: 0, z: 105.47716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -459,9 +459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primary: 0
   weapon: {fileID: 11487518, guid: 01f33180113572b45a88bdc7555ece31, type: 2}
   mount: {fileID: 493504}
   weaponPosition: {fileID: 487084}
+  lineRenderer: {fileID: 0}
   mountRotationSpeed: 50
   weaponElevationSpeed: 50
 --- !u!114 &11413626
@@ -525,6 +527,7 @@ MonoBehaviour:
   movementSpeed: 15
   rotationSpeed: 120
   weapon: {fileID: 11461748, guid: 98858075c18348c418c2a28d24fc0922, type: 2}
+  mountedWeapons: []
   weaponObject: {fileID: 0}
   icon: {fileID: 0}
   currentHealth: 0

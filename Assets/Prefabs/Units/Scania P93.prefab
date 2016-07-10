@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.969741, y: 0, z: 21.790482}
+  m_LocalPosition: {x: 14.502357, y: 0, z: 105.67366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -386,7 +386,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cSelectable: {fileID: 0}
   cMoveable: {fileID: 0}
-  cHealth: {fileID: 0}
   visibility: {fileID: 0}
   team: 0
   displayName: Scania P93
@@ -398,8 +397,10 @@ MonoBehaviour:
   movementSpeed: 25
   rotationSpeed: 120
   weapon: {fileID: 0}
+  mountedWeapons: []
   weaponObject: {fileID: 0}
   icon: {fileID: 0}
+  currentHealth: 0
   enemiesInRange: []
   closestEnemy: {fileID: 0}
 --- !u!114 &11477770
