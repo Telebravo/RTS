@@ -50,8 +50,29 @@ public class FogOfWar : MonoBehaviour
 
                         if (Vector3.Distance(enemy.transform.position, unit.transform.position) < visibleDistance)
                         {
-                            if (!GameManager.visibleEnemies.Contains(enemy))
-                                GameManager.visibleEnemies.Add(enemy);
+                            RaycastHit hit;
+                            if(Physics.Raycast(unit.transform.position, enemy.transform.position -unit.transform.position,out hit))
+                            {
+                                RaycastHit hit2;
+                                if(hit.transform == enemy.transform)
+                                {
+                                    if (!GameManager.visibleEnemies.Contains(enemy))
+                                        GameManager.visibleEnemies.Add(enemy);
+                                }
+                                else if(hit.collider.tag == "Smoke"){
+                                    visibleDistance /= 2;
+                                    if(Physics.Raycast(hit.transform.position,hit.transform.position - unit.transform.position, out hit2)){
+                                        if(hit2.transform == enemy.transform)
+                                        {
+                                            if (Vector3.Distance(unit.transform.position, enemy.transform.position) < visibleDistance)
+                                            {
+                                                if (!GameManager.visibleEnemies.Contains(enemy))
+                                                GameManager.visibleEnemies.Add(enemy); 
+                                            }
+                                        }
+                                    }
+                                }
+                            } 
                         }
                     }
                 }

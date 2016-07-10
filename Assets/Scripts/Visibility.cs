@@ -7,6 +7,7 @@ public class Visibility : MonoBehaviour
 {
     public bool iStilling;
     public bool iBevegelse;
+    public bool bakSmoke;
 
     private Unit unit;
 
