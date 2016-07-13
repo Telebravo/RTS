@@ -698,6 +698,7 @@ GameObject:
   - 114: {fileID: 11431834}
   - 136: {fileID: 13608218}
   - 120: {fileID: 12008676}
+  - 114: {fileID: 11459178}
   m_Layer: 8
   m_Name: Infantry
   m_TagString: Untagged
@@ -1313,7 +1314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.056902, y: 0, z: 119.735344}
+  m_LocalPosition: {x: 238.58923, y: 1.82, z: 182.35394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1702,6 +1703,19 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11459178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0cb3c112509b44b861d3b1c72624a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 0}
+  lockPosition: {x: 0, y: 0.8, z: 0}
 --- !u!114 &11476146
 MonoBehaviour:
   m_ObjectHideFlags: 1

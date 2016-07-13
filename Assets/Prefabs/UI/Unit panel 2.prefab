@@ -234,7 +234,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11420560, guid: 70d3c50236ed5fb41a6d4de88c4afe2c, type: 2}
-        m_MethodName: ClickedUnit
+        m_MethodName: UnitPanelClicked
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 22420240}

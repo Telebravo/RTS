@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Unit/CTransportable")]
+[RequireComponent(typeof(Unit))]
 public class CTransportable : MonoBehaviour
 {
+    [HideInInspector]
     public Unit unit;
     private Transport transport;
 

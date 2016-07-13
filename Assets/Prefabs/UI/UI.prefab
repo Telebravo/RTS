@@ -728,12 +728,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -748,13 +748,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 168836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e164125010aa1a47b728fdad80db86d, type: 3}
+  m_Script: {fileID: 11500000, guid: 366251504a1aa644a8c75ea15946badf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showHideOnUpdate: 1
   panel: {fileID: 142758}
-  unitPanel: {fileID: 148628, guid: 8796a683561f7d04e8b97d5593ad537c, type: 2}
-  panels: 10
+  unitPanelPrefab: {fileID: 148628, guid: 8796a683561f7d04e8b97d5593ad537c, type: 2}
+  numberOfPanels: 10
+  panels: []
+  transport: {fileID: 0}
+  autoToggle: 1
 --- !u!114 &11420998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1089,7 +1091,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11420560}
-        m_MethodName: ShowHideButtonClick
+        m_MethodName: ToggleButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

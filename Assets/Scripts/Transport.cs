@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[RequireComponent (typeof(Unit))]
 public class Transport : MonoBehaviour
 {
+    [HideInInspector]
     public Unit unit;
     public List<Transform> slots;
     public List<CTransportable> items;

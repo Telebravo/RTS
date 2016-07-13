@@ -417,7 +417,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 250, y: 1.5, z: 250}
+  m_LocalPosition: {x: 231.43, y: 1.5, z: 184.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -626,7 +626,7 @@ MonoBehaviour:
   - {fileID: 449238}
   - {fileID: 407118}
   - {fileID: 494914}
-  units: []
+  items: []
   embarkPosition: {fileID: 426626}
 --- !u!114 &11446336
 MonoBehaviour:
@@ -644,11 +644,11 @@ MonoBehaviour:
   visibility: {fileID: 0}
   team: 1
   displayName: Scania P93 Transport
-  startHealth: 10000
+  startHealth: 1000
   size: 1
   optics: 500
   camo: 0
-  armor: 1
+  armor: 2
   movementSpeed: 20
   rotationSpeed: 120
   weapon: {fileID: 0}

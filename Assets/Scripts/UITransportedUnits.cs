@@ -14,8 +14,11 @@ public class UITransportedUnits : MonoBehaviour
     private Unit unit;
     private bool visible = true;
     private int prevUnitCount = 0;
-	void Start ()
+    public static UITransportedUnits self;
+
+    void Start()
     {
+        self = this;
         panels = new List<GameObject>();
         for (int i = 0; i < numberOfPanels; i++)
         {
@@ -25,21 +28,21 @@ public class UITransportedUnits : MonoBehaviour
             if (panels[i].activeInHierarchy)
                 panels[i].SetActive(false);
         }
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
-        if(GameManager.selectedUnit == null)
+        if (GameManager.selectedUnit == null)
         {
             if (panel.activeInHierarchy)
                 panel.SetActive(false);
         }
-	    else
+        else
         {
             transport = GameManager.selectedUnit.GetComponent<Transport>();
             if (transport == null)
             {
-                if(panel.activeInHierarchy)
+                if (panel.activeInHierarchy)
                     panel.SetActive(false);
             }
             else
@@ -79,7 +82,7 @@ public class UITransportedUnits : MonoBehaviour
                 }
             }
         }
-	}
+    }
 
     public void ToggleButtonClicked()
     {
@@ -98,5 +101,13 @@ public class UITransportedUnits : MonoBehaviour
     {
         visible = false;
         panel.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, -200, 200);
+    }
+
+    public void UnitPanelClicked(RectTransform rect)
+    {
+        int index = self.panels.IndexOf(rect.gameObject);
+        Debug.Log(index);
+        Debug.Log(self.transport.items.Count);
+        self.transport.Remove(self.transport.items[index]);
     }
 }
