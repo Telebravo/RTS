@@ -76,4 +76,9 @@ public class InfantryShooting : MonoBehaviour
             }
         }
     }
+    public void Disable()
+    {
+        lineRenderer.SetPositions(noline);
+        enabled = false;
+    }
 }

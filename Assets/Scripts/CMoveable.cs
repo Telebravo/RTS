@@ -12,6 +12,8 @@ public class CMoveable : MonoBehaviour
     NavMeshAgent agent;
     //Om den skal ha lov til å flytte
     public bool canMove = true;
+    //Dit vi er på vei
+    private Vector3 currentTarget;
 
     //Ved start
 	void Start ()
@@ -22,7 +24,10 @@ public class CMoveable : MonoBehaviour
         //Setter bevegelse- og rotasjonsfarten
         agent.speed = unit.movementSpeed;
         agent.angularSpeed = unit.rotationSpeed;
-	}
+
+        currentTarget = Vector3.zero;
+
+    }
 
 	//Om noen gir oss en lyd om et sted å være
     /// <summary>
@@ -34,9 +39,18 @@ public class CMoveable : MonoBehaviour
         if (canMove)
         {
             //Ja, så turer vi vel dit
+            currentTarget = point;
             agent.SetDestination(point);
         }
 	}
+    /// <summary>
+    /// Gets the nav mesh agents current target position
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetCurrentTarget()
+    {
+        return currentTarget;
+    }
 
     //Om vi ikke vil dit likevel
     /// <summary>
@@ -46,6 +60,7 @@ public class CMoveable : MonoBehaviour
     {
         //Så får vi vel nøye oss med det også
         agent.ResetPath();
+        currentTarget = Vector3.zero;
     }
 
     /// <summary>
@@ -76,5 +91,10 @@ public class CMoveable : MonoBehaviour
     {
         agent.updatePosition = true;
         agent.updateRotation = true;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return agent.velocity;
     }
 }

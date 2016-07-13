@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Mk44 Bushmaster II
-  firerate: 100
+  firerate: 600
   range: 1000
   accuracy: 100
   burstLength: 0

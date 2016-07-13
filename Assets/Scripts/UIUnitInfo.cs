@@ -65,7 +65,7 @@ public class UIUnitInfo : MonoBehaviour
             unitInfoImage.sprite = GameManager.selectedUnit.icon;
 
             unitInfoText[0].text = GameManager.selectedUnit.displayName.ToString();
-            unitInfoText[1].text = GameManager.selectedUnit.currentHealth.ToString();
+            unitInfoText[1].text = Mathf.Round(GameManager.selectedUnit.currentHealth).ToString();
 
             if (GameManager.selectedUnit.weapon != null)
             {

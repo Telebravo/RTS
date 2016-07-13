@@ -95,11 +95,10 @@ public class CameraControlls : MonoBehaviour
             holdOverObject = hit.transform;
             //Ser om det kan velges
             selectedUnit = holdOverObject.GetComponent<Unit>();
-            if (selectedUnit != null)
+            if (selectedUnit != null && selectedUnit.cSelectable.enabled == true)
             {
 
             }
-
         }
 
         //Musepekeren sin posison i verden
@@ -180,7 +179,7 @@ public class CameraControlls : MonoBehaviour
                 {
                     //Ser om objektet kan valges
                     selectedUnit = hit.transform.GetComponent<Unit>();
-                    if (selectedUnit != null)
+                    if (selectedUnit != null && selectedUnit.cSelectable.enabled == true)
                     {
                         //Velger objektet
                         selectedUnits.Add(selectedUnit);
@@ -193,6 +192,9 @@ public class CameraControlls : MonoBehaviour
                 //Går igjennom alle objektene på skjermen
                 foreach (Unit unit in visibleUnits)
                 {
+                    if (unit.cSelectable.enabled != true)
+                        continue;
+
                     //Ser om de er i området
                     Vector2 point = Camera.main.WorldToScreenPoint(unit.transform.position);
                     if (area.Contains(point))
