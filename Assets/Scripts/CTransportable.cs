@@ -82,6 +82,7 @@ public class CTransportable : MonoBehaviour
         unit.cMoveable.ClearTarget();
         unit.cMoveable.DisableUpdate();
         GameManager.controlls.Deselect(unit);
+        unit.cSelectable.enabled = false;
     }
 
     public void OnUnload()
@@ -90,5 +91,6 @@ public class CTransportable : MonoBehaviour
         unit.cMoveable.canMove = true;
         unit.cMoveable.Warp(transform.position);
         unit.cMoveable.EnableUpdate();
+        unit.cSelectable.enabled = true;
     }
 }

@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.64, y: 1.65, z: 35.8}
+  m_LocalPosition: {x: 249.61285, y: 0, z: 207.35266}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
@@ -638,7 +638,7 @@ MonoBehaviour:
   visibility: {fileID: 0}
   team: 1
   displayName: Leopard 2A4
-  startHealth: 10000
+  startHealth: 1000
   size: 1
   optics: 1000
   camo: 0
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
@@ -698,7 +698,7 @@ MonoBehaviour:
   mount: {fileID: 410910}
   weaponPosition: {fileID: 477316}
   lineRenderer: {fileID: 0}
-  mountRotationSpeed: 40
+  mountRotationSpeed: 400
   weaponElevationSpeed: 50
 --- !u!114 &11476186
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3afcaf85f5cd0ab4ca08ecee18c2ddb3, type: 3}
   m_Name: 
